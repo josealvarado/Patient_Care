@@ -33,10 +33,6 @@
 		CB399DC71AA3D35A0012DB43 /* RobotoCondensed-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB399DB51AA3D35A0012DB43 /* RobotoCondensed-Light.ttf */; };
 		CB399DC81AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB399DB61AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf */; };
 		CB399DC91AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CB399DB71AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf */; };
-		CB399DCE1AA3D7470012DB43 /* walkthrough_4_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CB399DCD1AA3D7470012DB43 /* walkthrough_4_bg.png */; };
-		CB399DD01AA3D74E0012DB43 /* walkthrough_3_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CB399DCF1AA3D74E0012DB43 /* walkthrough_3_bg.png */; };
-		CB399DD21AA3D7530012DB43 /* walkthrough_2_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CB399DD11AA3D7530012DB43 /* walkthrough_2_bg.png */; };
-		CB399DD41AA3D7580012DB43 /* walkthrough_1_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = CB399DD31AA3D7580012DB43 /* walkthrough_1_bg.png */; };
 		CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CB399DD71AA3DFCA0012DB43 /* Info.plist */; };
 		CB399E001AA3DFCA0012DB43 /* HexColorPicker in Resources */ = {isa = PBXBuildFile; fileRef = CB399DD91AA3DFCA0012DB43 /* HexColorPicker */; };
 		CB399E011AA3DFCA0012DB43 /* HexPicker.nib in Resources */ = {isa = PBXBuildFile; fileRef = CB399DDB1AA3DFCA0012DB43 /* HexPicker.nib */; };
@@ -50,6 +46,11 @@
 		CB399E0C1AA3E88B0012DB43 /* Login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB399E0B1AA3E88B0012DB43 /* Login_bg.jpg */; };
 		CB399E0E1AA3E8960012DB43 /* Register_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */; };
 		CB399E111AA3ED540012DB43 /* RegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399E101AA3ED540012DB43 /* RegisterViewController.m */; };
+		CB529B0A1AACF98A00C02E9F /* walkthrough_3.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B091AACF98A00C02E9F /* walkthrough_3.png */; };
+		CB529B0C1AACF99100C02E9F /* walkthrough_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0B1AACF99100C02E9F /* walkthrough_2.png */; };
+		CB529B0E1AACF99600C02E9F /* walkthrough_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0D1AACF99600C02E9F /* walkthrough_1.png */; };
+		CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */; };
+		CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B141AAD083900C02E9F /* HomeViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,10 +96,6 @@
 		CB399DB51AA3D35A0012DB43 /* RobotoCondensed-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Light.ttf"; sourceTree = "<group>"; };
 		CB399DB61AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-LightItalic.ttf"; sourceTree = "<group>"; };
 		CB399DB71AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "RobotoCondensed-Regular.ttf"; sourceTree = "<group>"; };
-		CB399DCD1AA3D7470012DB43 /* walkthrough_4_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_4_bg.png; sourceTree = "<group>"; };
-		CB399DCF1AA3D74E0012DB43 /* walkthrough_3_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_3_bg.png; sourceTree = "<group>"; };
-		CB399DD11AA3D7530012DB43 /* walkthrough_2_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_2_bg.png; sourceTree = "<group>"; };
-		CB399DD31AA3D7580012DB43 /* walkthrough_1_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_1_bg.png; sourceTree = "<group>"; };
 		CB399DD71AA3DFCA0012DB43 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB399DD91AA3DFCA0012DB43 /* HexColorPicker */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.bundle"; path = HexColorPicker; sourceTree = "<group>"; };
 		CB399DDC1AA3DFCA0012DB43 /* ca */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = ca; path = ca.lproj/HexPicker.nib; sourceTree = "<group>"; };
@@ -140,6 +137,12 @@
 		CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Register_bg.jpg; sourceTree = "<group>"; };
 		CB399E0F1AA3ED540012DB43 /* RegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegisterViewController.h; sourceTree = "<group>"; };
 		CB399E101AA3ED540012DB43 /* RegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RegisterViewController.m; sourceTree = "<group>"; };
+		CB529B091AACF98A00C02E9F /* walkthrough_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_3.png; sourceTree = "<group>"; };
+		CB529B0B1AACF99100C02E9F /* walkthrough_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_2.png; sourceTree = "<group>"; };
+		CB529B0D1AACF99600C02E9F /* walkthrough_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = walkthrough_1.png; sourceTree = "<group>"; };
+		CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow_black.png; sourceTree = "<group>"; };
+		CB529B131AAD083900C02E9F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		CB529B141AAD083900C02E9F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,13 +187,13 @@
 			children = (
 				CB399D801AA3C1380012DB43 /* AppDelegate.h */,
 				CB399D811AA3C1380012DB43 /* AppDelegate.m */,
-				CB399D861AA3C1380012DB43 /* ViewController.h */,
-				CB399D871AA3C1380012DB43 /* ViewController.m */,
-				CB399D891AA3C1380012DB43 /* Main.storyboard */,
+				CB529B121AAD081A00C02E9F /* Login */,
 				CB399D8C1AA3C1380012DB43 /* Images.xcassets */,
-				CB399E0F1AA3ED540012DB43 /* RegisterViewController.h */,
-				CB399E101AA3ED540012DB43 /* RegisterViewController.m */,
+				CB529B111AAD081100C02E9F /* Registration */,
 				CB399D8E1AA3C1380012DB43 /* LaunchScreen.xib */,
+				CB529B131AAD083900C02E9F /* HomeViewController.h */,
+				CB529B141AAD083900C02E9F /* HomeViewController.m */,
+				CB399D891AA3C1380012DB43 /* Main.storyboard */,
 				CB399D831AA3C1380012DB43 /* Patient_Care.xcdatamodeld */,
 				CB399DCA1AA3D4200012DB43 /* Images */,
 				CB399DA51AA3D3240012DB43 /* Fonts */,
@@ -255,12 +258,12 @@
 			children = (
 				CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */,
 				CB399E0B1AA3E88B0012DB43 /* Login_bg.jpg */,
+				CB529B0B1AACF99100C02E9F /* walkthrough_2.png */,
+				CB529B0D1AACF99600C02E9F /* walkthrough_1.png */,
 				CB399E071AA3E0C60012DB43 /* image_bg.png */,
+				CB529B091AACF98A00C02E9F /* walkthrough_3.png */,
+				CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */,
 				CB399E091AA3E3E80012DB43 /* Right_arrow.png */,
-				CB399DD31AA3D7580012DB43 /* walkthrough_1_bg.png */,
-				CB399DD11AA3D7530012DB43 /* walkthrough_2_bg.png */,
-				CB399DCF1AA3D74E0012DB43 /* walkthrough_3_bg.png */,
-				CB399DCD1AA3D7470012DB43 /* walkthrough_4_bg.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -302,6 +305,24 @@
 				CB399DEF1AA3DFCA0012DB43 /* icon.icns */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		CB529B111AAD081100C02E9F /* Registration */ = {
+			isa = PBXGroup;
+			children = (
+				CB399E0F1AA3ED540012DB43 /* RegisterViewController.h */,
+				CB399E101AA3ED540012DB43 /* RegisterViewController.m */,
+			);
+			name = Registration;
+			sourceTree = "<group>";
+		};
+		CB529B121AAD081A00C02E9F /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				CB399D861AA3C1380012DB43 /* ViewController.h */,
+				CB399D871AA3C1380012DB43 /* ViewController.m */,
+			);
+			name = Login;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -394,9 +415,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CB399DD21AA3D7530012DB43 /* walkthrough_2_bg.png in Resources */,
 				CB399DC31AA3D35A0012DB43 /* Roboto-ThinItalic.ttf in Resources */,
-				CB399DD01AA3D74E0012DB43 /* walkthrough_3_bg.png in Resources */,
 				CB399DC21AA3D35A0012DB43 /* Roboto-Thin.ttf in Resources */,
 				CB399E001AA3DFCA0012DB43 /* HexColorPicker in Resources */,
 				CB399DC81AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf in Resources */,
@@ -408,18 +427,21 @@
 				CB399DBE1AA3D35A0012DB43 /* Roboto-LightItalic.ttf in Resources */,
 				CB399E0C1AA3E88B0012DB43 /* Login_bg.jpg in Resources */,
 				CB399DBA1AA3D35A0012DB43 /* Roboto-Bold.ttf in Resources */,
-				CB399DD41AA3D7580012DB43 /* walkthrough_1_bg.png in Resources */,
 				CB399DC91AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf in Resources */,
 				CB399DC71AA3D35A0012DB43 /* RobotoCondensed-Light.ttf in Resources */,
 				CB399DC01AA3D35A0012DB43 /* Roboto-MediumItalic.ttf in Resources */,
 				CB399E061AA3DFCA0012DB43 /* icon.icns in Resources */,
+				CB529B0E1AACF99600C02E9F /* walkthrough_1.png in Resources */,
 				CB399E081AA3E0C60012DB43 /* image_bg.png in Resources */,
 				CB399E031AA3DFCA0012DB43 /* Localizable.strings in Resources */,
+				CB529B0A1AACF98A00C02E9F /* walkthrough_3.png in Resources */,
 				CB399E0A1AA3E3E80012DB43 /* Right_arrow.png in Resources */,
+				CB529B0C1AACF99100C02E9F /* walkthrough_2.png in Resources */,
 				CB399E051AA3DFCA0012DB43 /* cog.tiff in Resources */,
 				CB399DB91AA3D35A0012DB43 /* Roboto-BlackItalic.ttf in Resources */,
 				CB399D8D1AA3C1380012DB43 /* Images.xcassets in Resources */,
 				CB399DBC1AA3D35A0012DB43 /* Roboto-Italic.ttf in Resources */,
+				CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */,
 				CB399E021AA3DFCA0012DB43 /* InfoPlist.strings in Resources */,
 				CB399DC41AA3D35A0012DB43 /* RobotoCondensed-Bold.ttf in Resources */,
 				CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */,
@@ -430,7 +452,6 @@
 				CB399DB81AA3D35A0012DB43 /* Roboto-Black.ttf in Resources */,
 				CB399DBD1AA3D35A0012DB43 /* Roboto-Light.ttf in Resources */,
 				CB399E0E1AA3E8960012DB43 /* Register_bg.jpg in Resources */,
-				CB399DCE1AA3D7470012DB43 /* walkthrough_4_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +474,7 @@
 				CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */,
 				CB399D881AA3C1380012DB43 /* ViewController.m in Sources */,
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
+				CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -628,6 +650,7 @@
 				INFOPLIST_FILE = Patient_Care/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -638,6 +661,7 @@
 				INFOPLIST_FILE = Patient_Care/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -694,6 +718,7 @@
 				CB399DA11AA3C1380012DB43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB399DA21AA3C1380012DB43 /* Build configuration list for PBXNativeTarget "Patient_CareTests" */ = {
 			isa = XCConfigurationList;
@@ -702,6 +727,7 @@
 				CB399DA41AA3C1380012DB43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
