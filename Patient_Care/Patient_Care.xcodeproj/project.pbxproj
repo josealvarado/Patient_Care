@@ -51,6 +51,13 @@
 		CB529B0E1AACF99600C02E9F /* walkthrough_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0D1AACF99600C02E9F /* walkthrough_1.png */; };
 		CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */; };
 		CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B141AAD083900C02E9F /* HomeViewController.m */; };
+		CB529B171AAE3B6200C02E9F /* taskIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B161AAE3B6200C02E9F /* taskIcon.png */; };
+		CB529B191AAE3B6700C02E9F /* notesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B181AAE3B6700C02E9F /* notesIcon.png */; };
+		CB529B1C1AAE41F000C02E9F /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B1B1AAE41F000C02E9F /* TaskTableViewCell.m */; };
+		CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */; };
+		CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */; };
+		CB529B261AAE6C4C00C02E9F /* proifleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B251AAE6C4C00C02E9F /* proifleImage.png */; };
+		CB529B281AAF656600C02E9F /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B271AAF656600C02E9F /* icon_menu.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +150,16 @@
 		CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow_black.png; sourceTree = "<group>"; };
 		CB529B131AAD083900C02E9F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		CB529B141AAD083900C02E9F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		CB529B161AAE3B6200C02E9F /* taskIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskIcon.png; sourceTree = "<group>"; };
+		CB529B181AAE3B6700C02E9F /* notesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notesIcon.png; sourceTree = "<group>"; };
+		CB529B1A1AAE41F000C02E9F /* TaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskTableViewCell.h; path = ../TaskTableViewCell.h; sourceTree = "<group>"; };
+		CB529B1B1AAE41F000C02E9F /* TaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskTableViewCell.m; path = ../TaskTableViewCell.m; sourceTree = "<group>"; };
+		CB529B1D1AAE431C00C02E9F /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
+		CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
+		CB529B211AAE699E00C02E9F /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
+		CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
+		CB529B251AAE6C4C00C02E9F /* proifleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = proifleImage.png; sourceTree = "<group>"; };
+		CB529B271AAF656600C02E9F /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -191,9 +208,11 @@
 				CB399D8C1AA3C1380012DB43 /* Images.xcassets */,
 				CB529B111AAD081100C02E9F /* Registration */,
 				CB399D8E1AA3C1380012DB43 /* LaunchScreen.xib */,
+				CB529B201AAE432500C02E9F /* Tasks */,
 				CB529B131AAD083900C02E9F /* HomeViewController.h */,
 				CB529B141AAD083900C02E9F /* HomeViewController.m */,
 				CB399D891AA3C1380012DB43 /* Main.storyboard */,
+				CB529B241AAE69A400C02E9F /* Settings */,
 				CB399D831AA3C1380012DB43 /* Patient_Care.xcdatamodeld */,
 				CB399DCA1AA3D4200012DB43 /* Images */,
 				CB399DA51AA3D3240012DB43 /* Fonts */,
@@ -258,9 +277,13 @@
 			children = (
 				CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */,
 				CB399E0B1AA3E88B0012DB43 /* Login_bg.jpg */,
+				CB529B181AAE3B6700C02E9F /* notesIcon.png */,
+				CB529B161AAE3B6200C02E9F /* taskIcon.png */,
+				CB529B271AAF656600C02E9F /* icon_menu.png */,
 				CB529B0B1AACF99100C02E9F /* walkthrough_2.png */,
 				CB529B0D1AACF99600C02E9F /* walkthrough_1.png */,
 				CB399E071AA3E0C60012DB43 /* image_bg.png */,
+				CB529B251AAE6C4C00C02E9F /* proifleImage.png */,
 				CB529B091AACF98A00C02E9F /* walkthrough_3.png */,
 				CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */,
 				CB399E091AA3E3E80012DB43 /* Right_arrow.png */,
@@ -323,6 +346,26 @@
 				CB399D871AA3C1380012DB43 /* ViewController.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		CB529B201AAE432500C02E9F /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				CB529B1A1AAE41F000C02E9F /* TaskTableViewCell.h */,
+				CB529B1B1AAE41F000C02E9F /* TaskTableViewCell.m */,
+				CB529B1D1AAE431C00C02E9F /* TaskListViewController.h */,
+				CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */,
+			);
+			name = Tasks;
+			sourceTree = "<group>";
+		};
+		CB529B241AAE69A400C02E9F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				CB529B211AAE699E00C02E9F /* SettingsTableViewController.h */,
+				CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,12 +479,16 @@
 				CB399E031AA3DFCA0012DB43 /* Localizable.strings in Resources */,
 				CB529B0A1AACF98A00C02E9F /* walkthrough_3.png in Resources */,
 				CB399E0A1AA3E3E80012DB43 /* Right_arrow.png in Resources */,
+				CB529B191AAE3B6700C02E9F /* notesIcon.png in Resources */,
 				CB529B0C1AACF99100C02E9F /* walkthrough_2.png in Resources */,
+				CB529B261AAE6C4C00C02E9F /* proifleImage.png in Resources */,
 				CB399E051AA3DFCA0012DB43 /* cog.tiff in Resources */,
 				CB399DB91AA3D35A0012DB43 /* Roboto-BlackItalic.ttf in Resources */,
 				CB399D8D1AA3C1380012DB43 /* Images.xcassets in Resources */,
 				CB399DBC1AA3D35A0012DB43 /* Roboto-Italic.ttf in Resources */,
 				CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */,
+				CB529B171AAE3B6200C02E9F /* taskIcon.png in Resources */,
+				CB529B281AAF656600C02E9F /* icon_menu.png in Resources */,
 				CB399E021AA3DFCA0012DB43 /* InfoPlist.strings in Resources */,
 				CB399DC41AA3D35A0012DB43 /* RobotoCondensed-Bold.ttf in Resources */,
 				CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */,
@@ -470,8 +517,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CB399E111AA3ED540012DB43 /* RegisterViewController.m in Sources */,
+				CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */,
 				CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */,
+				CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */,
 				CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */,
+				CB529B1C1AAE41F000C02E9F /* TaskTableViewCell.m in Sources */,
 				CB399D881AA3C1380012DB43 /* ViewController.m in Sources */,
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
 				CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */,
