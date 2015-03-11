@@ -17,6 +17,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,6 +38,13 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+
+-(void)dismissKeyboard {    
+    [_textFieldPassword resignFirstResponder];
+    [_textFieldEmaillAdress resignFirstResponder];
+    [_textfieldPhoneNumber resignFirstResponder];
+}
 
 - (IBAction)buttonRegisterPressed:(id)sender {
     

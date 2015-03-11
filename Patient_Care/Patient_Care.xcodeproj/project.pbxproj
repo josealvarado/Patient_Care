@@ -58,6 +58,7 @@
 		CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */; };
 		CB529B261AAE6C4C00C02E9F /* proifleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B251AAE6C4C00C02E9F /* proifleImage.png */; };
 		CB529B281AAF656600C02E9F /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B271AAF656600C02E9F /* icon_menu.png */; };
+		CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
 		CB529B251AAE6C4C00C02E9F /* proifleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = proifleImage.png; sourceTree = "<group>"; };
 		CB529B271AAF656600C02E9F /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
+		CB529B291AB0D73300C02E9F /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
+		CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				CB399D801AA3C1380012DB43 /* AppDelegate.h */,
+				CB529B291AB0D73300C02E9F /* KeychainItemWrapper.h */,
+				CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */,
 				CB399D811AA3C1380012DB43 /* AppDelegate.m */,
 				CB529B121AAD081A00C02E9F /* Login */,
 				CB399D8C1AA3C1380012DB43 /* Images.xcassets */,
@@ -524,6 +529,7 @@
 				CB529B1C1AAE41F000C02E9F /* TaskTableViewCell.m in Sources */,
 				CB399D881AA3C1380012DB43 /* ViewController.m in Sources */,
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
+				CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */,
 				CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

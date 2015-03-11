@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KeychainItemWrapper.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController<NSURLSessionDataDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *textFIeldEmailAddress;
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
+
+@property (strong, nonatomic) KeychainItemWrapper *keychain;
+
 
 - (IBAction)buttonLoginPressed:(id)sender;
 
