@@ -48,34 +48,88 @@
 
 - (IBAction)buttonRegisterPressed:(id)sender {
     
-//    NSError *error;
-//    
-//    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-//    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-//    NSURL *url = [NSURL URLWithString:@"[JSON SERVER"];
-//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-//                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-//                                                       timeoutInterval:60.0];
-//    
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-//    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-//    
-//    [request setHTTPMethod:@"POST"];
-//    NSDictionary *mapData = [[NSDictionary alloc] initWithObjectsAndKeys: @"Machine", @"username",
+
+    
+    
+    
+    
+    NSError *error;
+    
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000"];
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                                       timeoutInterval:60.0];
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    NSDictionary *mapData = [[NSDictionary alloc] init ];
+                             
+    
+//                             initWithObjectsAndKeys: @"Machine", @"username",
 //                             @"josealvarado111@gmail.com", @"emailaddress",  @"Password", @"password",
 //                             nil];
-//    
-//    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-//    [request setHTTPBody:postData];
-//    
-//    
-//    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-//        
-//    }];
-//    
-//    [postDataTask resume];
     
-    [self performSegueWithIdentifier:@"HomeController" sender:sender];
+    
+    //    { "role": "02",  "username": "jose", "password": "jose",  "firstname": "jose", "middlename":"", "lastname":"jose", "emailaddress": "jose@malmail.com", "fbtoken":"", "streetaddress":"", "city":"", "state":"", "country":""}
+    
+    mapData = @{ @"role"     : @"02",
+                 @"username" : @"hello",
+                 @"password" : @"password",
+                 @"firstname": @"hahah",
+                 @"middlename": @"middle",
+                 @"lastname" : @"lastname",
+                 @"emailaddress" : @"jose@gmail.com",
+                 @"fbtoken" : @"what",
+                 @"streetaddress" : @"address here",
+                 @"city" : @"san francisco",
+                 @"state" : @"california",
+                 @"country" : @"usa"
+                        // etc.
+                        };
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+    [request setHTTPBody:postData];
+    
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSLog(@"%@", data);
+        NSLog(@"%@", response);
+        NSLog(@"%@", error);
+        
+        
+        
+        if (!error) {
+            NSLog(@"Hello");
+            
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            long status_code = (long)[httpResponse statusCode];
+            NSLog(@"response status code: %ld", status_code);
+            
+            
+            [self performSegueWithIdentifier:@"HomeController" sender:sender];
+
+            
+        } else {
+            NSLog(@"what?");
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                                            message:@"You must be connected to the internet to use this app."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"OK"
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+        
+    }];
+    
+    [postDataTask resume];
+    
     
 }
 
