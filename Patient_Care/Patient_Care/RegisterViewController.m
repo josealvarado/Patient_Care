@@ -49,11 +49,7 @@
 - (IBAction)buttonRegisterPressed:(id)sender {
     
 
-    if (_profileSegmentedControl.selectedSegmentIndex == 0) {
-        NSLog(@"Patient");
-    } else {
-        NSLog(@"Care Taker");
-    }
+   
     
     
     
@@ -102,32 +98,44 @@
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
-        NSLog(@"%@", data);
-        NSLog(@"%@", response);
-        NSLog(@"%@", error);
+        NSLog(@"data %@", data);
+        NSLog(@"response %@", response);
+        NSLog(@"error %@", error);
         
         
         
         if (!error) {
             NSLog(@"Hello");
-            
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            long status_code = (long)[httpResponse statusCode];
-            NSLog(@"response status code: %ld", status_code);
-            
-            
-            [self performSegueWithIdentifier:@"PatientHome" sender:sender];
 
+            dispatch_sync(dispatch_get_main_queue(), ^{
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                long status_code = (long)[httpResponse statusCode];
+                NSLog(@"response status code: %ld", status_code);
+                
+                
+                if (_profileSegmentedControl.selectedSegmentIndex == 0) {
+                    [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                } else {
+                    [self performSegueWithIdentifier:@"CareTakerHome" sender:sender];
+                }
+                
+            });
             
         } else {
             NSLog(@"what?");
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                                            message:@"You must be connected to the internet to use this app."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
+            
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                                                message:@"You must be connected to the internet to use this app."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            });
+            
+            
         }
         
     }];
