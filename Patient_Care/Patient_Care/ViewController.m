@@ -72,84 +72,35 @@
     
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    
-    
     [request setHTTPMethod:@"POST"];
-    
-    
-    
+
     NSDictionary *mapData = [[NSDictionary alloc] init ];
-    
-    
-    
     mapData = @{
-                
-                //                @"role"     : @"02",
-                
-                //                 @"username" : @"hello",
-                
                 @"password" : @"password",
-                
-                //                 @"firstname": @"hahah",
-                
-                //                 @"middlename": @"middle",
-                
-                //                 @"lastname" : @"lastname",
-                
-                @"emailaddress" : @"jose@gmail.com"
-                
-                //                 @"fbtoken" : @"what",
-                
-                //                 @"streetaddress" : @"address here",
-                
-                //                 @"city" : @"san francisco",
-                
-                //                 @"state" : @"california",
-                
-                //                 @"country" : @"usa"
-                
-                };
-    
-    
+                @"emailaddress" : @"jose@gmail.com"};
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
     [request setHTTPBody:postData];
-    
-    
-    
-    
-    
+
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        
-        
+    
         NSLog(@"data %@", data);
         
         NSLog(@"response %@", response);
         
         NSLog(@"erorr %@", error);
-        
-        
-        
-        
-        
-        
-        
+
         if (!error) {
             
             NSLog(@"COrrect");
-            
-            
-            
+
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             
             long status_code = (long)[httpResponse statusCode];
             
             NSLog(@"response status code: %ld", status_code);
-            
-            
-            
+
             NSError* error;
             
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
@@ -157,8 +108,6 @@
                                                                  options:kNilOptions
                                   
                                                                    error:&error];
-            
-            
             //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
             NSLog(@"json: %@", json);
@@ -166,24 +115,23 @@
             NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             NSLog(@"str %@", newStr);
-            
-            
-            
-            
-            
+
             if (status_code == 202) {
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                      
-                                                                message:@"You logged in!"
-                                      
-                                                               delegate:nil
-                                      
-                                                      cancelButtonTitle:@"OK"
-                                      
-                                                      otherButtonTitles:nil];
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                      
+//                                                                message:@"You logged in!"
+//                                      
+//                                                               delegate:nil
+//                                      
+//                                                      cancelButtonTitle:@"OK"
+//                                      
+//                                                      otherButtonTitles:nil];
+//                
+//                [alert show];
                 
-                [alert show];
+                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+
                 
             } else {
                 
@@ -200,21 +148,9 @@
                 [alert show];
                 
             }
-            
-            
-            
-            
-            
-            
-            
-            
-            
         } else {
             
             NSLog(@"what?");
-            
-            
-            
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
                                   
                                                             message:@"You must be connected to the internet to use this app."
@@ -228,12 +164,8 @@
             [alert show];
             
         }
-        
-        
-        
+
     }];
-    
-    
     
     [postDataTask resume];
     

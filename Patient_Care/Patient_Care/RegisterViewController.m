@@ -49,7 +49,11 @@
 - (IBAction)buttonRegisterPressed:(id)sender {
     
 
-    
+    if (_profileSegmentedControl.selectedSegmentIndex == 0) {
+        NSLog(@"Patient");
+    } else {
+        NSLog(@"Care Taker");
+    }
     
     
     
@@ -112,7 +116,7 @@
             NSLog(@"response status code: %ld", status_code);
             
             
-            [self performSegueWithIdentifier:@"HomeController" sender:sender];
+            [self performSegueWithIdentifier:@"PatientHome" sender:sender];
 
             
         } else {

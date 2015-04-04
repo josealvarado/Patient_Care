@@ -16,6 +16,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textfieldPhoneNumber;
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *profileSegmentedControl;
+
+
 - (IBAction)buttonRegisterPressed:(id)sender;
 
 @end
