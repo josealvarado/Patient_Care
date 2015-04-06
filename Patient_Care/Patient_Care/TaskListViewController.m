@@ -56,14 +56,6 @@
     
     NSDictionary *mapData = [[NSDictionary alloc] init ];
     
-    
-    //                             initWithObjectsAndKeys: @"Machine", @"username",
-    //                             @"josealvarado111@gmail.com", @"emailaddress",  @"Password", @"password",
-    //                             nil];
-    
-    
-    //    { "role": "02",  "username": "jose", "password": "jose",  "firstname": "jose", "middlename":"", "lastname":"jose", "emailaddress": "jose@malmail.com", "fbtoken":"", "streetaddress":"", "city":"", "state":"", "country":""}
-    
     mapData = @{ @"patient_id"     : @"01",
                  @"caretaker_id" : @"02",
                  @"task" : @"I do what I want",
