@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lHn-08-aHN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7kl-B8-Fn4">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -933,7 +933,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Hy3-fn-AMf" kind="presentation" id="OrE-hx-aTP"/>
+                                            <segue destination="Hy3-fn-AMf" kind="show" id="OrE-hx-aTP"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="fsJ-o2-tXz">
@@ -996,9 +996,6 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tT0-YG-nwF">
-                                <rect key="frame" x="0.0" y="44" width="600" height="507"/>
-                            </mapView>
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="00N-w3-Yf6">
                                 <rect key="frame" x="0.0" y="551" width="600" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1037,15 +1034,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <tabBar key="tableFooterView" contentMode="scaleToFill" id="vhD-1J-q6O">
-                            <rect key="frame" x="0.0" y="0.0" width="600" height="49"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <items>
-                                <tabBarItem image="Right_arrow.png" id="f0H-9g-HV6"/>
-                                <tabBarItem image="Right_arrow.png" id="TE1-z2-nDm"/>
-                            </items>
-                        </tabBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LinkPatientCell" rowHeight="79" id="qiK-Sq-A9y">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1081,7 +1069,7 @@
                         <barButtonItem key="leftBarButtonItem" image="icon_menu.png" id="JRn-Uc-vnI"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="cTq-4Z-Iza">
                             <connections>
-                                <segue destination="dTl-Wp-VJN" kind="presentation" id="de9-qP-Qmo"/>
+                                <segue destination="zFp-Yt-ZGn" kind="show" id="5Ok-14-bhl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1091,6 +1079,106 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HwR-qL-6QN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5372" y="545"/>
+        </scene>
+        <!--Add Patients-->
+        <scene sceneID="bVn-Kb-YdP">
+            <objects>
+                <viewController id="zFp-Yt-ZGn" customClass="AddPatientViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o55-Wk-DOu"/>
+                        <viewControllerLayoutGuide type="bottom" id="eZb-0b-PBo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="S1z-Xr-R8m">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Df5-MH-qTp">
+                                <rect key="frame" x="0.0" y="150" width="600" height="301"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="301" id="k8a-yz-SIZ"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LinkPatientCell" rowHeight="60" id="KfQ-0n-Ug8" customClass="LinkPatientTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KfQ-0n-Ug8" id="b3F-F0-BUW">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l8X-4H-3Co">
+                                                    <rect key="frame" x="60" y="8" width="153" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1X-lQ-Dk0">
+                                                    <rect key="frame" x="60" y="30" width="153" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="patientEmail" destination="f1X-lQ-Dk0" id="cba-Y6-xYW"/>
+                                            <outlet property="patientName" destination="l8X-4H-3Co" id="Tm1-W0-gVT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="zFp-Yt-ZGn" id="6vO-na-uRD"/>
+                                    <outlet property="delegate" destination="zFp-Yt-ZGn" id="Fkj-k3-nbf"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDm-v2-Lc2">
+                                <rect key="frame" x="0.0" y="454" width="600" height="53"/>
+                                <color key="backgroundColor" red="0.16078431372549021" green="0.70980392156862748" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="53" id="UN3-uf-QhZ"/>
+                                </constraints>
+                                <state key="normal" title="Add Patient">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addPatientButtonPressed:" destination="zFp-Yt-ZGn" eventType="touchUpInside" id="YO7-HO-QxP"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8K8-dE-arC">
+                                <rect key="frame" x="16" y="101" width="568" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="8LC-Uc-1Rr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="8K8-dE-arC" secondAttribute="centerX" id="2dn-wK-ewB"/>
+                            <constraint firstItem="8K8-dE-arC" firstAttribute="top" secondItem="o55-Wk-DOu" secondAttribute="bottom" constant="37" id="DYh-du-Qdl"/>
+                            <constraint firstItem="Df5-MH-qTp" firstAttribute="top" secondItem="8K8-dE-arC" secondAttribute="bottom" constant="19" id="GPW-yG-bja"/>
+                            <constraint firstItem="cDm-v2-Lc2" firstAttribute="leading" secondItem="S1z-Xr-R8m" secondAttribute="leading" id="Nf3-Kh-8df"/>
+                            <constraint firstItem="8K8-dE-arC" firstAttribute="leading" secondItem="S1z-Xr-R8m" secondAttribute="leading" constant="16" id="eGp-hf-3R3"/>
+                            <constraint firstAttribute="centerX" secondItem="cDm-v2-Lc2" secondAttribute="centerX" id="eeU-Cb-Xcl"/>
+                            <constraint firstItem="cDm-v2-Lc2" firstAttribute="top" secondItem="Df5-MH-qTp" secondAttribute="bottom" constant="3" id="fEn-9X-PUV"/>
+                            <constraint firstItem="Df5-MH-qTp" firstAttribute="leading" secondItem="S1z-Xr-R8m" secondAttribute="leading" id="fdY-7m-5v3"/>
+                            <constraint firstAttribute="trailing" secondItem="cDm-v2-Lc2" secondAttribute="trailing" id="jlQ-JB-f92"/>
+                            <constraint firstAttribute="centerX" secondItem="Df5-MH-qTp" secondAttribute="centerX" id="nE4-2t-VJA"/>
+                            <constraint firstAttribute="trailing" secondItem="8K8-dE-arC" secondAttribute="trailing" constant="16" id="qej-yU-49t"/>
+                            <constraint firstAttribute="trailing" secondItem="Df5-MH-qTp" secondAttribute="trailing" id="z2d-C5-5vh"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Add Patients" id="CPp-qU-zQm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="4Jl-mi-b2f">
+                            <connections>
+                                <action selector="searchButtonPressed:" destination="zFp-Yt-ZGn" id="UvD-5g-a6A"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wBJ-7U-1mD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6226" y="557"/>
         </scene>
         <!--Filter-->
         <scene sceneID="NJr-Vt-BSc">
@@ -1142,7 +1230,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqu-hY-YQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6295" y="534"/>
+            <point key="canvasLocation" x="6231" y="1390"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="miD-OL-VNb">
@@ -1616,9 +1704,9 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5N9-ac-3L7"/>
-        <segue reference="1yx-kE-avD"/>
+        <segue reference="biy-go-W20"/>
         <segue reference="34d-2c-rq9"/>
+        <segue reference="4DK-A5-twq"/>
         <segue reference="Bk3-Cz-2FX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -7,6 +7,7 @@
 //
 
 #import "LinkPatientsTableViewController.h"
+#import "LinkPatientTableViewCell.h"
 
 @interface LinkPatientsTableViewController ()
 
@@ -27,7 +28,14 @@
 - (void)viewWillAppear:(BOOL)animated{
     // Todo
     
+    NSDictionary *patient = @{@"name": @"jose", @"email": @"testing@gmail.com"};
+    //    [patients removeAllObjects];
+    [patients addObject:patient];
     
+    // Assuming you've added the table view as a subview to the current view controller
+    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
+    
+    [tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,15 +55,26 @@
     return [patients count];
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    static NSString *CellIdentifier = @"LinkPatientCell";
+    LinkPatientTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
+    if (cell == nil) {
+        cell = [[LinkPatientTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"name"];
+    cell.patientEmail.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"email"];
+    
+    UIImage *btnImage = [UIImage imageNamed:@"image.png"];
+    [cell.selectButton setImage:btnImage forState:UIControlStateNormal];
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

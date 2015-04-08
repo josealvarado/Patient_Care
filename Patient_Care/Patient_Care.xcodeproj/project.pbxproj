@@ -61,7 +61,8 @@
 		CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */; };
 		CBC76BB01AD30764004F609F /* LinkPatientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BAF1AD30764004F609F /* LinkPatientsTableViewController.m */; };
 		CBC76BB41AD30AFA004F609F /* TrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BB31AD30AFA004F609F /* TrackingViewController.m */; };
-		CBC76BBB1AD30B84004F609F /* LinkPatientFilterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BBA1AD30B84004F609F /* LinkPatientFilterTableViewController.m */; };
+		CBC76BBE1AD31199004F609F /* AddPatientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BBD1AD31199004F609F /* AddPatientViewController.m */; };
+		CBC76BC91AD3217F004F609F /* LinkPatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BC81AD3217F004F609F /* LinkPatientTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -170,8 +171,10 @@
 		CBC76BAF1AD30764004F609F /* LinkPatientsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkPatientsTableViewController.m; path = ../LinkPatientsTableViewController.m; sourceTree = "<group>"; };
 		CBC76BB21AD30AFA004F609F /* TrackingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrackingViewController.h; sourceTree = "<group>"; };
 		CBC76BB31AD30AFA004F609F /* TrackingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrackingViewController.m; sourceTree = "<group>"; };
-		CBC76BB91AD30B84004F609F /* LinkPatientFilterTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPatientFilterTableViewController.h; sourceTree = "<group>"; };
-		CBC76BBA1AD30B84004F609F /* LinkPatientFilterTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkPatientFilterTableViewController.m; sourceTree = "<group>"; };
+		CBC76BBC1AD31199004F609F /* AddPatientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPatientViewController.h; sourceTree = "<group>"; };
+		CBC76BBD1AD31199004F609F /* AddPatientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPatientViewController.m; sourceTree = "<group>"; };
+		CBC76BC71AD3217F004F609F /* LinkPatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LinkPatientTableViewCell.h; sourceTree = "<group>"; };
+		CBC76BC81AD3217F004F609F /* LinkPatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LinkPatientTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -389,8 +392,10 @@
 			children = (
 				CBC76BAE1AD30764004F609F /* LinkPatientsTableViewController.h */,
 				CBC76BAF1AD30764004F609F /* LinkPatientsTableViewController.m */,
-				CBC76BB91AD30B84004F609F /* LinkPatientFilterTableViewController.h */,
-				CBC76BBA1AD30B84004F609F /* LinkPatientFilterTableViewController.m */,
+				CBC76BBC1AD31199004F609F /* AddPatientViewController.h */,
+				CBC76BBD1AD31199004F609F /* AddPatientViewController.m */,
+				CBC76BC71AD3217F004F609F /* LinkPatientTableViewCell.h */,
+				CBC76BC81AD3217F004F609F /* LinkPatientTableViewCell.m */,
 			);
 			name = "Link Patients";
 			sourceTree = "<group>";
@@ -555,14 +560,15 @@
 				CB399E111AA3ED540012DB43 /* RegisterViewController.m in Sources */,
 				CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */,
 				CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */,
+				CBC76BBE1AD31199004F609F /* AddPatientViewController.m in Sources */,
 				CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */,
-				CBC76BBB1AD30B84004F609F /* LinkPatientFilterTableViewController.m in Sources */,
 				CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */,
 				CBC76BB41AD30AFA004F609F /* TrackingViewController.m in Sources */,
 				CBC76BB01AD30764004F609F /* LinkPatientsTableViewController.m in Sources */,
 				CB529B1C1AAE41F000C02E9F /* TaskTableViewCell.m in Sources */,
 				CB399D881AA3C1380012DB43 /* ViewController.m in Sources */,
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
+				CBC76BC91AD3217F004F609F /* LinkPatientTableViewCell.m in Sources */,
 				CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */,
 				CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */,
 			);
