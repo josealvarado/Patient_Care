@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7kl-B8-Fn4">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -555,7 +556,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hL-Pu-IeN">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4hL-Pu-IeN">
                                 <rect key="frame" x="182" y="254" width="236" height="109"/>
                                 <color key="backgroundColor" red="0.91764705882352937" green="0.10588235294117647" blue="0.23529411764705882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -567,8 +568,11 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="g0R-Gx-2s5" kind="presentation" id="ghw-Hs-OU8"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwj-5U-5GD">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwj-5U-5GD">
                                 <rect key="frame" x="182" y="371" width="236" height="109"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -581,7 +585,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Are you sure you want to log out?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXL-jS-1T8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Are you sure you want to log out?" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hXL-jS-1T8">
                                 <rect key="frame" x="217" y="136" width="166" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="61" id="lao-2t-Cnd"/>
@@ -953,7 +957,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="7I9-yM-yhA" kind="presentation" id="lme-TQ-4Mc"/>
+                                            <segue destination="7I9-yM-yhA" kind="show" id="lme-TQ-4Mc"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -967,7 +971,7 @@
                     <navigationItem key="navigationItem" title="Home" id="d6a-Kh-s7A">
                         <barButtonItem key="leftBarButtonItem" image="icon_menu.png" id="suO-RR-Fqp">
                             <connections>
-                                <segue destination="Ra2-2M-kZO" kind="presentation" id="Bk3-Cz-2FX"/>
+                                <segue destination="Ra2-2M-kZO" kind="show" id="Bk3-Cz-2FX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -976,7 +980,7 @@
             </objects>
             <point key="canvasLocation" x="4355" y="545"/>
         </scene>
-        <!--Tracking View Controller-->
+        <!--Track Patients-->
         <scene sceneID="11f-zQ-8Ca">
             <objects>
                 <viewController id="7I9-yM-yhA" customClass="TrackingViewController" sceneMemberID="viewController">
@@ -988,24 +992,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LEx-tK-Wgd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem title="Track Patients" id="XCg-C9-0tA">
-                                        <barButtonItem key="leftBarButtonItem" image="icon_menu.png" id="z1n-Rw-W8e"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="00N-w3-Yf6">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <items>
-                                    <tabBarItem image="Right_arrow.png" id="9Vt-6X-wXp"/>
-                                    <tabBarItem systemItem="more" id="wm3-oz-9MA"/>
-                                </items>
-                            </tabBar>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aq7-qY-12J">
-                                <rect key="frame" x="143" y="473" width="300" height="52"/>
+                                <rect key="frame" x="30" y="466" width="300" height="52"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vjb-pD-lBI">
                                         <rect key="frame" x="63" y="11" width="229" height="30"/>
@@ -1021,6 +1009,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Track Patients" id="eYf-es-uYn"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrn-Nw-FgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1066,7 +1055,6 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Link Patients" id="jaJ-UN-Bq1">
-                        <barButtonItem key="leftBarButtonItem" image="icon_menu.png" id="JRn-Uc-vnI"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="search" id="cTq-4Z-Iza">
                             <connections>
                                 <segue destination="zFp-Yt-ZGn" kind="show" id="5Ok-14-bhl"/>
@@ -1092,8 +1080,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Df5-MH-qTp">
-                                <rect key="frame" x="0.0" y="150" width="600" height="301"/>
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Df5-MH-qTp">
+                                <rect key="frame" x="0.0" y="106" width="600" height="301"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="301" id="k8a-yz-SIZ"/>
@@ -1129,8 +1117,8 @@
                                     <outlet property="delegate" destination="zFp-Yt-ZGn" id="Fkj-k3-nbf"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDm-v2-Lc2">
-                                <rect key="frame" x="0.0" y="454" width="600" height="53"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDm-v2-Lc2">
+                                <rect key="frame" x="0.0" y="410" width="600" height="53"/>
                                 <color key="backgroundColor" red="0.16078431372549021" green="0.70980392156862748" blue="0.58431372549019611" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="UN3-uf-QhZ"/>
@@ -1143,8 +1131,8 @@
                                     <action selector="addPatientButtonPressed:" destination="zFp-Yt-ZGn" eventType="touchUpInside" id="YO7-HO-QxP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8K8-dE-arC">
-                                <rect key="frame" x="16" y="101" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8K8-dE-arC">
+                                <rect key="frame" x="16" y="57" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8LC-Uc-1Rr"/>
                                 </constraints>
@@ -1352,7 +1340,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LKz-5e-SQD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1341" y="-669"/>
+            <point key="canvasLocation" x="1400" y="-613"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="uGt-yx-IdL">
@@ -1704,9 +1692,9 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="biy-go-W20"/>
-        <segue reference="34d-2c-rq9"/>
+        <segue reference="5N9-ac-3L7"/>
         <segue reference="4DK-A5-twq"/>
+        <segue reference="34d-2c-rq9"/>
         <segue reference="Bk3-Cz-2FX"/>
     </inferredMetricsTieBreakers>
 </document>

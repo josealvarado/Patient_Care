@@ -58,7 +58,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000"];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:15000"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     
@@ -77,12 +77,20 @@
     NSDictionary *mapData = [[NSDictionary alloc] init ];
     mapData = @{
                 @"password" : @"password",
+                
+//                @"password" : [NSString stringWithFormat:@"%@",_textFieldPassword.text ],
+                
                 @"emailaddress" : @"jose@gmail.com"};
     
+//    @"emailaddress" : [NSString stringWithFormat:@"%@",_textFIeldEmailAddress.text ]};
+
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
     [request setHTTPBody:postData];
 
+    
+    
+    
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     
         NSLog(@"data %@", data);
@@ -130,7 +138,13 @@
 //                
 //                [alert show];
                 
-                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+            
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                });
+                
+                
 
                 
             } else {

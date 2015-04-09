@@ -22,6 +22,9 @@
                                                                           action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,7 +52,8 @@
 - (IBAction)buttonRegisterPressed:(id)sender {
     
 
-   
+    NSString *emailAddress = _textFieldEmaillAdress.text;
+    NSString *password = _textFieldPassword.text;
     
     
     
@@ -58,7 +62,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000"];
-//    NSURL *url = [NSURL URLWithString:@"www.google.com"];
+//    NSURL *url = [NSURL URLWithString:@"http://www.google.com"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
                                                        timeoutInterval:60.0];
@@ -78,20 +82,53 @@
     
     //    { "role": "02",  "username": "jose", "password": "jose",  "firstname": "jose", "middlename":"", "lastname":"jose", "emailaddress": "jose@malmail.com", "fbtoken":"", "streetaddress":"", "city":"", "state":"", "country":""}
     
-    mapData = @{ @"role"     : @"02",
-                 @"username" : @"hello",
-                 @"password" : @"password",
-                 @"firstname": @"hahah",
-                 @"middlename": @"middle",
-                 @"lastname" : @"lastname",
-                 @"emailaddress" : @"jose@gmail.com",
-                 @"fbtoken" : @"what",
-                 @"streetaddress" : @"address here",
-                 @"city" : @"san francisco",
-                 @"state" : @"california",
-                 @"country" : @"usa"
-                        // etc.
-                        };
+    if (_profileSegmentedControl.selectedSegmentIndex == 0) {
+        mapData = @{ @"role"     : @"02",
+                     @"username" : @"hello",
+                     @"password" : password,
+                     @"firstname": @"hahah",
+                     @"middlename": @"middle",
+                     @"lastname" : @"lastname",
+                     @"emailaddress" : emailAddress,
+                     @"fbtoken" : @"what",
+                     @"streetaddress" : @"address here",
+                     @"city" : @"san francisco",
+                     @"state" : @"california",
+                     @"country" : @"usa"
+                     };
+    } else {
+        mapData = @{ @"role"     : @"01",
+                     @"username" : @"hello",
+                     @"password" : password,
+                     @"firstname": @"hahah",
+                     @"middlename": @"middle",
+                     @"lastname" : @"lastname",
+                     @"emailaddress" : emailAddress,
+                     @"fbtoken" : @"what",
+                     @"streetaddress" : @"address here",
+                     @"city" : @"san francisco",
+                     @"state" : @"california",
+                     @"country" : @"usa"
+                     // etc.
+                     };
+    }
+    
+//    mapData = @{ @"role"     : @"02",
+//                 @"username" : @"hello",
+//                 @"password" : @"password",
+//                 @"firstname": @"hahah",
+//                 @"middlename": @"middle",
+//                 @"lastname" : @"lastname",
+//                 @"emailaddress" : @"jose@gmail.com",
+//                 @"fbtoken" : @"what",
+//                 @"streetaddress" : @"address here",
+//                 @"city" : @"san francisco",
+//                 @"state" : @"california",
+//                 @"country" : @"usa"
+//                        // etc.
+//                        };
+    
+    
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     [request setHTTPBody:postData];
@@ -115,9 +152,24 @@
                 
                 
                 if (_profileSegmentedControl.selectedSegmentIndex == 0) {
-                    [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                    
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                         [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                    });
+                    
+                    
+                   
                 } else {
-                    [self performSegueWithIdentifier:@"CareTakerHome" sender:sender];
+                    
+                    
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                         [self performSegueWithIdentifier:@"CareTakerHome" sender:sender];
+                    });
+                    
+                   
                 }
                 
             });
@@ -128,7 +180,7 @@
             
             
             dispatch_async(dispatch_get_main_queue(), ^{
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network c sfsd s onnection"
                                                                 message:@"You must be connected to the internet to use this app."
                                                                delegate:nil
                                                       cancelButtonTitle:@"OK"
