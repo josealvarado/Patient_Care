@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <GoogleMaps/GoogleMaps.h>
 
-@interface TrackingViewController : UIViewController
+@interface TrackingViewController : UIViewController<GMSMapViewDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *mapview;
 
 @end
