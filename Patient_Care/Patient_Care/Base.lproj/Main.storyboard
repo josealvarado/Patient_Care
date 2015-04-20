@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="7kl-B8-Fn4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g0R-Gx-2s5">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
@@ -11,7 +11,7 @@
             <objects>
                 <tableViewController id="0AU-et-aAS" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="SPI-An-m7L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="463"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -869,6 +869,7 @@
                         <outlet property="textFieldPassword" destination="Qga-jX-fMs" id="HDL-wL-4H7"/>
                         <outlet property="textfieldPhoneNumber" destination="EtO-5t-tDK" id="kuq-Gc-xHz"/>
                         <segue destination="7kl-B8-Fn4" kind="presentation" identifier="CareTakerHome" id="5N9-ac-3L7"/>
+                        <segue destination="uOm-xe-SvW" kind="showDetail" identifier="PatientHome" id="uuJ-1C-EVG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zTD-Ju-f29" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1150,13 +1151,16 @@
                                     <action selector="addPatientButtonPressed:" destination="zFp-Yt-ZGn" eventType="touchUpInside" id="YO7-HO-QxP"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8K8-dE-arC">
-                                <rect key="frame" x="16" y="57" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8K8-dE-arC">
+                                <rect key="frame" x="16" y="101" width="568" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="8LC-Uc-1Rr"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="searchTextField:" destination="zFp-Yt-ZGn" eventType="editingDidEnd" id="ldO-m5-fdm"/>
+                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1182,6 +1186,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="seachTextField" destination="8K8-dE-arC" id="kE0-OW-2yy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wBJ-7U-1mD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1711,9 +1718,10 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5N9-ac-3L7"/>
-        <segue reference="4DK-A5-twq"/>
-        <segue reference="34d-2c-rq9"/>
         <segue reference="Bk3-Cz-2FX"/>
+        <segue reference="biy-go-W20"/>
+        <segue reference="34d-2c-rq9"/>
+        <segue reference="4DK-A5-twq"/>
+        <segue reference="W1O-gl-mbN"/>
     </inferredMetricsTieBreakers>
 </document>

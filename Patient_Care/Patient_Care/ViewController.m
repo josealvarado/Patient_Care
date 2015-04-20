@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "Settings.h"
 
 @interface ViewController ()
 
@@ -76,13 +77,13 @@
 
     NSDictionary *mapData = [[NSDictionary alloc] init ];
     mapData = @{
-                @"password" : @"password",
+//                @"password" : @"password",
                 
-//                @"password" : [NSString stringWithFormat:@"%@",_textFieldPassword.text ],
+                @"password" : [NSString stringWithFormat:@"%@",_textFieldPassword.text ],
                 
-                @"emailaddress" : @"jose@gmail.com"};
+//                @"emailaddress" : @"jose@gmail.com"};
     
-//    @"emailaddress" : [NSString stringWithFormat:@"%@",_textFIeldEmailAddress.text ]};
+    @"emailaddress" : [NSString stringWithFormat:@"%@",_textFIeldEmailAddress.text ]};
 
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
@@ -138,11 +139,29 @@
 //                
 //                [alert show];
                 
+                NSString *role = [json objectForKey:@"role"];
+                
+                
+                
+                if ([role  isEqual: @"01"]) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [Settings instance].caretaker_id = [json objectForKey:@"id"];
+
+                        
+                        [self performSegueWithIdentifier:@"CareTakerHome" sender:sender];
+                    });
+                } else {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        
+                        [Settings instance].patient_id = [json objectForKey:@"id"];
+
+                        
+                        [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                    });
+                }
             
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-                    [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                });
+                
                 
                 
 

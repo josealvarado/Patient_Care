@@ -14,10 +14,14 @@
     NSMutableArray *patients;
     
     int selected;
+    
+    NSMutableDictionary *returnedPatient;
 }
 
 - (IBAction)searchButtonPressed:(id)sender;
 
 - (IBAction)addPatientButtonPressed:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UITextField *seachTextField;
 
 @end
