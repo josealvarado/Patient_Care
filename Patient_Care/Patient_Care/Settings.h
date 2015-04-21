@@ -10,9 +10,17 @@
 
 @interface Settings : NSObject
 
-@property (strong, nonatomic) NSMutableDictionary *ballots;
+@property (strong, nonatomic) NSMutableArray *patient_list;
+
+@property (nonatomic) NSString *role;
+
 @property (nonatomic) NSString *caretaker_id;
 @property (nonatomic) NSString *patient_id;
+
+@property (nonatomic) NSString *task_date;
+@property (nonatomic) NSString *task_name;
+
+
 
 + (Settings *)instance;
 

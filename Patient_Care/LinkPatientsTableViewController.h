@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LinkPatientsTableViewController : UITableViewController{
+@interface LinkPatientsTableViewController : UITableViewController<NSURLSessionDataDelegate>{
     
     NSMutableArray *patients;
+
 }
 
 @end

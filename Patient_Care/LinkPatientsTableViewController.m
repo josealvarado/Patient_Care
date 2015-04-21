@@ -8,6 +8,7 @@
 
 #import "LinkPatientsTableViewController.h"
 #import "LinkPatientTableViewCell.h"
+#import "Settings.h"
 
 @interface LinkPatientsTableViewController ()
 
@@ -28,14 +29,151 @@
 - (void)viewWillAppear:(BOOL)animated{
     // Todo
     
-    NSDictionary *patient = @{@"name": @"jose", @"email": @"testing@gmail.com"};
-    //    [patients removeAllObjects];
-    [patients addObject:patient];
+    NSError *error;
     
-    // Assuming you've added the table view as a subview to the current view controller
-    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    [tableView reloadData];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listmyusers?q=%@&r=%@", [Settings instance].caretaker_id, [Settings instance].role];
+    
+    NSURL *url = [NSURL URLWithString:params];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                    
+                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                    
+                                                       timeoutInterval:60.0];
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    
+    [request setHTTPMethod:@"GET"];
+    //
+    //        NSDictionary *mapData = [[NSDictionary alloc] init ];
+    //        mapData = @{@"emailaddress" : _seachTextField.text};
+    
+    //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+    
+    //        [request setHTTPBody:postData];
+    
+    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+        
+        NSLog(@"data %@", data);
+        
+        NSLog(@"response %@", response);
+        
+        NSLog(@"erorr %@", error);
+        
+        if (!error) {
+            
+            NSLog(@"COrrect");
+            
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+            
+            long status_code = (long)[httpResponse statusCode];
+            
+            NSLog(@"response status code: %ld", status_code);
+            
+            NSError* error;
+            
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
+                                  
+                                                                 options:kNilOptions
+                                  
+                                                                   error:&error];
+            //            NSArray* latestLoans = [json objectForKey:@"loans"];
+            
+            NSLog(@"json: %@", json);
+            
+            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            
+            NSLog(@"str %@", newStr);
+            
+            
+            
+            if (status_code == 202) {
+                
+                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                
+                
+                //                    [json setValue:_seachTextField.text forKey:@"email"];
+                
+                NSArray *ppp = [json objectForKey:@"users"];
+            
+                
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    patients = [ppp mutableCopy];
+                    
+                    [Settings instance].patient_list = patients;
+                    
+//                    [patients removeAllObjects];
+//                    [patients addObject:json];
+                    
+                    
+                    // Assuming you've added the table view as a subview to the current view controller
+                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
+                    
+                    [tableView reloadData];
+                    
+                });
+                
+                
+                
+                
+                
+            } else {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                                          
+                                                                    message:@"Something did not work"
+                                          
+                                                                   delegate:nil
+                                          
+                                                          cancelButtonTitle:@"OK"
+                                          
+                                                          otherButtonTitles:nil];
+                    
+                    [alert show];
+                    
+                });
+                
+                
+                
+            }
+        } else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                      
+                                                                message:@"You must be connected to the internet to use this app."
+                                      
+                                                               delegate:nil
+                                      
+                                                      cancelButtonTitle:@"OK"
+                                      
+                                                      otherButtonTitles:nil];
+                
+                [alert show];
+                
+            });
+            
+            NSLog(@"what?");
+            
+            
+        }
+        
+    }];
+    
+    [postDataTask resume];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,11 +202,23 @@
         cell = [[LinkPatientTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"name"];
-    cell.patientEmail.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"email"];
+    NSDictionary *profile = [[patients objectAtIndex:indexPath.row] objectForKey:@"profile"];
+    
+    NSString *firstName =[profile objectForKey:@"firstname"];
+    
+    NSLog(@"%@", firstName);
+    
+    cell.patientName.text = firstName;
+    
+    NSString *relationship = [[patients objectAtIndex:indexPath.row] objectForKey:@"relationship"];
+    
+    cell.patientEmail.text = relationship;
     
     UIImage *btnImage = [UIImage imageNamed:@"image.png"];
     [cell.selectButton setImage:btnImage forState:UIControlStateNormal];
+    
+//    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"firstname"];
+//    cell.patientEmail.text = _seachTextField.text;
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     

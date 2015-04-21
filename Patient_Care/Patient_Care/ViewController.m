@@ -141,7 +141,7 @@
                 
                 NSString *role = [json objectForKey:@"role"];
                 
-                
+                [Settings instance].role = role;
                 
                 if ([role  isEqual: @"01"]) {
                     dispatch_async(dispatch_get_main_queue(), ^{
@@ -161,16 +161,35 @@
                     });
                 }
             
-                
-                
-                
-
-                
             } else {
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                                          
+                                                                    message:@"Something did not work"
+                                          
+                                                                   delegate:nil
+                                          
+                                                          cancelButtonTitle:@"OK"
+                                          
+                                                          otherButtonTitles:nil];
+                    
+                    [alert show];
+                    
+                });
+                
+                
+                
+            }
+        } else {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
                                       
-                                                                message:@"Something did not work"
+                                                                message:@"You must be connected to the internet to use this app."
                                       
                                                                delegate:nil
                                       
@@ -180,21 +199,7 @@
                 
                 [alert show];
                 
-            }
-        } else {
-            
-            NSLog(@"what?");
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                  
-                                                            message:@"You must be connected to the internet to use this app."
-                                  
-                                                           delegate:nil
-                                  
-                                                  cancelButtonTitle:@"OK"
-                                  
-                                                  otherButtonTitles:nil];
-            
-            [alert show];
+            });
             
         }
 
