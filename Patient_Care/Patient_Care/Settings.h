@@ -11,8 +11,12 @@
 @interface Settings : NSObject
 
 @property (strong, nonatomic) NSMutableArray *patient_list;
+@property (strong, nonatomic) NSMutableArray *caretaker_list;
 
 @property (nonatomic) NSString *role;
+
+@property (nonatomic) int selectedNote;
+@property (nonatomic) int newNote;
 
 @property (nonatomic) NSString *caretaker_id;
 @property (nonatomic) NSString *patient_id;
@@ -20,7 +24,7 @@
 @property (nonatomic) NSString *task_date;
 @property (nonatomic) NSString *task_name;
 
-
+@property (strong, nonatomic) NSMutableArray *notes;
 
 + (Settings *)instance;
 

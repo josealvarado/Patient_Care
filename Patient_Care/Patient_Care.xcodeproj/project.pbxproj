@@ -60,6 +60,9 @@
 		CB529B281AAF656600C02E9F /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B271AAF656600C02E9F /* icon_menu.png */; };
 		CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */; };
 		CB6431D41AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431D31AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m */; };
+		CB6431D71AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431D61AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m */; };
+		CB6431DD1AE81F9E00B9EFFC /* AddNotesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431DC1AE81F9E00B9EFFC /* AddNotesViewController.m */; };
+		CB6431E01AE8206D00B9EFFC /* ViewNotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431DF1AE8206D00B9EFFC /* ViewNotesTableViewController.m */; };
 		CBA3866B1AD5BF76000557E3 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA3866A1AD5BF76000557E3 /* GoogleMaps.framework */; };
 		CBA3866D1AD5BFC6000557E3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA3866C1AD5BFC6000557E3 /* AVFoundation.framework */; };
 		CBA3866F1AD5BFD1000557E3 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA3866E1AD5BFD1000557E3 /* CoreData.framework */; };
@@ -189,6 +192,12 @@
 		CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		CB6431D21AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareTakerAddTaskTableViewController.h; sourceTree = "<group>"; };
 		CB6431D31AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareTakerAddTaskTableViewController.m; sourceTree = "<group>"; };
+		CB6431D51AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientViewCareTakersTableViewController.h; sourceTree = "<group>"; };
+		CB6431D61AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientViewCareTakersTableViewController.m; sourceTree = "<group>"; };
+		CB6431DB1AE81F9E00B9EFFC /* AddNotesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddNotesViewController.h; sourceTree = "<group>"; };
+		CB6431DC1AE81F9E00B9EFFC /* AddNotesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddNotesViewController.m; sourceTree = "<group>"; };
+		CB6431DE1AE8206D00B9EFFC /* ViewNotesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewNotesTableViewController.h; sourceTree = "<group>"; };
+		CB6431DF1AE8206D00B9EFFC /* ViewNotesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewNotesTableViewController.m; sourceTree = "<group>"; };
 		CBA3866A1AD5BF76000557E3 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		CBA3866C1AD5BFC6000557E3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		CBA3866E1AD5BFD1000557E3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -296,6 +305,9 @@
 				CBC62D651AE615DA00572C4B /* CareTakerAddTaskViewController.m */,
 				CB6431D21AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.h */,
 				CB6431D31AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m */,
+				CB6431D51AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.h */,
+				CB6431D61AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m */,
+				CB6431E11AE8266A00B9EFFC /* Notes */,
 				CBC76BB51AD30AFE004F609F /* Tracking */,
 				CBC76BB11AD30797004F609F /* Link Patients */,
 				CB529B121AAD081A00C02E9F /* Login */,
@@ -462,6 +474,17 @@
 				CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		CB6431E11AE8266A00B9EFFC /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				CB6431DB1AE81F9E00B9EFFC /* AddNotesViewController.h */,
+				CB6431DC1AE81F9E00B9EFFC /* AddNotesViewController.m */,
+				CB6431DE1AE8206D00B9EFFC /* ViewNotesTableViewController.h */,
+				CB6431DF1AE8206D00B9EFFC /* ViewNotesTableViewController.m */,
+			);
+			name = Notes;
 			sourceTree = "<group>";
 		};
 		CBC76BB11AD30797004F609F /* Link Patients */ = {
@@ -642,17 +665,20 @@
 				CBC62D661AE615DA00572C4B /* CareTakerAddTaskViewController.m in Sources */,
 				CB399E111AA3ED540012DB43 /* RegisterViewController.m in Sources */,
 				CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */,
+				CB6431D71AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m in Sources */,
 				CBC62D5F1AE5B82E00572C4B /* Settings.m in Sources */,
 				CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */,
 				CBC76BBE1AD31199004F609F /* AddPatientViewController.m in Sources */,
 				CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */,
 				CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */,
+				CB6431DD1AE81F9E00B9EFFC /* AddNotesViewController.m in Sources */,
 				CBC76BB41AD30AFA004F609F /* TrackingViewController.m in Sources */,
 				CBC76BB01AD30764004F609F /* LinkPatientsTableViewController.m in Sources */,
 				CB6431D41AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m in Sources */,
 				CB529B1C1AAE41F000C02E9F /* TaskTableViewCell.m in Sources */,
 				CB399D881AA3C1380012DB43 /* ViewController.m in Sources */,
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
+				CB6431E01AE8206D00B9EFFC /* ViewNotesTableViewController.m in Sources */,
 				CBC76BC91AD3217F004F609F /* LinkPatientTableViewCell.m in Sources */,
 				CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */,
 				CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */,
