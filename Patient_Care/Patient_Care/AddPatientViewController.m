@@ -23,14 +23,19 @@
     patients = [[NSMutableArray alloc] init];
     selected = -1;
     
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                          action:@selector(dismissKeyboard)];
+//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                                                          action:@selector(dismissKeyboard)];
     
-    [self.view addGestureRecognizer:tap];
+//    [self.view addGestureRecognizer:tap];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     // Get list of all patients
+}
+
+-(void)dismissKeyboard {
+    
+    [_seachTextField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -91,7 +91,7 @@
     
     NSDictionary *mapData = [[NSDictionary alloc] init ];
     
-    NSLog(@"%@", [Settings instance].patient_id);
+    NSLog(@"patient id %@", [Settings instance].patient_id);
     
     mapData = @{
                 @"patient_id" : [Settings instance].patient_id,

@@ -2112,11 +2112,11 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bk3-Cz-2FX"/>
         <segue reference="biy-go-W20"/>
         <segue reference="34d-2c-rq9"/>
         <segue reference="4DK-A5-twq"/>
         <segue reference="W1O-gl-mbN"/>
+        <segue reference="Ji0-xB-zGn"/>
         <segue reference="mYT-E5-xby"/>
     </inferredMetricsTieBreakers>
 </document>
