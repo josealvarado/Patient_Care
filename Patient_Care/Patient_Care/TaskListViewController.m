@@ -8,6 +8,7 @@
 
 #import "TaskListViewController.h"
 #import "Settings.h"
+#import "TaskTableViewCell.h"
 
 @interface TaskListViewController ()
 
@@ -19,7 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    tasks = [[NSMutableArray alloc] init];
     
 }
 
@@ -30,15 +31,15 @@
 
 - (void)viewWillAppear:(BOOL)animated{
   
-    NSError *error;
+//    NSError *error;
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=7"];
+//    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=7"];
 
-//    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=%@", [Settings instance].patient_id];
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=%@&p=%@", [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
 
     
     NSURL *url = [NSURL URLWithString:params];
@@ -120,30 +121,43 @@
                 
                 //                    [json setValue:_seachTextField.text forKey:@"email"];
                 
-                //                NSArray *ppp = [json objectForKey:@"users"];
+                tasks = [json objectForKey:@"tasks"];
                 
+                int count = (int)[tasks count];
                 
+                [Settings instance].assignedTasksCount = count;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                          
-                                                                    message:@"Task has been added"
-                                          
-                                                                   delegate:nil
-                                          
-                                                          cancelButtonTitle:@"OK"
-                                          
-                                                          otherButtonTitles:nil];
                     
-                    [alert show];
                     
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
+//                                          
+//                                                                    message:@"Task has been added"
+//                                          
+//                                                                   delegate:nil
+//                                          
+//                                                          cancelButtonTitle:@"OK"
+//                                          
+//                                                          otherButtonTitles:nil];
+//                    
+//                    [alert show];
+                    
+                    
+//                    tasks = ppp;
+                    
+                    NSLog(@"in here with %lu", (unsigned long)[tasks count]);
+                    
+//                    [_taskTableView reloadData];
+                    
+                    
+                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
+                    
+                    [tableView reloadData];
+                    
+                
                     
                 });
-                
-                
-                
-                
                 
             } else {
                 
@@ -162,8 +176,6 @@
                     [alert show];
                     
                 });
-                
-                
                 
             }
         } else {
@@ -195,7 +207,6 @@
     
 }
 
-
 /*
 #pragma mark - Navigation
 
@@ -206,69 +217,63 @@
 }
 */
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    
+    NSLog(@"count %lu", (unsigned long)[tasks count]);
+    
+    return [tasks count];
+}
 
-- (IBAction)addTaskButton:(id)sender {
-    NSError *error;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"TaskTableViewCell";
+    TaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                                       timeoutInterval:60.0];
+    if (cell == nil) {
+        cell = [[TaskTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
-    [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+    cell.nameLabel.text = [[tasks objectAtIndex:indexPath.row] objectForKey:@"task"];
     
-    [request setHTTPMethod:@"POST"];
+    NSDictionary *receivedTask = [tasks objectAtIndex:indexPath.row];
     
-    NSDictionary *mapData = [[NSDictionary alloc] init ];
+    NSString *time = [NSString stringWithFormat:@"%@%@", [receivedTask objectForKey:@"date"], [receivedTask objectForKey:@"time"]];
     
-    mapData = @{ @"patient_id"     : @"01",
-                 @"caretaker_id" : @"02",
-                 @"task" : @"I do what I want",
-                 @"date": @"date",
-                 @"time": @"12:00"
-                 };
+    cell.emailLabel.text = time;
     
-    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    [request setHTTPBody:postData];
+    UIImage *btnImage;
     
-    
-    NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-        
-        NSLog(@"%@", data);
-        NSLog(@"%@", response);
-        NSLog(@"%@", error);
+    if ([[receivedTask objectForKey:@"status"]  isEqual: @"new"]) {
+        btnImage = [UIImage imageNamed:@"image.png"];
         
         
-        
-        if (!error) {
-            NSLog(@"Hello");
-            
-            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
-            long status_code = (long)[httpResponse statusCode];
-            NSLog(@"response status code: %ld", status_code);
-            
-            
-            [self performSegueWithIdentifier:@"HomeController" sender:sender];
-            
-            
-        } else {
-            NSLog(@"what?");
-            
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                                            message:@"You must be connected to the internet to use this app."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-            [alert show];
-        }
-        
-    }];
-    
-    [postDataTask resume];
+        cell.completedButton.backgroundColor = [UIColor grayColor];
 
+    } else {
+        btnImage = [UIImage imageNamed:@"image.png"];
+        
+        
+        cell.completedButton.backgroundColor = [UIColor blueColor];
+
+    }
+    
+    cell.taskInfo = receivedTask;
+    
+    
+//    [cell.completedButton setImage:btnImage forState:UIControlStateNormal];
+    
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    
+    return 80.0;
 }
 @end

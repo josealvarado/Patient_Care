@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddNotesViewController : UIViewController
+@interface AddNotesViewController : UIViewController<NSURLSessionDataDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *noteTextField;
 

@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TaskListViewController : UIViewController<NSURLSessionDataDelegate>
+@interface TaskListViewController : UIViewController<NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate>{
+    
+    NSMutableArray *tasks;
+}
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
-
-- (IBAction)addTaskButton:(id)sender;
 
 @end

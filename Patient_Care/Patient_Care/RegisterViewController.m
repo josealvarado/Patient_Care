@@ -7,6 +7,7 @@
 //
 
 #import "RegisterViewController.h"
+#import "Settings.h"
 
 @interface RegisterViewController ()
 
@@ -152,6 +153,8 @@
                 
                 
                 if (_profileSegmentedControl.selectedSegmentIndex == 0) {
+                    
+//                    [Settings instance].patient_id = 
                     
                     
                     dispatch_async(dispatch_get_main_queue(), ^{

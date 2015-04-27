@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewNotesTableViewController : UITableViewController{
+@interface ViewNotesTableViewController : UITableViewController<NSURLSessionDataDelegate>{
     
     NSMutableArray *notes;
 }

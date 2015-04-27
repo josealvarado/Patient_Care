@@ -1,20 +1,19 @@
 //
-//  ViewNotesTableViewController.m
+//  PatientHomeTableViewController.m
 //  Patient_Care
 //
-//  Created by Jose Alvarado on 4/22/15.
+//  Created by Jose Alvarado on 4/25/15.
 //  Copyright (c) 2015 JoseAlvarado. All rights reserved.
 //
 
-#import "ViewNotesTableViewController.h"
+#import "PatientHomeTableViewController.h"
 #import "Settings.h"
-#import "AddNotesViewController.h"
 
-@interface ViewNotesTableViewController ()
+@interface PatientHomeTableViewController ()
 
 @end
 
-@implementation ViewNotesTableViewController
+@implementation PatientHomeTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -24,24 +23,38 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        
-        
-        
-        notes = [Settings instance].notes;
-        
-        NSLog(@"lenght %lu", (unsigned long)[notes count]);
-        
-        // Assuming you've added the table view as a subview to the current view controller
-        UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
-        
-        [tableView reloadData];
-        
-    });
+    [self CurrentLocationIdentifier]; // call this method
+    
+}
+
+//------------ Current Location Address-----
+-(void)CurrentLocationIdentifier
+{
+    //---- For getting current gps location
+    locationManager = [CLLocationManager new];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    [locationManager startUpdatingLocation];
+    //------
+    
+    float latitude = locationManager.location.coordinate.latitude;
+    float longitude = locationManager.location.coordinate.longitude;
+    
+    NSLog(@"%f, %f", latitude, longitude);
+    
+    
+    
     
     
     NSError *error;
@@ -50,9 +63,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listnotes?c=%@", [Settings instance].caretaker_id];
-    
-    NSURL *url = [NSURL URLWithString:params];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     
@@ -64,14 +75,34 @@
     
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
-    [request setHTTPMethod:@"GET"];
-    //
-    //        NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //        mapData = @{@"emailaddress" : _seachTextField.text};
+    [request setHTTPMethod:@"POST"];
     
-    //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+    NSDate *currentTime = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"hh-mm"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *resultString = [dateFormatter stringFromDate: currentTime];
     
-    //        [request setHTTPBody:postData];
+    NSArray* foo = [resultString componentsSeparatedByString: @" "];
+    
+    NSString* date = [foo objectAtIndex: 0];
+    NSString* time = [foo objectAtIndex: 1];
+    
+    
+    NSDictionary *mapData = [[NSDictionary alloc] init ];
+    
+    NSLog(@"%@", [Settings instance].patient_id);
+    
+    mapData = @{
+                @"patient_id" : [Settings instance].patient_id,
+                @"lat" : [NSString stringWithFormat:@"%f", latitude],
+                @"long" : [NSString stringWithFormat:@"%f", latitude],
+                @"date" : date,
+                @"time" : time};
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+    
+    [request setHTTPBody:postData];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -107,37 +138,12 @@
             NSLog(@"str %@", newStr);
             
             
+            // 304 couldn't be found
+            // 405 unsupported
             
             if (status_code == 202) {
                 
                 //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
-                
-                NSArray *ppp = [json objectForKey:@"users"];
-                
-                
-                
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    
-//                    patients = [ppp mutableCopy];
-                    
-//                    [Settings instance].patient_list = patients;
-                    
-                    //                    [patients removeAllObjects];
-                    //                    [patients addObject:json];
-                    
-                    
-                    // Assuming you've added the table view as a subview to the current view controller
-//                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
-                    
-//                    [tableView reloadData];
-                    
-                });
-                
-                
-                
                 
                 
             } else {
@@ -189,34 +195,73 @@
     [postDataTask resume];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+//- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//{
+//    currentLocation = [locations objectAtIndex:0];
+//    [locationManager stopUpdatingLocation];
+//    CLGeocoder *geocoder = [[CLGeocoder alloc] init] ;
+//    [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error)
+//     {
+//         if (!(error))
+//         {
+//             CLPlacemark *placemark = [placemarks objectAtIndex:0];
+//             NSLog(@"\nCurrent Location Detected\n");
+//             NSLog(@"placemark %@",placemark);
+//             NSString *locatedAt = [[placemark.addressDictionary valueForKey:@"FormattedAddressLines"] componentsJoinedByString:@", "];
+//             NSString *Address = [[NSString alloc]initWithString:locatedAt];
+//             NSString *Area = [[NSString alloc]initWithString:placemark.locality];
+//             NSString *Country = [[NSString alloc]initWithString:placemark.country];
+//             NSString *CountryArea = [NSString stringWithFormat:@"%@, %@", Area,Country];
+//             NSLog(@"%@",CountryArea);
+//         }
+//         else
+//         {
+//             NSLog(@"Geocode failed with error %@", error);
+//             NSLog(@"\nCurrent Location Not Detected\n");
+//             //return;
+////             CountryArea = NULL;
+//         }
+//         /*---- For more results
+//          placemark.region);
+//          placemark.country);
+//          placemark.locality);
+//          placemark.name);
+//          placemark.ocean);
+//          placemark.postalCode);
+//          placemark.subLocality);
+//          placemark.location);
+//          ------*/
+//     }];
+//}
 
 #pragma mark - Table view data source
 
+/*
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
+ 
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [notes count];
+    return 0;
 }
 
+*/
 
+/*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotesCell" forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
     
     // Configure the cell...
     
-    cell.textLabel.text = [notes objectAtIndex:indexPath.row];
-    
     return cell;
 }
-
+*/
 
 /*
 // Override to support conditional editing of the table view.
@@ -261,49 +306,5 @@
     // Pass the selected object to the new view controller.
 }
 */
-
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    NSLog(@"2");
-    
-    AddNotesViewController *controller = (AddNotesViewController *)segue.destinationViewController;
-
-    
-    if([segue.identifier isEqualToString:@"showDetailSegue"]){
-        
-        //        controller.note2 = note
-        
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        
-        NSString *te = [notes objectAtIndex:selectedIndexPath.row];
-        
-        controller.note = te;
-        
-        controller.newNote = false;
-        
-        NSInteger a = selectedIndexPath.row;
-        
-        controller.noteNumber = &(a);
-        
-        [controller.data setValue:[NSString stringWithFormat:@"%ld", (long)a] forKey:@"pos"];
-        [controller.data setValue:@"0" forKey:@"new"];
-        
-        [Settings instance].selectedNote = (int)a;
-        [Settings instance].newNote = (int)1;
-    } else {
-//        controller.newNote = true;
-//        controller.newNote = YES;
-        
-        NSInteger a = -1;
-        
-        controller.noteNumber = &(a);
-        
-        [controller.data setValue:@"-1" forKey:@"pos"];
-        [controller.data setValue:@"1" forKey:@"new"];
-
-        [Settings instance].selectedNote = (int)-1;
-        [Settings instance].newNote = (int)0;
-    }
-}
 
 @end

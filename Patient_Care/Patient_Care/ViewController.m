@@ -147,6 +147,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         [Settings instance].caretaker_id = [json objectForKey:@"id"];
+                        [Settings instance].caretaker= json;
 
                         
                         [self performSegueWithIdentifier:@"CareTakerHome" sender:sender];
@@ -155,7 +156,7 @@
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
                         [Settings instance].patient_id = [json objectForKey:@"id"];
-
+                        [Settings instance].patient= json;
                         
                         [self performSegueWithIdentifier:@"PatientHome" sender:sender];
                     });
