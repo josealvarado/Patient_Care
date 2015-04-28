@@ -15,4 +15,7 @@
     CLLocation *currentLocation;
 }
 
+//@property(nonatomic,retain) CLLocationManager *locationManager;
+
+
 @end

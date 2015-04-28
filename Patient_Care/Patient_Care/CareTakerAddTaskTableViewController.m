@@ -179,7 +179,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:18000"];
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/addtask"];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -211,7 +211,8 @@
             mapData = @{@"patient_id": patientID,
                         @"caretaker_id": [Settings instance].caretaker_id,
                         @"task": [Settings instance].task_name,
-                        @"date": date, @"time": time};
+                        @"date": date, @"time": time,
+                        @"recurrent": @"1"};
     
             NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     

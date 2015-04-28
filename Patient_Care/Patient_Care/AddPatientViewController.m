@@ -27,6 +27,8 @@
 //                                                                          action:@selector(dismissKeyboard)];
     
 //    [self.view addGestureRecognizer:tap];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -228,7 +230,7 @@
     mapData = @{
                 @"patient_id" : [returnedPatient objectForKey:@"id"],
                 @"caretaker_id" : [Settings instance].caretaker_id,
-    @"relationshiptopatient" : @"daddy"};
+    @"relationshiptopatient" : @"relationship01"};
 
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     

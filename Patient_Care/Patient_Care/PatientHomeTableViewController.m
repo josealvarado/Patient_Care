@@ -8,6 +8,7 @@
 
 #import "PatientHomeTableViewController.h"
 #import "Settings.h"
+//#import <CoreLocation/CoreLocation.h>
 
 @interface PatientHomeTableViewController ()
 
@@ -24,6 +25,18 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    //---- For getting current gps location
+    locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.distanceFilter = kCLDistanceFilterNone;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    
+    // Check for iOS 8. Without this guard the code will crash with "unknown selector" on iOS 7.
+    if ([locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)]) {
+        [locationManager requestWhenInUseAuthorization];
+    }
+    
+    [locationManager startUpdatingLocation];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,16 +49,75 @@
     [self CurrentLocationIdentifier]; // call this method
     
 }
+- (NSString *)deviceLocation
+{
+    NSString *theLocation = [NSString stringWithFormat:@"latitude: %f longitude: %f", locationManager.location.coordinate.latitude, locationManager.location.coordinate.longitude];
+    return theLocation;
+}
+
+-(void) locationManager: (CLLocationManager *)manager didUpdateToLocation: (CLLocation *) newLocation
+           fromLocation: (CLLocation *) oldLocation{
+    
+    
+    float latitude = oldLocation.coordinate.latitude;
+    float longitude = oldLocation.coordinate.longitude;
+    
+    NSLog(@"IN METHOD 3: %f, %f", latitude, longitude);
+    
+    
+    latitude = manager.location.coordinate.latitude;
+    longitude = manager.location.coordinate.longitude;
+    
+    NSLog(@"IN METHOD 3: %f, %f", latitude, longitude);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"3 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alert show];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    currentLocation = [locations objectAtIndex:0];
+    [locationManager stopUpdatingLocation];
+    
+    float latitude = currentLocation.coordinate.latitude;
+    float longitude = currentLocation.coordinate.longitude;
+    
+    NSLog(@"MAYBE IN METHOD 2: %f, %f", latitude, longitude);
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"2 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    [alert show];
+}
+
+
+
+- (void) locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"FAILED TO GET LOCATION");
+}
+
+//// Delegate method from the CLLocationManagerDelegate protocol.
+//- (void)locationManager:(CLLocationManager *)manager
+//     didUpdateLocations:(NSArray *)locations {
+//    // If it's a relatively recent event, turn off updates to save power.
+//    CLLocation* location = [locations lastObject];
+//    NSDate* eventDate = location.timestamp;
+//    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+//    if (abs(howRecent) < 15.0) {
+//        // If the event is recent, do something with it.
+//        NSLog(@"latitude %+.6f, longitude %+.6f\n",
+//              location.coordinate.latitude,
+//              location.coordinate.longitude);
+//    }
+//}
 
 //------------ Current Location Address-----
 -(void)CurrentLocationIdentifier
 {
-    //---- For getting current gps location
-    locationManager = [CLLocationManager new];
-    locationManager.delegate = self;
-    locationManager.distanceFilter = kCLDistanceFilterNone;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    
+    NSLog(@"dev %@",[self deviceLocation]);
+    
     //------
     
     float latitude = locationManager.location.coordinate.latitude;
@@ -53,9 +125,9 @@
     
     NSLog(@"%f, %f", latitude, longitude);
     
-    
-    
-    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"1 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                          
+    [alert show];
     
     NSError *error;
     
@@ -63,7 +135,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:18000"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     
@@ -96,10 +168,12 @@
     mapData = @{
                 @"patient_id" : [Settings instance].patient_id,
                 @"lat" : [NSString stringWithFormat:@"%f", latitude],
-                @"long" : [NSString stringWithFormat:@"%f", latitude],
+                @"long" : [NSString stringWithFormat:@"%f", longitude],
                 @"date" : date,
                 @"time" : time};
     
+    NSLog(@"%@", mapData);
+//
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
     [request setHTTPBody:postData];
@@ -142,6 +216,8 @@
             // 405 unsupported
             
             if (status_code == 202) {
+                
+                NSLog(@"successfully updated GPS");
                 
                 //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
                 
