@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66067A0C1AF0D8BE00EC4E4F /* PCMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */; };
+		66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */; };
 		CB399D7F1AA3C1380012DB43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D7E1AA3C1380012DB43 /* main.m */; };
 		CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D811AA3C1380012DB43 /* AppDelegate.m */; };
 		CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB399D831AA3C1380012DB43 /* Patient_Care.xcdatamodeld */; };
@@ -105,6 +107,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66067A0A1AF0D8BE00EC4E4F /* PCMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMarker.h; sourceTree = "<group>"; };
+		66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMarker.m; sourceTree = "<group>"; };
+		66067A0D1AF0E6AE00EC4E4F /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
+		66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		CB399D791AA3C1380012DB43 /* Patient_Care.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patient_Care.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB399D7D1AA3C1380012DB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB399D7E1AA3C1380012DB43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -525,6 +531,10 @@
 			children = (
 				CBC76BB31AD30AFA004F609F /* TrackingViewController.m */,
 				CBC76BB21AD30AFA004F609F /* TrackingViewController.h */,
+				66067A0A1AF0D8BE00EC4E4F /* PCMarker.h */,
+				66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */,
+				66067A0D1AF0E6AE00EC4E4F /* CoreLocationController.h */,
+				66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */,
 			);
 			name = Tracking;
 			sourceTree = "<group>";
@@ -578,7 +588,6 @@
 				TargetAttributes = {
 					CB399D781AA3C1380012DB43 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = GC7Z5R6UH5;
 					};
 					CB399D941AA3C1380012DB43 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -693,10 +702,12 @@
 				CB6431D71AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m in Sources */,
 				CBC62D5F1AE5B82E00572C4B /* Settings.m in Sources */,
 				CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */,
+				66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */,
 				CBC76BBE1AD31199004F609F /* AddPatientViewController.m in Sources */,
 				CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */,
 				CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */,
 				CB6431DD1AE81F9E00B9EFFC /* AddNotesViewController.m in Sources */,
+				66067A0C1AF0D8BE00EC4E4F /* PCMarker.m in Sources */,
 				CBC76BB41AD30AFA004F609F /* TrackingViewController.m in Sources */,
 				CBC76BB01AD30764004F609F /* LinkPatientsTableViewController.m in Sources */,
 				CB6431D41AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m in Sources */,
@@ -885,12 +896,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Patient_Care/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -905,12 +917,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Patient_Care/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
