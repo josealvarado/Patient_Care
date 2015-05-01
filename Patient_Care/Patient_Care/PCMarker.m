@@ -12,13 +12,15 @@
 
 -(BOOL)isEqual:(id)object{
     PCMarker *otherMarker = (PCMarker *)object;
-    if(self.objectDate == otherMarker.objectDate ) {
+    
+    if(self.gpsId == otherMarker.gpsId ) {
         return YES;
+        
     }
     return NO;
 }
 
 -(NSUInteger)hash{
-    return [self.objectDate hash];
+    return [self.gpsId hash];
 }
 @end

@@ -9,7 +9,7 @@
 #import "TrackingViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "Settings.h"
-//#import "PCMarker.h"
+#import "PCMarker.h"
 
 @interface TrackingViewController () <GMSMapViewDelegate>
 
@@ -237,10 +237,11 @@
     
     for (NSDictionary *markerData in markers){
         
-        GMSMarker *newMarker = [[GMSMarker alloc]init];
+//        GMSMarker *newMarker = [[GMSMarker alloc]init];
         
-//        PCMarker *newMarker = [[PCMarker alloc]init];
-//        newMarker.objectDate = [markerData[@"date"] stringValue];
+        PCMarker *newMarker = [[PCMarker alloc]init];
+        newMarker.gpsId = [markerData[@"gps_id"] stringValue];
+//        NSLog(@"gpsid - %@", newMarker.gpsId);
         
         newMarker.position = CLLocationCoordinate2DMake([markerData[@"lat"] doubleValue], [markerData[@"long"] doubleValue]);
         
@@ -260,7 +261,9 @@
 
 
 -(void)drawMarkers {
-    for(GMSMarker *marker in self.markers){
+    
+    for(PCMarker *marker in self.markers){
+        
         if(marker.map ==nil){
             NSLog(@"drawing markers");
             marker.map = self.mapView;

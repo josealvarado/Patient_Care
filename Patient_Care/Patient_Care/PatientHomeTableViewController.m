@@ -75,6 +75,7 @@
     [alert show];
 }
 
+//this works.
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations objectAtIndex:0];
@@ -113,6 +114,7 @@
 //}
 
 //------------ Current Location Address-----
+//better one
 -(void)CurrentLocationIdentifier
 {
     

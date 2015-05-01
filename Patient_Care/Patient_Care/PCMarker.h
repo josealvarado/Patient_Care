@@ -11,5 +11,5 @@
 
 @interface PCMarker : GMSMarker
 
-@property (nonatomic, copy) NSString *objectDate;
+@property (nonatomic, copy) NSString *gpsId;
 @end
