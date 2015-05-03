@@ -1410,7 +1410,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ido-s5-R98">
-                                <rect key="frame" x="0.0" y="534" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="534" width="300" height="66"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.70980392160000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="VD8-Aw-bhB"/>
@@ -1431,20 +1431,45 @@
                                     <segue destination="5eP-py-FU9" kind="show" id="9Rv-dR-s0i"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxq-PQ-oqD">
+                                <rect key="frame" x="300" y="534" width="300" height="66"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.70980392160000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6oR-L0-KkN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="a65-go-caC"/>
+                                    <constraint firstAttribute="height" constant="66" id="ezR-aT-c03"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Recurrent Task">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6oR-L0-KkN"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="addRecurrentTaskButtonPressed:" destination="GlC-MS-7fF" eventType="touchUpInside" id="f2z-Co-3OE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bxq-PQ-oqD" firstAttribute="leading" secondItem="Ido-s5-R98" secondAttribute="trailing" id="2ZP-es-Vp0"/>
                             <constraint firstAttribute="trailing" secondItem="KTj-gh-Ls8" secondAttribute="trailing" id="4Gx-gp-B7C"/>
+                            <constraint firstItem="zkJ-qK-dxj" firstAttribute="top" secondItem="bxq-PQ-oqD" secondAttribute="bottom" id="6xh-cn-3UN"/>
                             <constraint firstItem="GHm-BE-RhM" firstAttribute="top" secondItem="f2K-VK-6kr" secondAttribute="bottom" constant="8" id="7pq-bE-Y77"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="top" secondItem="vfV-Ae-mrl" secondAttribute="bottom" constant="19" id="AZB-ZA-8lH"/>
                             <constraint firstItem="Ido-s5-R98" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" id="Fey-Li-Mgx"/>
                             <constraint firstItem="GHm-BE-RhM" firstAttribute="trailing" secondItem="FxB-ne-wNd" secondAttribute="trailingMargin" id="INB-Nc-CoR"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="top" secondItem="vfV-Ae-mrl" secondAttribute="bottom" constant="19" id="IaC-af-oVx"/>
-                            <constraint firstAttribute="trailing" secondItem="Ido-s5-R98" secondAttribute="trailing" id="KlS-Tu-f2X"/>
+                            <constraint firstAttribute="trailing" secondItem="Ido-s5-R98" secondAttribute="trailing" constant="300" id="KlS-Tu-f2X"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" id="NYx-PW-g2M"/>
                             <constraint firstItem="vfV-Ae-mrl" firstAttribute="trailing" secondItem="FxB-ne-wNd" secondAttribute="trailingMargin" id="OFS-yJ-3DX"/>
                             <constraint firstItem="f2K-VK-6kr" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" constant="16" id="PVd-y1-qZY"/>
                             <constraint firstItem="f2K-VK-6kr" firstAttribute="top" secondItem="D5e-aM-rHc" secondAttribute="bottom" constant="24" id="Q5I-Ns-oay"/>
+                            <constraint firstAttribute="trailing" secondItem="bxq-PQ-oqD" secondAttribute="trailing" id="TLO-9M-kUo"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" id="eUR-z3-GH0"/>
                             <constraint firstAttribute="trailing" secondItem="KTj-gh-Ls8" secondAttribute="trailing" id="fis-35-OET"/>
                             <constraint firstItem="zkJ-qK-dxj" firstAttribute="top" secondItem="Ido-s5-R98" secondAttribute="bottom" id="iaP-hg-qLe"/>

@@ -207,14 +207,23 @@
     
     
     //
-            NSDictionary *mapData = [[NSDictionary alloc] init ];
-            mapData = @{@"patient_id": patientID,
-                        @"caretaker_id": [Settings instance].caretaker_id,
-                        @"task": [Settings instance].task_name,
-                        @"date": date, @"time": time,
-                        @"recurrent": @"1"};
+    NSDictionary *mapData = [[NSDictionary alloc] init ];
     
-            NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+    if ([Settings instance].reccurentTask == 0){
+        mapData = @{@"patient_id": patientID,
+                    @"caretaker_id": [Settings instance].caretaker_id,
+                    @"task": [Settings instance].task_name,
+                    @"date": date, @"time": time};
+    } else {
+        mapData = @{@"patient_id": patientID,
+                    @"caretaker_id": [Settings instance].caretaker_id,
+                    @"task": [Settings instance].task_name,
+                    @"date": date, @"time": time,
+                    @"recurrent": @"1"};
+    }
+    
+    
+    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
     [request setHTTPBody:postData];
     

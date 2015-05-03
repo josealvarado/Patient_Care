@@ -34,6 +34,8 @@
 @property (nonatomic) int assignedTasksCount;
 @property (nonatomic) int completedTasksCount;
 
+@property (nonatomic) int reccurentTask;
+
 
 + (Settings *)instance;
 

@@ -18,6 +18,8 @@
 
 - (IBAction)addTaskButtonPressed:(id)sender;
 
+- (IBAction)addRecurrentTaskButtonPressed:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIButton *taskOneButton;
 
 @property (weak, nonatomic) IBOutlet UIButton *task2Button;
