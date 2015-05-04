@@ -2781,11 +2781,11 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uuJ-1C-EVG"/>
+        <segue reference="5N9-ac-3L7"/>
         <segue reference="1yx-kE-avD"/>
         <segue reference="ZB5-BO-800"/>
-        <segue reference="5N9-ac-3L7"/>
-        <segue reference="Bk3-Cz-2FX"/>
+        <segue reference="uuJ-1C-EVG"/>
+        <segue reference="Ji0-xB-zGn"/>
         <segue reference="mYT-E5-xby"/>
     </inferredMetricsTieBreakers>
 </document>
