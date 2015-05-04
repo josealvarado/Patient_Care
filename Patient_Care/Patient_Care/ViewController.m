@@ -119,7 +119,7 @@
                                                                    error:&error];
             //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
-            NSLog(@"json: %@", json);
+            NSLog(@"json with login: %@", json);
             
             NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             

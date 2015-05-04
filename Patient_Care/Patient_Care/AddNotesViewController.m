@@ -57,14 +57,14 @@
     NSString* time = [foo objectAtIndex: 1];
     
     
-    NSLog(@"hello %@", _noteTextField.text);
-    
-    NSLog(@"before %lu", (unsigned long)[[Settings instance].notes count]);
+//    NSLog(@"hello %@", _noteTextField.text);
+//    
+//    NSLog(@"before %lu", (unsigned long)[[Settings instance].notes count]);
     
     if ([Settings instance].notes) {
-        NSLog(@"1");
+//        NSLog(@"1");
     } else {
-        NSLog(@"2");
+//        NSLog(@"2");
         [Settings instance].notes = [[NSMutableArray alloc] init];
     }
     
@@ -76,7 +76,7 @@
     
     int pos = [Settings instance].selectedNote;
 
-    NSLog(@"b = %d", pos);
+//    NSLog(@"b = %d", pos);
     
     if (pos == -1) {
         [[Settings instance].notes addObject:_noteTextField.text];

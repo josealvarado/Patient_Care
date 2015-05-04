@@ -22,6 +22,11 @@
     
     tasks = [[NSMutableArray alloc] init];
     
+    UIView *rewardsViewController = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 100)];
+    rewardsViewController.backgroundColor = [UIColor brownColor];
+    [self.view addSubview:rewardsViewController];
+
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -249,7 +254,6 @@
     
     if ([[receivedTask objectForKey:@"status"]  isEqual: @"new"]) {
         btnImage = [UIImage imageNamed:@"image.png"];
-        
         
         cell.completedButton.backgroundColor = [UIColor grayColor];
 

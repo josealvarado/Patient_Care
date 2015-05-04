@@ -20,7 +20,7 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
 
@@ -32,10 +32,8 @@
     if (completed == NO) {
         completed = YES;
         
-        
-        
-//        UIImage *btnImage = [UIImage imageNamed:@"image.png"];
-//        [_completedButton setImage:btnImage forState:UIControlStateNormal];
+        //        UIImage *btnImage = [UIImage imageNamed:@"image.png"];
+        //        [_completedButton setImage:btnImage forState:UIControlStateNormal];
         
         
         NSError *error;
@@ -81,10 +79,10 @@
         NSLog(@"Before Points %d, %d", completedPoints, totalPoints);
         
         if (completedPoints) {
-//            NSLog(@"not null");
-//            count = count + 1;
+            //            NSLog(@"not null");
+            //            count = count + 1;
         } else {
-//            NSLog(@"null");
+            //            NSLog(@"null");
             [Settings instance].completedTasksCount = 0;
             completedPoints = 0;
         }
@@ -105,6 +103,8 @@
                         @"patient_id": [Settings instance].patient_id,
                         @"status": @"complete"};
         }
+        
+        
         
         //
         
@@ -156,7 +156,7 @@
                     
                     //                    [json setValue:_seachTextField.text forKey:@"email"];
                     
-//                    NSArray *ppp = [json objectForKey:@"users"];
+                    //                    NSArray *ppp = [json objectForKey:@"users"];
                     
                     
                     
@@ -178,24 +178,24 @@
                         
                         NSLog(@"before %d" , count);
                         
-//                        if (count) {
-//                            NSLog(@"not null");
-                            count = count + 1;
-//                        } else {
-//                            NSLog(@"null");
-//                            [Settings instance].completedTasksCount = 0;
-//                        }
+                        //                        if (count) {
+                        //                            NSLog(@"not null");
+                        count = count + 1;
+                        //                        } else {
+                        //                            NSLog(@"null");
+                        //                            [Settings instance].completedTasksCount = 0;
+                        //                        }
                         
                         [Settings instance].completedTasksCount = count;
                         
                         
                         NSLog(@"Cummulative %d" , count);
                         
-//                        if ([Settings instance].completedTasksCount == [Settings instance].assignedTasksCount ) {
-//                            
-//                            
-//                            [self updateScore];
-//                        }
+                        //                        if ([Settings instance].completedTasksCount == [Settings instance].assignedTasksCount ) {
+                        //
+                        //
+                        //                            [self updateScore];
+                        //                        }
                         
                     });
                     
@@ -207,15 +207,7 @@
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                              
-                                                                        message:@"Something did not work"
-                                              
-                                                                       delegate:nil
-                                              
-                                                              cancelButtonTitle:@"OK"
-                                              
-                                                              otherButtonTitles:nil];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Please try again." message:@"Bad Response from the Server" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         
                         [alert show];
                         
@@ -230,7 +222,7 @@
                     
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
                                           
-                                                                    message:@"You must be connected to the internet to use this app."
+                                                                    message:@"Check you Network Settings and make sure your connected to the Internet."
                                           
                                                                    delegate:nil
                                           
@@ -241,9 +233,6 @@
                     [alert show];
                     
                 });
-                
-                NSLog(@"what?");
-                
                 
             }
             
@@ -281,12 +270,12 @@
     
     NSLog(@"%@", [Settings instance].patient_id);
     
-//    mapData = @{
-//                @"patient_id" : [Settings instance].patient_id,
-//                @"lat" : [NSString stringWithFormat:@"%f", latitude],
-//                @"long" : [NSString stringWithFormat:@"%f", latitude],
-//                @"date" : date,
-//                @"time" : time};
+    //    mapData = @{
+    //                @"patient_id" : [Settings instance].patient_id,
+    //                @"lat" : [NSString stringWithFormat:@"%f", latitude],
+    //                @"long" : [NSString stringWithFormat:@"%f", latitude],
+    //                @"date" : date,
+    //                @"time" : time};
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
