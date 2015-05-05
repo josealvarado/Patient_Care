@@ -15,6 +15,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedClient = [Settings new];
+        
     });
     
     return _sharedClient;

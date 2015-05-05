@@ -21,6 +21,11 @@
     
     [GMSServices provideAPIKey:@"AIzaSyArdY3_LUO6Wx_rfBo_k1HnvdVezdcoCfc"];
     
+    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge
+                                                                                                              categories:nil]];
+    }
+    
     return YES;
 }
 

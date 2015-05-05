@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g0R-Gx-2s5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g0R-Gx-2s5">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -154,9 +154,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzO-eE-9cu">
-                                                    <rect key="frame" x="60" y="44" width="132" height="21"/>
+                                                    <rect key="frame" x="60" y="44" width="175" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="132" id="UGB-QE-70l"/>
+                                                        <constraint firstAttribute="width" constant="175" id="UGB-QE-70l"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -169,7 +169,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnS-A0-HNE">
-                                                    <rect key="frame" x="200" y="22" width="139" height="30"/>
+                                                    <rect key="frame" x="453" y="24" width="139" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="139" id="qav-Xl-2lo"/>
                                                     </constraints>
@@ -182,15 +182,15 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="GnS-A0-HNE" secondAttribute="trailing" constant="253" id="2GS-x3-bQ4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GnS-A0-HNE" secondAttribute="trailing" id="2GS-x3-bQ4"/>
                                                 <constraint firstItem="SzO-eE-9cu" firstAttribute="top" secondItem="u56-XD-i7w" secondAttribute="bottom" constant="1" id="KcF-bh-wxZ"/>
                                                 <constraint firstItem="u56-XD-i7w" firstAttribute="leading" secondItem="OUa-eY-2X9" secondAttribute="trailing" constant="17" id="U7f-Tp-HYb"/>
                                                 <constraint firstItem="u56-XD-i7w" firstAttribute="leading" secondItem="SzO-eE-9cu" secondAttribute="leading" id="VWY-1U-pgK"/>
                                                 <constraint firstItem="OUa-eY-2X9" firstAttribute="leading" secondItem="9UV-Zt-tsB" secondAttribute="leadingMargin" constant="5" id="aeZ-d1-bSs"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="OUa-eY-2X9" secondAttribute="bottom" constant="8" id="cAT-3a-H8q"/>
                                                 <constraint firstItem="u56-XD-i7w" firstAttribute="top" secondItem="OUa-eY-2X9" secondAttribute="top" id="f5V-Df-7Bq"/>
-                                                <constraint firstItem="GnS-A0-HNE" firstAttribute="top" secondItem="9UV-Zt-tsB" secondAttribute="topMargin" constant="14" id="vC3-PC-X2N"/>
-                                                <constraint firstItem="u56-XD-i7w" firstAttribute="baseline" secondItem="GnS-A0-HNE" secondAttribute="baseline" constant="-4" id="xzb-tp-BU4"/>
+                                                <constraint firstItem="GnS-A0-HNE" firstAttribute="top" secondItem="9UV-Zt-tsB" secondAttribute="topMargin" constant="16" id="vC3-PC-X2N"/>
+                                                <constraint firstItem="u56-XD-i7w" firstAttribute="baseline" secondItem="GnS-A0-HNE" secondAttribute="baseline" constant="-6" id="xzb-tp-BU4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>

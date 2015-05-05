@@ -133,6 +133,31 @@
                 
                 tasks = [json objectForKey:@"tasks"];
                 
+                NSLog(@"%d task count");
+                
+                
+                for (int i = 0; i < tasks.count; i++) {
+                    
+                    NSDictionary *task = [tasks objectAtIndex: i];
+                    
+                    NSString *taskID = [[Settings instance].notifications objectForKey:[task objectForKey:@"id"]];
+                    
+                    
+                    NSLog(@"%d", i);
+                    
+                    if (taskID != nil){
+                        
+                        NSLog(@"reminder set");
+                        
+                        [[Settings instance].notifications setObject:@"DONE" forKey:[task objectForKey:@"id"]];
+                        
+                        
+                    } {
+                        NSLog(@"reminder has already been set");
+                    }
+                    
+                }
+                
                 int count = (int)[tasks count];
                 
                 [Settings instance].assignedTasksCount = count;
@@ -185,6 +210,20 @@
                     
                     [alert show];
                     
+                    // End the refreshing
+                    if (refreshControl) {
+                        
+                        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                        [formatter setDateFormat:@"MMM d, h:mm a"];
+                        NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+                        NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                                    forKey:NSForegroundColorAttributeName];
+                        NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+                        refreshControl.attributedTitle = attributedTitle;
+                        
+                        [refreshControl endRefreshing];
+                    }
+                    
                 });
                 
             }
@@ -203,6 +242,20 @@
                                                       otherButtonTitles:nil];
                 
                 [alert show];
+                
+                // End the refreshing
+                if (refreshControl) {
+                    
+                    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                    [formatter setDateFormat:@"MMM d, h:mm a"];
+                    NSString *title = [NSString stringWithFormat:@"Last update: %@", [formatter stringFromDate:[NSDate date]]];
+                    NSDictionary *attrsDictionary = [NSDictionary dictionaryWithObject:[UIColor whiteColor]
+                                                                                forKey:NSForegroundColorAttributeName];
+                    NSAttributedString *attributedTitle = [[NSAttributedString alloc] initWithString:title attributes:attrsDictionary];
+                    refreshControl.attributedTitle = attributedTitle;
+                    
+                    [refreshControl endRefreshing];
+                }
                 
             });
             
@@ -332,6 +385,9 @@
             
             if (status_code == 202) {
                 
+                
+                
+                
                 //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
                 
                 
@@ -342,6 +398,36 @@
                 int count = (int)[tasks count];
                 
                 [Settings instance].assignedTasksCount = count;
+                
+                for (int i = 0; i < tasks.count; i++) {
+                    
+                    NSDictionary *task = [tasks objectAtIndex: i];
+                    
+                    NSString *taskID = [[Settings instance].notifications objectForKey:[task objectForKey:@"id"]];
+                    
+                    
+                    NSLog(@"%d - %@", i, taskID);
+                    
+                    if (!taskID){
+                        
+                        NSLog(@"reminder set");
+                        
+                        [[Settings instance].notifications setObject:@"DONE" forKey:[task objectForKey:@"id"]];
+                        
+                        UILocalNotification* localNotification = [[UILocalNotification alloc] init];
+                        localNotification.fireDate = [NSDate dateWithTimeIntervalSinceNow:10];
+                        localNotification.alertBody = [task objectForKey:@"task"];
+                        localNotification.timeZone = [NSTimeZone defaultTimeZone];
+                        [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+
+                        // Request to reload table view data
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadData" object:self];
+
+                    } else {
+                        NSLog(@"reminder has already been set");
+                    }
+                    
+                }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -438,6 +524,8 @@
     if ([tasks count] != 0) {
         tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 
+        tableView.backgroundView = nil;
+        
         return 1;
     } else {
         // Display a message when the table is empty
@@ -478,7 +566,7 @@
     
     NSDictionary *receivedTask = [tasks objectAtIndex:indexPath.row];
     
-    NSString *time = [NSString stringWithFormat:@"%@%@", [receivedTask objectForKey:@"date"], [receivedTask objectForKey:@"time"]];
+    NSString *time = [NSString stringWithFormat:@"%@ %@", [receivedTask objectForKey:@"date"], [receivedTask objectForKey:@"time"]];
     
     cell.emailLabel.text = time;
     
@@ -490,12 +578,17 @@
         
         cell.completedButton.backgroundColor = [UIColor grayColor];
 
-    } else {
+    } else if ([[receivedTask objectForKey:@"status"]  isEqual: @"complete"]) {
         btnImage = [UIImage imageNamed:@"image.png"];
         
-        
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+        cell.completedButton.userInteractionEnabled = NO;
+
         cell.completedButton.backgroundColor = [UIColor blueColor];
 
+    } else {
+        cell.completedButton.backgroundColor = [UIColor greenColor];
     }
     
     cell.taskInfo = receivedTask;
@@ -512,5 +605,14 @@
 
     
     return 80.0;
+}
+
+// Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    if(cell.selectionStyle == UITableViewCellSelectionStyleNone){
+        return nil;
+    }
+    return indexPath;
 }
 @end

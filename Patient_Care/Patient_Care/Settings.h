@@ -36,6 +36,7 @@
 
 @property (nonatomic) int reccurentTask;
 
+@property (strong, nonatomic) NSMutableDictionary *notifications;
 
 + (Settings *)instance;
 
