@@ -10,6 +10,9 @@
 		66067A0C1AF0D8BE00EC4E4F /* PCMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */; };
 		66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */; };
 		664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E8C521AF9CCAD0008C7D8 /* icon_menu.png */; };
+		665134D41AFABA1C00F032BE /* goldstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 665134D11AFABA1C00F032BE /* goldstar.png */; };
+		665134D51AFABA1C00F032BE /* honorbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 665134D21AFABA1C00F032BE /* honorbadge.png */; };
+		665134D61AFABA1C00F032BE /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = 665134D31AFABA1C00F032BE /* thumbsup.png */; };
 		66A6AAF01AF72E7F00CBA2A1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */; };
 		66A6AAF31AF72E9400CBA2A1 /* ProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6AAF21AF72E9400CBA2A1 /* ProfileEditViewController.m */; };
 		66B4C53B1AFA915700A4FE05 /* profileimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 66B4C53A1AFA915700A4FE05 /* profileimage.png */; };
@@ -119,6 +122,9 @@
 		66067A0D1AF0E6AE00EC4E4F /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
 		664E8C521AF9CCAD0008C7D8 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
+		665134D11AFABA1C00F032BE /* goldstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goldstar.png; sourceTree = "<group>"; };
+		665134D21AFABA1C00F032BE /* honorbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = honorbadge.png; sourceTree = "<group>"; };
+		665134D31AFABA1C00F032BE /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsup.png; sourceTree = "<group>"; };
 		66A6AAEE1AF72E7F00CBA2A1 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		66A6AAF11AF72E9400CBA2A1 /* ProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditViewController.h; sourceTree = "<group>"; };
@@ -440,6 +446,9 @@
 		CB399DCA1AA3D4200012DB43 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				665134D11AFABA1C00F032BE /* goldstar.png */,
+				665134D21AFABA1C00F032BE /* honorbadge.png */,
+				665134D31AFABA1C00F032BE /* thumbsup.png */,
 				66CDFDD21AF3277A00114185 /* goldstar.png */,
 				66CDFDD31AF3277A00114185 /* honorbadge.png */,
 				66CDFDD41AF3277A00114185 /* thumbsup.png */,
@@ -691,6 +700,7 @@
 				664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */,
 				CB399E0C1AA3E88B0012DB43 /* Login_bg.jpg in Resources */,
 				CB399DBA1AA3D35A0012DB43 /* Roboto-Bold.ttf in Resources */,
+				665134D41AFABA1C00F032BE /* goldstar.png in Resources */,
 				CB399DC91AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf in Resources */,
 				CB399DC71AA3D35A0012DB43 /* RobotoCondensed-Light.ttf in Resources */,
 				CB9AB0F01AED5FC5006EEEBC /* newProfile.png in Resources */,
@@ -718,7 +728,9 @@
 				CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */,
 				66CDFDD51AF3277A00114185 /* goldstar.png in Resources */,
 				66CDFDD61AF3277A00114185 /* honorbadge.png in Resources */,
+				665134D51AFABA1C00F032BE /* honorbadge.png in Resources */,
 				CB399DBB1AA3D35A0012DB43 /* Roboto-BoldItalic.ttf in Resources */,
+				665134D61AFABA1C00F032BE /* thumbsup.png in Resources */,
 				CB399DBF1AA3D35A0012DB43 /* Roboto-Medium.ttf in Resources */,
 				CB9AB0E21AED5ECC006EEEBC /* newHome.png in Resources */,
 				CB399DC11AA3D35A0012DB43 /* Roboto-Regular.ttf in Resources */,
