@@ -8,24 +8,31 @@
 
 #import "ProfileEditViewController.h"
 #import "ProfileViewController.h"
+#import "Settings.h"
 @interface ProfileEditViewController ()
 
 @end
 
 @implementation ProfileEditViewController
 
-@synthesize editPhoneNoLabelTextField;
+@synthesize editFirstNameTextField;
+@synthesize editLastNameTextField;
 @synthesize delegate = _delegate;
 
 - (IBAction)editDoneButton:(id)sender {
-    [self.delegate done:editPhoneNoLabelTextField.text];
+    [self.delegate done:editFirstNameTextField.text fname:editLastNameTextField.text];
+    [Settings instance].first_name =     self.editFirstNameTextField.text;
+    [Settings instance].last_name =     self.editLastNameTextField.text ;
+
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    ProfileViewController *data = [[ProfileViewController alloc]init];
-    self.editPhoneNoLabelTextField.text = data.phoneNoLabel.text;
+    
+    self.editFirstNameTextField.text = [Settings instance].first_name;
+    self.editLastNameTextField.text = [Settings instance].last_name;
+    
     // Do any additional setup after loading the view.
 }
 

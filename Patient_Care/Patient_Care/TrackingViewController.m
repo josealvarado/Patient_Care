@@ -101,7 +101,11 @@
         
         NSLog(@"%@", d);
         
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.100.150:18000/listlocations?p=%@", d]];
+//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.100.150:18000/listlocations?p=%@", d]];
+//        
+
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/listlocations?p=%@",[Settings instance].serverPorts[@"tracking"], d]];
+        
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                         

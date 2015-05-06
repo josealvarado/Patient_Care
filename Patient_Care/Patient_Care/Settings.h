@@ -27,12 +27,23 @@
 @property (nonatomic) NSString *task_date;
 @property (nonatomic) NSString *task_name;
 
+
+@property (nonatomic) NSString *first_name;
+@property (nonatomic) NSString *last_name;
+@property (nonatomic) NSString *phone_number;
+
+
 @property (strong, nonatomic) NSMutableArray *notes;
 
 @property (nonatomic) int rewardPoints;
 
 @property (nonatomic) int assignedTasksCount;
 @property (nonatomic) int completedTasksCount;
+
+@property (nonatomic) NSDictionary *serverPorts;
+
+@property(nonatomic)NSString *deviceToken;
+
 
 
 + (Settings *)instance;

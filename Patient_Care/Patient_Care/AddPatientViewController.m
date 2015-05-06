@@ -80,8 +80,11 @@
     
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-        NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listuser?q=%@",_seachTextField.text];
+//        NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listuser?q=%@",_seachTextField.text];
+//
     
+    NSString *params = [NSString stringWithFormat:@"%@/listuser?q=%@",[Settings instance].serverPorts[@"linkpatients"],_seachTextField.text];
+
         NSURL *url = [NSURL URLWithString:params];
     
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url

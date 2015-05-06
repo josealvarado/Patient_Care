@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ProfileEditViewController.h"
+#import "ViewController.h"
 
 @interface ProfileViewController : UIViewController <ProfileEditViewControllerDelegate>{
     
-    IBOutlet UILabel *phoneNoLabel;
- 
+    IBOutlet UILabel *lastNameLabel;
+    IBOutlet UILabel *firstNameLabel;
 }
 
-@property (strong, nonatomic) IBOutlet UILabel *phoneNoLabel;
+
+@property (strong, nonatomic) IBOutlet UILabel *lastNameLabel;
+@property (strong, nonatomic) IBOutlet UILabel *firstNameLabel;
 
 
 @end

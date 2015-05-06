@@ -68,11 +68,11 @@
     latitude = manager.location.coordinate.latitude;
     longitude = manager.location.coordinate.longitude;
     
-    NSLog(@"IN METHOD 3: %f, %f", latitude, longitude);
+//    NSLog(@"IN METHOD 3: %f, %f", latitude, longitude);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"3 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"3 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
-    [alert show];
+//    [alert show];
 }
 
 //this works.
@@ -86,9 +86,9 @@
     
     NSLog(@"MAYBE IN METHOD 2: %f, %f", latitude, longitude);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"2 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"2 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    
+//    [alert show];
 }
 
 
@@ -126,10 +126,10 @@
     float longitude = locationManager.location.coordinate.longitude;
     
     NSLog(@"%f, %f", latitude, longitude);
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"1 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                          
-    [alert show];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"1 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                                          
+//    [alert show];
     
     NSError *error;
     
@@ -137,7 +137,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:18000"];
+    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"tracking"]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     

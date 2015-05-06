@@ -14,9 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *textFieldPassword;
 
-@property (weak, nonatomic) IBOutlet UITextField *textfieldPhoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *textfieldFirstName;
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *profileSegmentedControl;
+@property (weak, nonatomic) IBOutlet UITextField *textfieldLastName;
 
 
 - (IBAction)buttonRegisterPressed:(id)sender;

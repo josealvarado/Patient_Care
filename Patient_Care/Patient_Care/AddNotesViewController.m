@@ -81,19 +81,14 @@
     if (pos == -1) {
         [[Settings instance].notes addObject:_noteTextField.text];
         
-        
-        
-        
-        
-        
         NSError *error;
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
         
-        NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:17000"];
-        
+//        NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
+    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                         
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -154,26 +149,33 @@
                 // 304 couldn't be found
                 // 405 unsupported
                 
-                if (status_code == 202) {
-                    
-                    //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                    
-                    
-                } else {
-                    
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                          
-                                                                    message:@"Something did not work"
-                                          
-                                                                   delegate:nil
-                                          
-                                                          cancelButtonTitle:@"OK"
-                                          
-                                                          otherButtonTitles:nil];
-                    
-                    [alert show];
-                    
-                }
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                    long status_code = (long)[httpResponse statusCode];
+                    NSLog(@"response status code: %ld", status_code);
+                    if (status_code == 202) {
+                        
+                        //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                    } else {
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                                              
+                                                                        message:@"Something did not work"
+                                              
+                                                                       delegate:nil
+                                              
+                                                              cancelButtonTitle:@"OK"
+                                              
+                                                              otherButtonTitles:nil];
+                        
+                        [alert show];
+                        
+                    }
+                });
+                
+                
             } else {
                 
                 NSLog(@"what?");
@@ -200,7 +202,7 @@
         
         
         
-        
+
         
         
         
@@ -217,7 +219,7 @@
     NSLog(@"after %lu", (unsigned long)[[Settings instance].notes count]);
 
     
-//    [self dismissViewControllerAnimated:YES completion:nil];
+    
     
 }
 @end

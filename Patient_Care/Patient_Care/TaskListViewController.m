@@ -44,7 +44,13 @@
     
 //    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=7"];
 
-    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=%@&p=%@", [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
+    NSString *params = [NSString stringWithFormat:@"%@/listtasks?c=%@&p=%@", [Settings instance].serverPorts[@"tasks"], [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
+
+//    NSString *tasksURL = [NSString stringWithFormat: @"%@%@",[Settings instance].serverPorts[@"login"], @"/listtasks?c=", %@&p=%@"];
+    
+//    NSString *ex = [NSString stringWithFormat:@"%@%@", @"a", @"b"];
+//    
+//    NSString *params = [NSString stringWithFormat:tasksURL, [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
 
     
     NSURL *url = [NSURL URLWithString:params];

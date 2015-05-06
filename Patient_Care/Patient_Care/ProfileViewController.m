@@ -8,6 +8,8 @@
 
 #import "ProfileViewController.h"
 #import "ProfileEditViewController.h"
+#import "ViewController.h"
+#import "Settings.h"
 
 @interface ProfileViewController ()
 
@@ -15,7 +17,8 @@
 
 @implementation ProfileViewController
 
-@synthesize phoneNoLabel;
+@synthesize lastNameLabel;
+@synthesize firstNameLabel;
 
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
@@ -25,15 +28,22 @@
     }
 }
 
--(void)done:(NSString *)name{
+-(void)done:(NSString *)firstName fname:(NSString *)lastName{
 //    [self dismissViewControllerAnimated:YES completion:nil];
+    
     [self.navigationController popViewControllerAnimated:YES];
-    self.phoneNoLabel.text = name;
+    
+    self.firstNameLabel.text = firstName;
+    self.lastNameLabel.text = lastName;
 }
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.firstNameLabel.text = [Settings instance].first_name;
+    self.lastNameLabel.text = [Settings instance].last_name;
+
     // Do any additional setup after loading the view.
 }
 

@@ -42,7 +42,7 @@
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
         
-        NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/completetask"];
+        NSString *params = [NSString stringWithFormat:@"%@/completetask", [Settings instance].serverPorts[@"tasks"]];
         
         //    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=%@", [Settings instance].patient_id];
         
@@ -251,7 +251,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
+    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     

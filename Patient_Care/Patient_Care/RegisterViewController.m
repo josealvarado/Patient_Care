@@ -47,7 +47,8 @@
 -(void)dismissKeyboard {    
     [_textFieldPassword resignFirstResponder];
     [_textFieldEmaillAdress resignFirstResponder];
-    [_textfieldPhoneNumber resignFirstResponder];
+    [_textfieldLastName resignFirstResponder];
+    [_textfieldFirstName resignFirstResponder];
 }
 
 - (IBAction)buttonRegisterPressed:(id)sender {
@@ -55,14 +56,19 @@
 
     NSString *emailAddress = _textFieldEmaillAdress.text;
     NSString *password = _textFieldPassword.text;
+    NSString *firstName = _textfieldFirstName.text;
+    NSString *lastName = _textfieldLastName.text;
     
+    [Settings instance].first_name = firstName;
+    [Settings instance].last_name = lastName;
     
     
     NSError *error;
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000"];
+//    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000"];
+    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"registration"]];
 //    NSURL *url = [NSURL URLWithString:@"http://www.google.com"];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -75,6 +81,8 @@
     
     NSDictionary *mapData = [[NSDictionary alloc] init ];
                              
+    NSLog(@"device token - %@", [Settings instance].deviceToken);
+    
     
 //                             initWithObjectsAndKeys: @"Machine", @"username",
 //                             @"josealvarado111@gmail.com", @"emailaddress",  @"Password", @"password",
@@ -87,30 +95,34 @@
         mapData = @{ @"role"     : @"02",
                      @"username" : @"username",
                      @"password" : password,
-                     @"firstname": @"firstn ame",
+                     @"firstname": firstName,
                      @"middlename": @"middle name",
-                     @"lastname" : @"last name",
+                     @"lastname" : lastName,
                      @"emailaddress" : emailAddress,
                      @"fbtoken" : @"what",
                      @"streetaddress" : @"address here",
                      @"city" : @"san francisco",
                      @"state" : @"california",
-                     @"country" : @"usa"
+                     @"country" : @"usa",
+                     @"devicetoken": @"d2df19729d8cc2b98a380ca17ac73d22af957435635f2f4f6823cdb818bcfd37"
+//                     @"devicetoken": [Settings instance].deviceToken
                      };
     } else {
         mapData = @{ @"role"     : @"01",
                      @"username" : @"hello",
                      @"password" : password,
-                     @"firstname": @"fs c f sf",
+                     @"firstname": firstName,
                      @"middlename": @"middle",
-                     @"lastname" : @"lastname",
+                     @"lastname" : lastName,
                      @"emailaddress" : emailAddress,
                      @"fbtoken" : @"what",
                      @"streetaddress" : @"address here",
                      @"city" : @"san francisco",
                      @"state" : @"california",
-                     @"country" : @"usa"
-                     // etc.
+                     @"country" : @"usa",
+                     @"devicetoken": @"d2df19729d8cc2b98a380ca17ac73d22af957435635f2f4f6823cdb818bcfd37"
+//                     @"devicetoken": [Settings instance].deviceToken
+
                      };
     }
     
@@ -151,30 +163,35 @@
                 long status_code = (long)[httpResponse statusCode];
                 NSLog(@"response status code: %ld", status_code);
                 
+
                 
-                if (_profileSegmentedControl.selectedSegmentIndex == 0) {
+                if (status_code == 202) {
+                  
+                    [self performSegueWithIdentifier:@"LoginViewController" sender:sender];
                     
-//                    [Settings instance].patient_id = 
-                    
-                    
-                    dispatch_async(dispatch_get_main_queue(), ^{
-                        
-                         [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                    });
-                    
-                    
-                   
                 } else {
                     
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                         [self performSegueWithIdentifier:@"CareTakerHome" sender:sender];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                                              
+                                                                        message:@"Something did not work"
+                                              
+                                                                       delegate:nil
+                                              
+                                                              cancelButtonTitle:@"OK"
+                                              
+                                                              otherButtonTitles:nil];
+                        
+                        [alert show];
+                        
                     });
                     
-                   
+                    
+                    
                 }
-                
+
             });
             
         } else {

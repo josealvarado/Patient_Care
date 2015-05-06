@@ -10,18 +10,21 @@
 
 @protocol ProfileEditViewControllerDelegate <NSObject>
 
--(void)done:(NSString *)editPhoneNoLabelTextField;
+-(void)done:(NSString *)editfirstNameTextField fname:(NSString *)editlastNameTextField;
 
 @end
 
 @interface ProfileEditViewController : UIViewController {
     IBOutlet UIBarButtonItem *editDoneButton;
-    IBOutlet UITextField *editPhoneNoLabelTextField;
+    IBOutlet UITextField *editLastNameTextField;
+    IBOutlet UITextField *editFirstNameTextField;
 }
 
 
 @property(nonatomic, assign) id <ProfileEditViewControllerDelegate> delegate;
-@property (strong, nonatomic) IBOutlet UITextField *editPhoneNoLabelTextField;
+@property (strong, nonatomic) IBOutlet UITextField *editLastNameTextField;
+@property (strong, nonatomic) IBOutlet UITextField *editFirstNameTextField;
+
 
 
 - (IBAction)editDoneButton:(id)sender;

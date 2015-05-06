@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "Settings.h"
 
 @interface AppDelegate ()
 
@@ -21,7 +22,28 @@
     
     [GMSServices provideAPIKey:@"AIzaSyArdY3_LUO6Wx_rfBo_k1HnvdVezdcoCfc"];
     
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        NSLog(@"trying to see inside uidevice current device");
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        NSLog(@"trying to see inside else uidevice current device");
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
+    }
+    
     return YES;
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"deviceToken from appdelegate: %@", deviceToken);
+    NSString *strDeviceToken = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
+    
+    [Settings instance].deviceToken = strDeviceToken;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

@@ -179,7 +179,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/addtask"];
+    NSString *params = [NSString stringWithFormat:@"%@/addtask", [Settings instance].serverPorts[@"tasks"]];
     
     NSURL *url = [NSURL URLWithString:params];
     
