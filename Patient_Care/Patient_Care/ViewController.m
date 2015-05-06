@@ -40,6 +40,8 @@
                                                                           action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
+    
+    [Settings instance].notifications = [[NSMutableDictionary alloc] init];
 }
 
 - (void)didReceiveMemoryWarning {

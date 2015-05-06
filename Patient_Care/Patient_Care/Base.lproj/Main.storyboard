@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g0R-Gx-2s5">
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -167,7 +168,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xeW-RA-AxC">
+                            <tableView clipsSubviews="YES" tag="1" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xeW-RA-AxC">
                                 <rect key="frame" x="0.0" y="133" width="600" height="467"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -187,9 +188,9 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzO-eE-9cu">
-                                                    <rect key="frame" x="60" y="44" width="132" height="21"/>
+                                                    <rect key="frame" x="60" y="44" width="175" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="132" id="UGB-QE-70l"/>
+                                                        <constraint firstAttribute="width" constant="175" id="UGB-QE-70l"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -202,7 +203,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GnS-A0-HNE">
-                                                    <rect key="frame" x="200" y="22" width="139" height="30"/>
+                                                    <rect key="frame" x="453" y="24" width="139" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="139" id="qav-Xl-2lo"/>
                                                     </constraints>
@@ -215,15 +216,15 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="GnS-A0-HNE" secondAttribute="trailing" constant="253" id="2GS-x3-bQ4"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="GnS-A0-HNE" secondAttribute="trailing" id="2GS-x3-bQ4"/>
                                                 <constraint firstItem="SzO-eE-9cu" firstAttribute="top" secondItem="u56-XD-i7w" secondAttribute="bottom" constant="1" id="KcF-bh-wxZ"/>
                                                 <constraint firstItem="u56-XD-i7w" firstAttribute="leading" secondItem="OUa-eY-2X9" secondAttribute="trailing" constant="17" id="U7f-Tp-HYb"/>
                                                 <constraint firstItem="u56-XD-i7w" firstAttribute="leading" secondItem="SzO-eE-9cu" secondAttribute="leading" id="VWY-1U-pgK"/>
                                                 <constraint firstItem="OUa-eY-2X9" firstAttribute="leading" secondItem="9UV-Zt-tsB" secondAttribute="leadingMargin" constant="5" id="aeZ-d1-bSs"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="OUa-eY-2X9" secondAttribute="bottom" constant="8" id="cAT-3a-H8q"/>
                                                 <constraint firstItem="u56-XD-i7w" firstAttribute="top" secondItem="OUa-eY-2X9" secondAttribute="top" id="f5V-Df-7Bq"/>
-                                                <constraint firstItem="GnS-A0-HNE" firstAttribute="top" secondItem="9UV-Zt-tsB" secondAttribute="topMargin" constant="14" id="vC3-PC-X2N"/>
-                                                <constraint firstItem="u56-XD-i7w" firstAttribute="baseline" secondItem="GnS-A0-HNE" secondAttribute="baseline" constant="-4" id="xzb-tp-BU4"/>
+                                                <constraint firstItem="GnS-A0-HNE" firstAttribute="top" secondItem="9UV-Zt-tsB" secondAttribute="topMargin" constant="16" id="vC3-PC-X2N"/>
+                                                <constraint firstItem="u56-XD-i7w" firstAttribute="baseline" secondItem="GnS-A0-HNE" secondAttribute="baseline" constant="-6" id="xzb-tp-BU4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -242,9 +243,13 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="XmV-Eh-9qQ" firstAttribute="leading" secondItem="7cb-ha-nhT" secondAttribute="leading" id="8tG-uG-0hs"/>
+                            <constraint firstItem="NSg-JL-Tiq" firstAttribute="top" secondItem="xeW-RA-AxC" secondAttribute="bottom" id="9wK-xE-i99"/>
                             <constraint firstItem="g6T-TV-hnQ" firstAttribute="top" secondItem="ldo-43-Dxz" secondAttribute="bottom" constant="31" id="BNg-tL-l01"/>
+                            <constraint firstItem="xeW-RA-AxC" firstAttribute="leading" secondItem="7cb-ha-nhT" secondAttribute="leading" id="Fv2-ch-MzY"/>
                             <constraint firstItem="XmV-Eh-9qQ" firstAttribute="top" secondItem="ldo-43-Dxz" secondAttribute="bottom" constant="31" id="L9W-UF-ehA"/>
+                            <constraint firstItem="xeW-RA-AxC" firstAttribute="top" secondItem="g6T-TV-hnQ" secondAttribute="bottom" constant="8" id="Twm-mF-nih"/>
                             <constraint firstAttribute="trailing" secondItem="g6T-TV-hnQ" secondAttribute="trailing" id="fXM-Xz-ejd"/>
+                            <constraint firstAttribute="trailing" secondItem="xeW-RA-AxC" secondAttribute="trailing" id="ou9-TD-gxo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tasks" id="ehX-vo-N89"/>
@@ -1406,7 +1411,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ido-s5-R98">
-                                <rect key="frame" x="0.0" y="534" width="600" height="66"/>
+                                <rect key="frame" x="0.0" y="534" width="300" height="66"/>
                                 <color key="backgroundColor" red="0.16078431369999999" green="0.70980392160000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="66" id="VD8-Aw-bhB"/>
@@ -1427,20 +1432,45 @@
                                     <segue destination="5eP-py-FU9" kind="show" id="9Rv-dR-s0i"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bxq-PQ-oqD">
+                                <rect key="frame" x="300" y="534" width="300" height="66"/>
+                                <color key="backgroundColor" red="0.16078431369999999" green="0.70980392160000005" blue="0.58431372550000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6oR-L0-KkN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="66" id="a65-go-caC"/>
+                                    <constraint firstAttribute="height" constant="66" id="ezR-aT-c03"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Add Recurrent Task">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="6oR-L0-KkN"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="addRecurrentTaskButtonPressed:" destination="GlC-MS-7fF" eventType="touchUpInside" id="f2z-Co-3OE"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="bxq-PQ-oqD" firstAttribute="leading" secondItem="Ido-s5-R98" secondAttribute="trailing" id="2ZP-es-Vp0"/>
                             <constraint firstAttribute="trailing" secondItem="KTj-gh-Ls8" secondAttribute="trailing" id="4Gx-gp-B7C"/>
+                            <constraint firstItem="zkJ-qK-dxj" firstAttribute="top" secondItem="bxq-PQ-oqD" secondAttribute="bottom" id="6xh-cn-3UN"/>
                             <constraint firstItem="GHm-BE-RhM" firstAttribute="top" secondItem="f2K-VK-6kr" secondAttribute="bottom" constant="8" id="7pq-bE-Y77"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="top" secondItem="vfV-Ae-mrl" secondAttribute="bottom" constant="19" id="AZB-ZA-8lH"/>
                             <constraint firstItem="Ido-s5-R98" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" id="Fey-Li-Mgx"/>
                             <constraint firstItem="GHm-BE-RhM" firstAttribute="trailing" secondItem="FxB-ne-wNd" secondAttribute="trailingMargin" id="INB-Nc-CoR"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="top" secondItem="vfV-Ae-mrl" secondAttribute="bottom" constant="19" id="IaC-af-oVx"/>
-                            <constraint firstAttribute="trailing" secondItem="Ido-s5-R98" secondAttribute="trailing" id="KlS-Tu-f2X"/>
+                            <constraint firstAttribute="trailing" secondItem="Ido-s5-R98" secondAttribute="trailing" constant="300" id="KlS-Tu-f2X"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" id="NYx-PW-g2M"/>
                             <constraint firstItem="vfV-Ae-mrl" firstAttribute="trailing" secondItem="FxB-ne-wNd" secondAttribute="trailingMargin" id="OFS-yJ-3DX"/>
                             <constraint firstItem="f2K-VK-6kr" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" constant="16" id="PVd-y1-qZY"/>
                             <constraint firstItem="f2K-VK-6kr" firstAttribute="top" secondItem="D5e-aM-rHc" secondAttribute="bottom" constant="24" id="Q5I-Ns-oay"/>
+                            <constraint firstAttribute="trailing" secondItem="bxq-PQ-oqD" secondAttribute="trailing" id="TLO-9M-kUo"/>
                             <constraint firstItem="KTj-gh-Ls8" firstAttribute="leading" secondItem="FxB-ne-wNd" secondAttribute="leading" id="eUR-z3-GH0"/>
                             <constraint firstAttribute="trailing" secondItem="KTj-gh-Ls8" secondAttribute="trailing" id="fis-35-OET"/>
                             <constraint firstItem="zkJ-qK-dxj" firstAttribute="top" secondItem="Ido-s5-R98" secondAttribute="bottom" id="iaP-hg-qLe"/>
@@ -2804,6 +2834,11 @@
         <segue reference="34d-2c-rq9"/>
         <segue reference="5N9-ac-3L7"/>
         <segue reference="Bk3-Cz-2FX"/>
+        <segue reference="5N9-ac-3L7"/>
+        <segue reference="1yx-kE-avD"/>
+        <segue reference="ZB5-BO-800"/>
+        <segue reference="uuJ-1C-EVG"/>
+        <segue reference="Ji0-xB-zGn"/>
         <segue reference="mYT-E5-xby"/>
     </inferredMetricsTieBreakers>
 </document>

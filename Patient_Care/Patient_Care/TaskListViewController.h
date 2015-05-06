@@ -11,6 +11,8 @@
 @interface TaskListViewController : UIViewController<NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate>{
     
     NSMutableArray *tasks;
+    
+    UIRefreshControl *refreshControl;
 }
 
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;

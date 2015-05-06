@@ -91,17 +91,42 @@
         
         NSLog(@"Points %d, %d", completedPoints, totalPoints);
         
+        NSDate *currentTime = [NSDate date];
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+        NSString *resultString = [dateFormatter stringFromDate: currentTime];
+        
         if (completedPoints + 1 == totalPoints) {
             mapData = [[NSDictionary alloc] init ];
-            mapData = @{@"id": [_taskInfo objectForKey:@"id"],
-                        @"status": @"complete",
-                        @"patient_id": [Settings instance].patient_id,
-                        @"points": [NSString stringWithFormat:@"%d", totalPoints]};
+            
+            if ((int)[_taskInfo objectForKey:@"recurrent"] == 1){
+                mapData = @{@"id": [_taskInfo objectForKey:@"id"],
+                            @"status": @"complete",
+                            @"patient_id": [Settings instance].patient_id,
+                            @"status": resultString,
+                            @"points": [NSString stringWithFormat:@"%d", totalPoints]};
+            } else {
+                mapData = @{@"id": [_taskInfo objectForKey:@"id"],
+                            @"status": @"complete",
+                            @"patient_id": [Settings instance].patient_id,
+                            @"points": [NSString stringWithFormat:@"%d", totalPoints]};
+            }
+            
+            
         } else {
             mapData = [[NSDictionary alloc] init ];
-            mapData = @{@"id": [_taskInfo objectForKey:@"id"],
-                        @"patient_id": [Settings instance].patient_id,
-                        @"status": @"complete"};
+            
+            if ((int)[_taskInfo objectForKey:@"recurrent"] == 1){
+                mapData = @{@"id": [_taskInfo objectForKey:@"id"],
+                            @"patient_id": [Settings instance].patient_id,
+                            @"status": resultString};
+            } else {
+                mapData = @{@"id": [_taskInfo objectForKey:@"id"],
+                            @"patient_id": [Settings instance].patient_id,
+                            @"status": @"complete"};
+            }
+            
+            
         }
         
         
@@ -150,6 +175,8 @@
                 
                 
                 if (status_code == 202) {
+                    
+                    
                     
                     //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
                     

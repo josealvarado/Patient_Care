@@ -22,6 +22,7 @@
     [_datePicker addTarget:self action:@selector(datePickerChanged:) forControlEvents:UIControlEventValueChanged];
     
     taskSelected = -1;
+    [Settings instance].reccurentTask = 0;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -49,6 +50,19 @@
     NSLog(@"date %@", strDate);
     
     [Settings instance].task_date = strDate;
+}
+
+- (IBAction)addRecurrentTaskButtonPressed:(id)sender {
+    [Settings instance].task_name = selectedButton.titleLabel.text;
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString *strDate = [dateFormatter stringFromDate:_datePicker.date];
+    
+    NSLog(@"date %@", strDate);
+    
+    [Settings instance].task_date = strDate;
+    [Settings instance].reccurentTask =  1;
 }
 
 
