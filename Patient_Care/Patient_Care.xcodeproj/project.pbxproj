@@ -15,9 +15,9 @@
 		66B4C53B1AFA915700A4FE05 /* profileimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 66B4C53A1AFA915700A4FE05 /* profileimage.png */; };
 		66B4C5431AFA988400A4FE05 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */; };
 		66CDFDD11AF3248000114185 /* RewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CDFDD01AF3248000114185 /* RewardsViewController.m */; };
-		66CDFDD51AF3277A00114185 /* goldstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CDFDD21AF3277A00114185 /* goldstar.png */; };
-		66CDFDD61AF3277A00114185 /* honorbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CDFDD31AF3277A00114185 /* honorbadge.png */; };
-		66CDFDD71AF3277A00114185 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CDFDD41AF3277A00114185 /* thumbsup.png */; };
+		CB060CD81AFABDFB00810D04 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = CB060CD51AFABDFB00810D04 /* thumbsup.png */; };
+		CB060CD91AFABDFB00810D04 /* goldstar.png in Resources */ = {isa = PBXBuildFile; fileRef = CB060CD61AFABDFB00810D04 /* goldstar.png */; };
+		CB060CDA1AFABDFB00810D04 /* honorbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = CB060CD71AFABDFB00810D04 /* honorbadge.png */; };
 		CB399D7F1AA3C1380012DB43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D7E1AA3C1380012DB43 /* main.m */; };
 		CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D811AA3C1380012DB43 /* AppDelegate.m */; };
 		CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB399D831AA3C1380012DB43 /* Patient_Care.xcdatamodeld */; };
@@ -128,9 +128,9 @@
 		66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
 		66CDFDCF1AF3248000114185 /* RewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsViewController.h; sourceTree = "<group>"; };
 		66CDFDD01AF3248000114185 /* RewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsViewController.m; sourceTree = "<group>"; };
-		66CDFDD21AF3277A00114185 /* goldstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goldstar.png; path = ../../../../../../Projects/14.Flasher/UserInterface/Images/goldstar.png; sourceTree = "<group>"; };
-		66CDFDD31AF3277A00114185 /* honorbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = honorbadge.png; path = ../../../../../../Projects/14.Flasher/UserInterface/Images/honorbadge.png; sourceTree = "<group>"; };
-		66CDFDD41AF3277A00114185 /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbsup.png; path = ../../../../../../Projects/14.Flasher/UserInterface/Images/thumbsup.png; sourceTree = "<group>"; };
+		CB060CD51AFABDFB00810D04 /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = thumbsup.png; sourceTree = "<group>"; };
+		CB060CD61AFABDFB00810D04 /* goldstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goldstar.png; sourceTree = "<group>"; };
+		CB060CD71AFABDFB00810D04 /* honorbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = honorbadge.png; sourceTree = "<group>"; };
 		CB399D791AA3C1380012DB43 /* Patient_Care.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patient_Care.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB399D7D1AA3C1380012DB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB399D7E1AA3C1380012DB43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -440,9 +440,9 @@
 		CB399DCA1AA3D4200012DB43 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				66CDFDD21AF3277A00114185 /* goldstar.png */,
-				66CDFDD31AF3277A00114185 /* honorbadge.png */,
-				66CDFDD41AF3277A00114185 /* thumbsup.png */,
+				CB060CD51AFABDFB00810D04 /* thumbsup.png */,
+				CB060CD61AFABDFB00810D04 /* goldstar.png */,
+				CB060CD71AFABDFB00810D04 /* honorbadge.png */,
 				CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */,
 				CB399E0B1AA3E88B0012DB43 /* Login_bg.jpg */,
 				CBC62D621AE60FEF00572C4B /* trackPatientsIcon.png */,
@@ -674,7 +674,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				66CDFDD71AF3277A00114185 /* thumbsup.png in Resources */,
 				CBA386841AD5C4C9000557E3 /* GoogleMaps.framework in Resources */,
 				CB399DC31AA3D35A0012DB43 /* Roboto-ThinItalic.ttf in Resources */,
 				CB9AB0DE1AED5EC4006EEEBC /* newCamera.png in Resources */,
@@ -695,6 +694,7 @@
 				CB399DC71AA3D35A0012DB43 /* RobotoCondensed-Light.ttf in Resources */,
 				CB9AB0F01AED5FC5006EEEBC /* newProfile.png in Resources */,
 				CB399DC01AA3D35A0012DB43 /* Roboto-MediumItalic.ttf in Resources */,
+				CB060CD91AFABDFB00810D04 /* goldstar.png in Resources */,
 				CB399E061AA3DFCA0012DB43 /* icon.icns in Resources */,
 				CB529B0E1AACF99600C02E9F /* walkthrough_1.png in Resources */,
 				CB399E081AA3E0C60012DB43 /* image_bg.png in Resources */,
@@ -716,13 +716,13 @@
 				CB9AB0E01AED5EC7006EEEBC /* newGrid.png in Resources */,
 				CB399DC41AA3D35A0012DB43 /* RobotoCondensed-Bold.ttf in Resources */,
 				CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */,
-				66CDFDD51AF3277A00114185 /* goldstar.png in Resources */,
-				66CDFDD61AF3277A00114185 /* honorbadge.png in Resources */,
 				CB399DBB1AA3D35A0012DB43 /* Roboto-BoldItalic.ttf in Resources */,
 				CB399DBF1AA3D35A0012DB43 /* Roboto-Medium.ttf in Resources */,
 				CB9AB0E21AED5ECC006EEEBC /* newHome.png in Resources */,
 				CB399DC11AA3D35A0012DB43 /* Roboto-Regular.ttf in Resources */,
 				CB399E011AA3DFCA0012DB43 /* HexPicker.nib in Resources */,
+				CB060CDA1AFABDFB00810D04 /* honorbadge.png in Resources */,
+				CB060CD81AFABDFB00810D04 /* thumbsup.png in Resources */,
 				CB399DB81AA3D35A0012DB43 /* Roboto-Black.ttf in Resources */,
 				CB9AB0DC1AED5EBF006EEEBC /* newHeart.png in Resources */,
 				CB399DBD1AA3D35A0012DB43 /* Roboto-Light.ttf in Resources */,
