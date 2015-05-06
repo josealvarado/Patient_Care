@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsTableViewController : UITableViewController
+@property (strong, nonatomic) IBOutlet UITableViewCell *rewardsViewCell;
 
 @end

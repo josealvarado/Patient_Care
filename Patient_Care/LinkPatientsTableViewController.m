@@ -35,7 +35,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listmyusers?q=%@&r=%@", [Settings instance].caretaker_id, [Settings instance].role];
+    NSString *params = [NSString stringWithFormat:@"%@/listmyusers?q=%@&r=%@",[Settings instance].serverPorts[@"linkpatients"], [Settings instance].caretaker_id, [Settings instance].role];
     
     NSURL *url = [NSURL URLWithString:params];
     

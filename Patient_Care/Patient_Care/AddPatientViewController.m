@@ -23,12 +23,28 @@
     patients = [[NSMutableArray alloc] init];
     selected = -1;
     
+    self.relationTextField.delegate = self;
+    
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
 //                                                                          action:@selector(dismissKeyboard)];
     
 //    [self.view addGestureRecognizer:tap];
     
     
+}
+
+//Method to dismiss the keyboard on hitting the return key
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    
+    [textField resignFirstResponder];
+    
+    return YES;
+}
+
+//Method to dismiss the keyboard on touching outside the text field
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.view endEditing:YES];
+    [super touchesBegan:touches withEvent:event];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -64,8 +80,11 @@
     
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-        NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listuser?q=%@",_seachTextField.text];
+//        NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listuser?q=%@",_seachTextField.text];
+//
     
+    NSString *params = [NSString stringWithFormat:@"%@/listuser?q=%@",[Settings instance].serverPorts[@"linkpatients"],_seachTextField.text];
+
         NSURL *url = [NSURL URLWithString:params];
     
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
@@ -119,7 +138,8 @@
                 NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
                 NSLog(@"str %@", newStr);
-    
+                
+                
                 if (status_code == 202) {
     
     //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
@@ -226,11 +246,13 @@
     
     [request setHTTPMethod:@"POST"];
     
+    NSString *relationInput = self.relationTextField.text;
     NSDictionary *mapData = [[NSDictionary alloc] init ];
     mapData = @{
                 @"patient_id" : [returnedPatient objectForKey:@"id"],
                 @"caretaker_id" : [Settings instance].caretaker_id,
-    @"relationshiptopatient" : @"relationship01"};
+//    @"relationshiptopatient" : @"relationship01"};
+                @"relationshiptopatient" : relationInput};
 
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     

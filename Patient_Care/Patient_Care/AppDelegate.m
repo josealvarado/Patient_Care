@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "Settings.h"
 
 @interface AppDelegate ()
 
@@ -21,12 +22,43 @@
     
     [GMSServices provideAPIKey:@"AIzaSyArdY3_LUO6Wx_rfBo_k1HnvdVezdcoCfc"];
     
-    if ([UIApplication instancesRespondToSelector:@selector(registerUserNotificationSettings:)]) {
-        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge
-                                                                                                              categories:nil]];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        NSLog(@"trying to see inside uidevice current device");
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }
+    else
+    {
+        NSLog(@"trying to see inside else uidevice current device");
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:208.0/255.0 green:2.0/255.0 blue:27.0/255.0 alpha:1.0]];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+    
+    //set back button arrow color
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     return YES;
+}
+
+
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    NSLog(@"deviceToken from appdelegate: %@", deviceToken);
+    NSString *strDeviceToken = [[NSString alloc] initWithData:deviceToken encoding:NSUTF8StringEncoding];
+    
+    [Settings instance].deviceToken = strDeviceToken;
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

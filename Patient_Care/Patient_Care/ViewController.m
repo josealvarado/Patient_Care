@@ -17,6 +17,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    
+    [Settings instance].serverPorts = [NSDictionary dictionaryWithObjectsAndKeys:
+                                       
+                                       @"http://52.11.100.150:14000", @"registration",
+                                       
+                                       @"http://52.11.100.150:15000", @"login",
+                                       
+                                       @"http://52.11.100.150:16000", @"linkpatients",
+                                       
+                                       @"http://52.11.100.150:17000", @"tasks",
+                                       
+                                       @"http://52.11.100.150:18000", @"tracking",
+                                       
+                                       @"http://52.11.100.150:19000", @"notes", nil];
+    
+    [Settings instance].rewardPoints = 0;
+    
     // Do any additional setup after loading the view, typically from a nib.
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -61,8 +80,12 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:15000"];
-    
+//    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:15000"];
+
+//    NSLog(@"login ports - %@",[[Settings instance].serverPorts objectForKey: @"login"]);
+//    NSLog(@"printing ports dictionary %@", [Settings instance].serverPorts);
+    NSURL *url = [NSURL URLWithString: [Settings instance].serverPorts[@"login"] ];
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy

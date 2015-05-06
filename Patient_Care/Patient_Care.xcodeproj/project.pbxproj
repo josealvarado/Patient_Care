@@ -7,6 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66067A0C1AF0D8BE00EC4E4F /* PCMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */; };
+		66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */; };
+		664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E8C521AF9CCAD0008C7D8 /* icon_menu.png */; };
+		66A6AAF01AF72E7F00CBA2A1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */; };
+		66A6AAF31AF72E9400CBA2A1 /* ProfileEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6AAF21AF72E9400CBA2A1 /* ProfileEditViewController.m */; };
+		66B4C53B1AFA915700A4FE05 /* profileimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 66B4C53A1AFA915700A4FE05 /* profileimage.png */; };
+		66B4C5431AFA988400A4FE05 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */; };
+		66CDFDD11AF3248000114185 /* RewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CDFDD01AF3248000114185 /* RewardsViewController.m */; };
+		66CDFDD51AF3277A00114185 /* goldstar.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CDFDD21AF3277A00114185 /* goldstar.png */; };
+		66CDFDD61AF3277A00114185 /* honorbadge.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CDFDD31AF3277A00114185 /* honorbadge.png */; };
+		66CDFDD71AF3277A00114185 /* thumbsup.png in Resources */ = {isa = PBXBuildFile; fileRef = 66CDFDD41AF3277A00114185 /* thumbsup.png */; };
 		CB399D7F1AA3C1380012DB43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D7E1AA3C1380012DB43 /* main.m */; };
 		CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D811AA3C1380012DB43 /* AppDelegate.m */; };
 		CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB399D831AA3C1380012DB43 /* Patient_Care.xcdatamodeld */; };
@@ -55,8 +66,6 @@
 		CB529B191AAE3B6700C02E9F /* notesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B181AAE3B6700C02E9F /* notesIcon.png */; };
 		CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */; };
 		CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */; };
-		CB529B261AAE6C4C00C02E9F /* proifleImage.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B251AAE6C4C00C02E9F /* proifleImage.png */; };
-		CB529B281AAF656600C02E9F /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B271AAF656600C02E9F /* icon_menu.png */; };
 		CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */; };
 		CB6431D41AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431D31AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m */; };
 		CB6431D71AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431D61AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m */; };
@@ -105,6 +114,23 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66067A0A1AF0D8BE00EC4E4F /* PCMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCMarker.h; sourceTree = "<group>"; };
+		66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMarker.m; sourceTree = "<group>"; };
+		66067A0D1AF0E6AE00EC4E4F /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
+		66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
+		664E8C521AF9CCAD0008C7D8 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
+		66A6AAEE1AF72E7F00CBA2A1 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		66A6AAF11AF72E9400CBA2A1 /* ProfileEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileEditViewController.h; sourceTree = "<group>"; };
+		66A6AAF21AF72E9400CBA2A1 /* ProfileEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileEditViewController.m; sourceTree = "<group>"; };
+		66B4C53A1AFA915700A4FE05 /* profileimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileimage.png; sourceTree = "<group>"; };
+		66B4C5411AFA988400A4FE05 /* AboutTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutTableViewController.h; sourceTree = "<group>"; };
+		66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
+		66CDFDCF1AF3248000114185 /* RewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsViewController.h; sourceTree = "<group>"; };
+		66CDFDD01AF3248000114185 /* RewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsViewController.m; sourceTree = "<group>"; };
+		66CDFDD21AF3277A00114185 /* goldstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = goldstar.png; path = ../../../../../../Projects/14.Flasher/UserInterface/Images/goldstar.png; sourceTree = "<group>"; };
+		66CDFDD31AF3277A00114185 /* honorbadge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = honorbadge.png; path = ../../../../../../Projects/14.Flasher/UserInterface/Images/honorbadge.png; sourceTree = "<group>"; };
+		66CDFDD41AF3277A00114185 /* thumbsup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbsup.png; path = ../../../../../../Projects/14.Flasher/UserInterface/Images/thumbsup.png; sourceTree = "<group>"; };
 		CB399D791AA3C1380012DB43 /* Patient_Care.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patient_Care.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB399D7D1AA3C1380012DB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB399D7E1AA3C1380012DB43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -190,8 +216,6 @@
 		CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
 		CB529B211AAE699E00C02E9F /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
 		CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTableViewController.m; sourceTree = "<group>"; };
-		CB529B251AAE6C4C00C02E9F /* proifleImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = proifleImage.png; sourceTree = "<group>"; };
-		CB529B271AAF656600C02E9F /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
 		CB529B291AB0D73300C02E9F /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
 		CB6431D21AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareTakerAddTaskTableViewController.h; sourceTree = "<group>"; };
@@ -272,6 +296,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66B4C53D1AFA982700A4FE05 /* About */ = {
+			isa = PBXGroup;
+			children = (
+				66B4C5411AFA988400A4FE05 /* AboutTableViewController.h */,
+				66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */,
+			);
+			name = About;
+			sourceTree = "<group>";
+		};
+		66CDFDCB1AF320FE00114185 /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				66CDFDCF1AF3248000114185 /* RewardsViewController.h */,
+				66CDFDD01AF3248000114185 /* RewardsViewController.m */,
+			);
+			name = Rewards;
+			sourceTree = "<group>";
+		};
 		CB399D701AA3C1380012DB43 = {
 			isa = PBXGroup;
 			children = (
@@ -308,6 +350,8 @@
 		CB399D7B1AA3C1380012DB43 /* Patient_Care */ = {
 			isa = PBXGroup;
 			children = (
+				66B4C53D1AFA982700A4FE05 /* About */,
+				66CDFDCB1AF320FE00114185 /* Rewards */,
 				CB399D801AA3C1380012DB43 /* AppDelegate.h */,
 				CB529B291AB0D73300C02E9F /* KeychainItemWrapper.h */,
 				CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */,
@@ -396,22 +440,25 @@
 		CB399DCA1AA3D4200012DB43 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				66CDFDD21AF3277A00114185 /* goldstar.png */,
+				66CDFDD31AF3277A00114185 /* honorbadge.png */,
+				66CDFDD41AF3277A00114185 /* thumbsup.png */,
 				CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */,
 				CB399E0B1AA3E88B0012DB43 /* Login_bg.jpg */,
 				CBC62D621AE60FEF00572C4B /* trackPatientsIcon.png */,
 				CB529B181AAE3B6700C02E9F /* notesIcon.png */,
 				CB9AB0DD1AED5EC4006EEEBC /* newCamera.png */,
 				CB9AB0EF1AED5FC5006EEEBC /* newProfile.png */,
+				664E8C521AF9CCAD0008C7D8 /* icon_menu.png */,
+				66B4C53A1AFA915700A4FE05 /* profileimage.png */,
 				CB9AB0DF1AED5EC7006EEEBC /* newGrid.png */,
 				CB9AB0DB1AED5EBF006EEEBC /* newHeart.png */,
 				CB529B161AAE3B6200C02E9F /* taskIcon.png */,
 				CB9AB0E11AED5ECC006EEEBC /* newHome.png */,
 				CBC62D601AE60FE500572C4B /* linkPatientIcon.png */,
-				CB529B271AAF656600C02E9F /* icon_menu.png */,
 				CB529B0B1AACF99100C02E9F /* walkthrough_2.png */,
 				CB529B0D1AACF99600C02E9F /* walkthrough_1.png */,
 				CB399E071AA3E0C60012DB43 /* image_bg.png */,
-				CB529B251AAE6C4C00C02E9F /* proifleImage.png */,
 				CB529B091AACF98A00C02E9F /* walkthrough_3.png */,
 				CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */,
 				CB399E091AA3E3E80012DB43 /* Right_arrow.png */,
@@ -492,6 +539,10 @@
 			children = (
 				CB529B211AAE699E00C02E9F /* SettingsTableViewController.h */,
 				CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */,
+				66A6AAEE1AF72E7F00CBA2A1 /* ProfileViewController.h */,
+				66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */,
+				66A6AAF11AF72E9400CBA2A1 /* ProfileEditViewController.h */,
+				66A6AAF21AF72E9400CBA2A1 /* ProfileEditViewController.m */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -525,6 +576,10 @@
 			children = (
 				CBC76BB31AD30AFA004F609F /* TrackingViewController.m */,
 				CBC76BB21AD30AFA004F609F /* TrackingViewController.h */,
+				66067A0A1AF0D8BE00EC4E4F /* PCMarker.h */,
+				66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */,
+				66067A0D1AF0E6AE00EC4E4F /* CoreLocationController.h */,
+				66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */,
 			);
 			name = Tracking;
 			sourceTree = "<group>";
@@ -578,7 +633,6 @@
 				TargetAttributes = {
 					CB399D781AA3C1380012DB43 = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = GC7Z5R6UH5;
 					};
 					CB399D941AA3C1380012DB43 = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -620,6 +674,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66CDFDD71AF3277A00114185 /* thumbsup.png in Resources */,
 				CBA386841AD5C4C9000557E3 /* GoogleMaps.framework in Resources */,
 				CB399DC31AA3D35A0012DB43 /* Roboto-ThinItalic.ttf in Resources */,
 				CB9AB0DE1AED5EC4006EEEBC /* newCamera.png in Resources */,
@@ -628,10 +683,12 @@
 				CB399DC81AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				CB399E041AA3DFCA0012DB43 /* cog-tiger.tiff in Resources */,
 				CB399D8B1AA3C1380012DB43 /* Main.storyboard in Resources */,
+				66B4C53B1AFA915700A4FE05 /* profileimage.png in Resources */,
 				CB399D901AA3C1380012DB43 /* LaunchScreen.xib in Resources */,
 				CB399DC51AA3D35A0012DB43 /* RobotoCondensed-BoldItalic.ttf in Resources */,
 				CB399DC61AA3D35A0012DB43 /* RobotoCondensed-Italic.ttf in Resources */,
 				CB399DBE1AA3D35A0012DB43 /* Roboto-LightItalic.ttf in Resources */,
+				664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */,
 				CB399E0C1AA3E88B0012DB43 /* Login_bg.jpg in Resources */,
 				CB399DBA1AA3D35A0012DB43 /* Roboto-Bold.ttf in Resources */,
 				CB399DC91AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf in Resources */,
@@ -647,7 +704,6 @@
 				CBC62D611AE60FE500572C4B /* linkPatientIcon.png in Resources */,
 				CB529B191AAE3B6700C02E9F /* notesIcon.png in Resources */,
 				CB529B0C1AACF99100C02E9F /* walkthrough_2.png in Resources */,
-				CB529B261AAE6C4C00C02E9F /* proifleImage.png in Resources */,
 				CB399E051AA3DFCA0012DB43 /* cog.tiff in Resources */,
 				CBA386861AD5C68D000557E3 /* GoogleMaps.bundle in Resources */,
 				CB399DB91AA3D35A0012DB43 /* Roboto-BlackItalic.ttf in Resources */,
@@ -655,12 +711,13 @@
 				CB399DBC1AA3D35A0012DB43 /* Roboto-Italic.ttf in Resources */,
 				CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */,
 				CB529B171AAE3B6200C02E9F /* taskIcon.png in Resources */,
-				CB529B281AAF656600C02E9F /* icon_menu.png in Resources */,
 				CB399E021AA3DFCA0012DB43 /* InfoPlist.strings in Resources */,
 				CBC62D631AE60FEF00572C4B /* trackPatientsIcon.png in Resources */,
 				CB9AB0E01AED5EC7006EEEBC /* newGrid.png in Resources */,
 				CB399DC41AA3D35A0012DB43 /* RobotoCondensed-Bold.ttf in Resources */,
 				CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */,
+				66CDFDD51AF3277A00114185 /* goldstar.png in Resources */,
+				66CDFDD61AF3277A00114185 /* honorbadge.png in Resources */,
 				CB399DBB1AA3D35A0012DB43 /* Roboto-BoldItalic.ttf in Resources */,
 				CB399DBF1AA3D35A0012DB43 /* Roboto-Medium.ttf in Resources */,
 				CB9AB0E21AED5ECC006EEEBC /* newHome.png in Resources */,
@@ -691,17 +748,23 @@
 				CB399E111AA3ED540012DB43 /* RegisterViewController.m in Sources */,
 				CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */,
 				CB6431D71AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m in Sources */,
+				66A6AAF31AF72E9400CBA2A1 /* ProfileEditViewController.m in Sources */,
+				66A6AAF01AF72E7F00CBA2A1 /* ProfileViewController.m in Sources */,
 				CBC62D5F1AE5B82E00572C4B /* Settings.m in Sources */,
 				CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */,
+				66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */,
 				CBC76BBE1AD31199004F609F /* AddPatientViewController.m in Sources */,
+				66B4C5431AFA988400A4FE05 /* AboutTableViewController.m in Sources */,
 				CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */,
 				CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */,
 				CB6431DD1AE81F9E00B9EFFC /* AddNotesViewController.m in Sources */,
+				66067A0C1AF0D8BE00EC4E4F /* PCMarker.m in Sources */,
 				CBC76BB41AD30AFA004F609F /* TrackingViewController.m in Sources */,
 				CBC76BB01AD30764004F609F /* LinkPatientsTableViewController.m in Sources */,
 				CB6431D41AE6E79000B9EFFC /* CareTakerAddTaskTableViewController.m in Sources */,
 				CB399D881AA3C1380012DB43 /* ViewController.m in Sources */,
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
+				66CDFDD11AF3248000114185 /* RewardsViewController.m in Sources */,
 				CB6431E01AE8206D00B9EFFC /* ViewNotesTableViewController.m in Sources */,
 				CB6432111AEC048A00B9EFFC /* TaskTableViewCell.m in Sources */,
 				CB6432171AEC0C7C00B9EFFC /* PatientHomeTableViewController.m in Sources */,
@@ -885,12 +948,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Patient_Care/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
@@ -905,12 +969,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = Patient_Care/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "-ObjC";
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";

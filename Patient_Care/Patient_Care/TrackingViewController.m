@@ -9,53 +9,69 @@
 #import "TrackingViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
 #import "Settings.h"
+#import "PCMarker.h"
 
-@interface TrackingViewController ()
+@interface TrackingViewController () <GMSMapViewDelegate>
+
+@property(strong, nonatomic) GMSMapView *mapView;
+@property(strong, nonatomic) NSURLSession *markerSession;
+@property(strong, nonatomic) NSSet *markers;
+
 
 @end
 
-@implementation TrackingViewController{
-    GMSMapView *mapView_;
-}
+
+
+@implementation TrackingViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-
-    // Create a GMSCameraPosition that tells the map to display the
-    // coordinate -33.86,151.20 at zoom level 6.
-    GMSCameraPosition *camera = [GMSCameraPosition
-                                 cameraWithLatitude:-33.86 longitude:151.20 zoom:6];
-    mapView_ = [GMSMapView mapWithFrame:CGRectZero camera:camera];
     
-    //Controls whether the My Location dot and accuracy circle is enabled.
-    mapView_.myLocationEnabled = YES;
     
-    _mapview = mapView_;
     
-    //Controls the type of map tiles that should be displayed.
-    mapView_.mapType = kGMSTypeNormal;
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:0.00
+                                                            longitude:0.00
+                                                                 zoom:13
+                                                              bearing:0
+                                                         viewingAngle:0];
     
-    //Shows the compass button on the map
-    mapView_.settings.compassButton = YES;
+    self.mapView = [GMSMapView mapWithFrame:self.view.frame camera:camera];
+    self.mapView.delegate = self;
     
-    //Shows the my location button on the map
-    mapView_.settings.myLocationButton = YES;
+    self.mapView.mapType = kGMSTypeNormal;
     
-    //Sets the view controller to be the GMSMapView delegate
-    mapView_.delegate = self;
+    self.mapView.myLocationEnabled = YES;
+    self.mapView.settings.compassButton = YES;
+    self.mapView.settings.zoomGestures = YES;
     
-    // Creates a marker in the center of the map.
-    GMSMarker *marker = [[GMSMarker alloc] init];
-    marker.position = CLLocationCoordinate2DMake(-33.86, 151.20);
-    marker.title = @"Sydney";
-    marker.snippet = @"Australia";
-    marker.map = mapView_;
+    [self.view addSubview:self.mapView];
     
+    [self viewWillAppear:nil];
     
     
     NSLog(@"here");
 }
+
+
+
+//- (void)viewDidLoad {
+//    [super viewDidLoad];
+//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
+//                                                            longitude:151.2086
+//                                                                 zoom:6];
+//    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
+//
+//    GMSMarker *marker = [[GMSMarker alloc] init];
+//    marker.position = camera.target;
+//    marker.snippet = @"Hello World";
+//    marker.appearAnimation = kGMSMarkerAnimationPop;
+//    marker.map = mapView;
+//
+//    self.view = mapView;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -77,13 +93,19 @@
         
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
+        self.markerSession = [NSURLSession sessionWithConfiguration:configuration];
+        
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
         
         NSString *d = [patient objectForKey:@"id"];
         
         NSLog(@"%@", d);
         
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.100.150:18000/listlocations?p=%@", d]];
+//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.100.150:18000/listlocations?p=%@", d]];
+//        
+
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/listlocations?p=%@",[Settings instance].serverPorts[@"tracking"], d]];
+        
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                         
@@ -109,7 +131,7 @@
         //    NSString* time = [foo objectAtIndex: 1];
         
         
-//        NSDictionary *mapData = [[NSDictionary alloc] init ];
+        //        NSDictionary *mapData = [[NSDictionary alloc] init ];
         //    mapData = @{
         //                @"patient_id" : [Settings instance].patient_id,
         //                @"lat" : [NSString stringWithFormat:@"%f", latitude],
@@ -117,16 +139,16 @@
         //                @"date" : date,
         //                @"time" : time};
         
-//        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+        //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
         
-//        [request setHTTPBody:postData];
+        //        [request setHTTPBody:postData];
         
         NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             
-//            NSLog(@"data %@", data);
-//            
-//            NSLog(@"response %@", response);
-//            
+            //            NSLog(@"data %@", data);
+            //
+            //            NSLog(@"response %@", response);
+            //
             NSLog(@"erorr %@", error);
             
             if (!error) {
@@ -140,18 +162,28 @@
                 
                 NSError* error;
                 
+                //serializing the json response into a dictionary
+                
                 NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
                                       
                                                                      options:kNilOptions
                                       
                                                                        error:&error];
-                NSArray* latestLoans = [json objectForKey:@"locations"];
                 
                 NSLog(@"json: %@", json);
                 
+                
+                NSArray* latestLoans = [json objectForKey:@"locations"];
+                
+                [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+                    NSLog(@"main thread");
+                    [self createMarkerObjectWithJson:latestLoans];
+                }];
+
+                
                 NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
                 
-//                NSLog(@"str %@", newStr);
+                //                NSLog(@"str %@", newStr);
                 
                 
                 // 304 couldn't be found
@@ -190,7 +222,7 @@
                     
                 });
                 
-               
+                
                 
             }
             
@@ -203,17 +235,57 @@
     
 }
 
+-(void)createMarkerObjectWithJson:(NSArray *)markers{
+
+    NSMutableSet *mutableMarkers = [NSMutableSet setWithSet:self.markers];
+    
+    for (NSDictionary *markerData in markers){
+        
+//        GMSMarker *newMarker = [[GMSMarker alloc]init];
+        
+        PCMarker *newMarker = [[PCMarker alloc]init];
+        newMarker.gpsId = [markerData[@"gps_id"] stringValue];
+//        NSLog(@"gpsid - %@", newMarker.gpsId);
+        
+        newMarker.position = CLLocationCoordinate2DMake([markerData[@"lat"] doubleValue], [markerData[@"long"] doubleValue]);
+        
+        newMarker.title = markerData[@"date"];
+        newMarker.snippet = markerData[@"time"];
+        
+        newMarker.map = nil;
+        
+        [mutableMarkers addObject:newMarker];
+    }
+    self.markers = [mutableMarkers copy];
+    
+    NSLog(@"%@", mutableMarkers);
+    
+    [self drawMarkers];
+}
+
+
+-(void)drawMarkers {
+    
+    for(PCMarker *marker in self.markers){
+        
+        if(marker.map ==nil){
+            NSLog(@"drawing markers");
+            marker.map = self.mapView;
+        }
+        
+    }
+}
 
 
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end

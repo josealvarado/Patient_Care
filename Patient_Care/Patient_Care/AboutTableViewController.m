@@ -1,31 +1,36 @@
 //
-//  SettingsTableViewController.m
+//  AboutTableViewController.m
 //  Patient_Care
 //
-//  Created by Jose Alvarado on 3/9/15.
+//  Created by Paresh on 06/05/15.
 //  Copyright (c) 2015 JoseAlvarado. All rights reserved.
 //
 
-#import "SettingsTableViewController.h"
-#import "Settings.h"
+#import "AboutTableViewController.h"
 
-@interface SettingsTableViewController ()
+@interface AboutTableViewController ()
 
 @end
 
-@implementation SettingsTableViewController
+@implementation AboutTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
+    
+    self.aboutLabel.text = @"PatientCare will provide a platform to organize tasks, real time setting and logging activities for patients with minimal communication.";
+    
+    self.supportLabel.text = @"Support";
+    
+    self.termsOfUse.text = @"TermsOfUse";
+    
+    self.privacyPolicyLabel.text = @"Privacy Policy";
+    }
 
 -(void)viewDidLayoutSubviews
 {
@@ -49,32 +54,24 @@
     }
 }
 
-
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
-{
-    NSLog(@"patient id - %@", [Settings instance].patient_id);
-    NSLog(@"index section %d", indexPath.section);
-    if (indexPath.section == 0) {
-        
-        if([Settings instance].patient_id == NULL){
-            NSLog(@"inside if ------ ");
-            if (indexPath.row == 4) {
-                return 0;
-            }
-        }
-        if(indexPath.row == 0){
-            return 90;
-        }
-    }
-    return 44;
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Table view data source
+
+
+
+/*
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    
+    // Configure the cell...
+    
+    return cell;
+}
+*/
 
 /*
 // Override to support conditional editing of the table view.

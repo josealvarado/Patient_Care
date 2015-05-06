@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(print_Message)];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -39,6 +42,19 @@
     }
     
     [locationManager startUpdatingLocation];
+}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = NSLocalizedString(@"Home", @"Home");
+        self.tabBarItem.image = [UIImage imageNamed:@"icon_menu.png"];
+    }
+    return self;
+}
+
+-(void)print_Message {
+    
 }
 
 - (void)requestAlwaysAuthorization
@@ -102,13 +118,14 @@
     latitude = manager.location.coordinate.latitude;
     longitude = manager.location.coordinate.longitude;
     
-    NSLog(@"IN METHOD 3: %f, %f", latitude, longitude);
+//    NSLog(@"IN METHOD 3: %f, %f", latitude, longitude);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"3 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"3 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
     
-    [alert show];
+//    [alert show];
 }
 
+//this works.
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
     currentLocation = [locations objectAtIndex:0];
@@ -119,9 +136,9 @@
     
     NSLog(@"MAYBE IN METHOD 2: %f, %f", latitude, longitude);
     
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"2 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    [alert show];
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"2 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//    
+//    [alert show];
 }
 
 
@@ -147,6 +164,7 @@
 //}
 
 //------------ Current Location Address-----
+//better one
 -(void)CurrentLocationIdentifier
 {
     
@@ -158,10 +176,10 @@
     float longitude = locationManager.location.coordinate.longitude;
     
     NSLog(@"%f, %f", latitude, longitude);
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"1 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                                          
-    [alert show];
+//    
+//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"GPS Info" message:[NSString stringWithFormat:@"1 %f, %f", latitude, longitude] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+//                                          
+//    [alert show];
     
     NSError *error;
     
@@ -169,7 +187,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:18000"];
+    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"tracking"]];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     

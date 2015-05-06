@@ -8,14 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddPatientViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, NSURLSessionDataDelegate>{
+@interface AddPatientViewController : UIViewController<UITableViewDelegate, UITableViewDataSource, NSURLSessionDataDelegate, UITextFieldDelegate>{
     
+
     
     NSMutableArray *patients;
     
     int selected;
     
     NSMutableDictionary *returnedPatient;
+    
+    
 }
 
 - (IBAction)searchButtonPressed:(id)sender;
@@ -23,5 +26,8 @@
 - (IBAction)addPatientButtonPressed:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UITextField *seachTextField;
+@property (weak, nonatomic) IBOutlet UILabel *relationLabel;
+@property (weak, nonatomic) IBOutlet UITextField *relationTextField;
+
 
 @end

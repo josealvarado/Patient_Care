@@ -10,6 +10,9 @@
 
 @implementation Settings
 
+
+
+
 + (Settings *)instance {
     static Settings *_sharedClient = nil;
     static dispatch_once_t onceToken;
