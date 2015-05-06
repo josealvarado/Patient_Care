@@ -71,6 +71,9 @@
         //    NSString* date = [foo objectAtIndex: 0];
         //    NSString* time = [foo objectAtIndex: 1];
         
+        int thumbsup = 10;
+        int goldStar = 50;
+        int honorBadge = 100;
         
         
         int completedPoints = (int)[Settings instance].completedTasksCount;
@@ -96,7 +99,19 @@
         [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
         NSString *resultString = [dateFormatter stringFromDate: currentTime];
         
+        
+        int tempPoints = 0;
+        
         if (completedPoints + 1 == totalPoints) {
+            
+            tempPoints = 10;
+            
+            [Settings instance].rewardPoints = [Settings instance].rewardPoints + tempPoints;
+            
+            totalPoints = [Settings instance].rewardPoints;
+            
+            
+            
             mapData = [[NSDictionary alloc] init ];
             
             if ((int)[_taskInfo objectForKey:@"recurrent"] == 1){
@@ -126,13 +141,7 @@
                             @"status": @"complete"};
             }
             
-            
         }
-        
-        
-        
-        //
-        
         
         NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
         

@@ -35,8 +35,23 @@
          (UIUserNotificationTypeBadge | UIUserNotificationTypeSound | UIUserNotificationTypeAlert)];
     }
     
+    [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
+    [self.window setBackgroundColor:[UIColor whiteColor]];
+
+    
+    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:208.0/255.0 green:2.0/255.0 blue:27.0/255.0 alpha:1.0]];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+    
+    [[UIApplication sharedApplication] setStatusBarStyle: UIStatusBarStyleLightContent];
+    
+    //set back button arrow color
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
     return YES;
 }
+
+
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     NSLog(@"deviceToken from appdelegate: %@", deviceToken);

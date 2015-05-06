@@ -10,5 +10,7 @@
 
 @interface RewardsViewController : ViewController
 @property (weak, nonatomic) IBOutlet UIImageView *rewardsImage;
+@property (strong, nonatomic) IBOutlet UILabel *rewardsPointsLabel;
 
+@property(nonatomic) int intRewardPoints;
 @end

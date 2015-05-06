@@ -19,6 +19,7 @@
     [super viewDidLoad];
     
     
+    
     [Settings instance].serverPorts = [NSDictionary dictionaryWithObjectsAndKeys:
                                        
                                        @"http://52.11.100.150:14000", @"registration",

@@ -19,6 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(print_Message)];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -39,6 +42,19 @@
     }
     
     [locationManager startUpdatingLocation];
+}
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        self.title = NSLocalizedString(@"Home", @"Home");
+        self.tabBarItem.image = [UIImage imageNamed:@"icon_menu.png"];
+    }
+    return self;
+}
+
+-(void)print_Message {
+    
 }
 
 - (void)requestAlwaysAuthorization

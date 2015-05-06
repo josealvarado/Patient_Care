@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g0R-Gx-2s5">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -16,6 +15,7 @@
             <string>Roboto-Light</string>
         </mutableArray>
         <mutableArray key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
             <string>Roboto-Medium</string>
@@ -115,26 +115,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations, User! You earned" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrt-hl-GeP">
-                                <rect key="frame" x="169" y="104" width="263" height="57"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations, User! You earned" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hrt-hl-GeP">
+                                <rect key="frame" x="169" y="104" width="263" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nI6-ZU-smg">
-                                <rect key="frame" x="85" y="198" width="431" height="230"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="thumbsup.png" translatesAutoresizingMaskIntoConstraints="NO" id="nI6-ZU-smg">
+                                <rect key="frame" x="197" y="163" width="206" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="206" id="15q-wG-aIg"/>
+                                    <constraint firstAttribute="width" constant="206" id="3C0-2k-N6c"/>
+                                    <constraint firstAttribute="height" constant="259.66000000000003" id="JGX-a7-lLs"/>
+                                    <constraint firstAttribute="width" secondItem="nI6-ZU-smg" secondAttribute="height" multiplier="103:130" id="pVW-1e-Cdu"/>
+                                    <constraint firstAttribute="height" constant="260" id="wM7-4M-qST"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="15q-wG-aIg"/>
+                                        <exclude reference="JGX-a7-lLs"/>
+                                        <exclude reference="pVW-1e-Cdu"/>
+                                    </mask>
+                                </variation>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="points" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2eP-2w-fIN">
+                                <rect key="frame" x="258" y="508" width="84" height="36"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="30"/>
+                                <color key="textColor" red="0.91764705879999997" green="0.1058823529" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2eP-2w-fIN" firstAttribute="top" secondItem="nI6-ZU-smg" secondAttribute="bottom" constant="54" id="2Ud-pl-oqx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="nI6-ZU-smg" secondAttribute="trailing" constant="181" id="5Eh-hl-yGp"/>
+                            <constraint firstItem="kte-oi-XkR" firstAttribute="top" secondItem="2eP-2w-fIN" secondAttribute="bottom" constant="56" id="7l6-nu-S0t"/>
+                            <constraint firstItem="nI6-ZU-smg" firstAttribute="top" secondItem="Hrt-hl-GeP" secondAttribute="bottom" constant="38" id="8JI-JH-bN0"/>
+                            <constraint firstItem="2eP-2w-fIN" firstAttribute="top" secondItem="nI6-ZU-smg" secondAttribute="bottom" constant="54" id="B3u-Hg-H2K"/>
+                            <constraint firstAttribute="centerX" secondItem="nI6-ZU-smg" secondAttribute="centerX" id="DZ6-0u-DSR"/>
+                            <constraint firstItem="Hrt-hl-GeP" firstAttribute="top" secondItem="w6B-DA-aLT" secondAttribute="bottom" constant="40" id="EAd-iK-C7N"/>
+                            <constraint firstAttribute="centerX" secondItem="2eP-2w-fIN" secondAttribute="centerX" id="Nb1-ld-i4W"/>
+                            <constraint firstAttribute="centerX" secondItem="nI6-ZU-smg" secondAttribute="centerX" id="SgH-qu-0fD"/>
+                            <constraint firstAttribute="centerX" secondItem="2eP-2w-fIN" secondAttribute="centerX" id="XxJ-ga-bYu"/>
+                            <constraint firstItem="nI6-ZU-smg" firstAttribute="top" secondItem="Hrt-hl-GeP" secondAttribute="bottom" constant="78" id="fWb-5D-fD5"/>
+                            <constraint firstAttribute="centerX" secondItem="Hrt-hl-GeP" secondAttribute="centerX" id="hmZ-Qr-e85"/>
+                            <constraint firstItem="2eP-2w-fIN" firstAttribute="top" secondItem="nI6-ZU-smg" secondAttribute="bottom" constant="85" id="kMr-J2-tRC"/>
+                            <constraint firstItem="2eP-2w-fIN" firstAttribute="leading" secondItem="hlG-PG-Kiy" secondAttribute="leadingMargin" constant="131" id="mqg-aY-7d7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5Eh-hl-yGp"/>
+                                <exclude reference="DZ6-0u-DSR"/>
+                                <exclude reference="fWb-5D-fD5"/>
+                                <exclude reference="2Ud-pl-oqx"/>
+                                <exclude reference="B3u-Hg-H2K"/>
+                                <exclude reference="XxJ-ga-bYu"/>
+                                <exclude reference="mqg-aY-7d7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Rewards" id="WUp-7k-LTw"/>
                     <connections>
                         <outlet property="rewardsImage" destination="nI6-ZU-smg" id="2PZ-M8-c8E"/>
+                        <outlet property="rewardsPointsLabel" destination="2eP-2w-fIN" id="KbC-9Z-F43"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ffF-4G-t5I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6266" y="-3185"/>
+            <point key="canvasLocation" x="4431" y="-1025"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="ljO-LK-Lsp">
@@ -313,10 +361,11 @@
         <scene sceneID="jYr-G4-3BO">
             <objects>
                 <tableViewController id="Ra2-2M-kZO" customClass="SettingsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZRs-1m-oVV">
+                    <tableView key="view" autoresizesSubviews="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZRs-1m-oVV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                         <sections>
                             <tableViewSection id="R9d-tV-RiV">
                                 <cells>
@@ -408,6 +457,23 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="nZy-YW-MXa" kind="show" id="Jr5-US-cQB"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="PHz-pT-kwn" style="IBUITableViewCellStyleDefault" id="TOK-Yg-rtZ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TOK-Yg-rtZ" id="qBZ-Ce-wOT">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Rewards" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="PHz-pT-kwn">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="R35-PO-2Ux" kind="show" id="fjb-q9-Wa2"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="XvF-yJ-bc1" style="IBUITableViewCellStyleDefault" id="8Vw-PB-yTj">
@@ -782,7 +848,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WOh-N4-4Uv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4207" y="-937"/>
+            <point key="canvasLocation" x="3701" y="-439"/>
         </scene>
         <!--Home-->
         <scene sceneID="9rq-Ff-35d">
@@ -844,9 +910,8 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="tiO-od-O2R">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" width="48" style="plain" id="sAb-cM-rcG" colorLabel="IBBuiltInLabel-Red">
-                            <inset key="imageInsets" minX="0.0" minY="13" maxX="1" maxY="0.0"/>
-                            <color key="tintColor" red="0.91764705879999997" green="0.1058823529" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <barButtonItem key="leftBarButtonItem" image="icon_menu.png" width="48" style="plain" id="sAb-cM-rcG" colorLabel="IBBuiltInLabel-Red">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <segue destination="Ra2-2M-kZO" kind="show" id="Ji0-xB-zGn"/>
                             </connections>
@@ -1155,7 +1220,7 @@
         <scene sceneID="AEj-bx-hHl">
             <objects>
                 <tableViewController id="ZO1-bj-3OC" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ClL-Qi-1UT">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ClL-Qi-1UT">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1277,7 +1342,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Home" id="d6a-Kh-s7A">
-                        <barButtonItem key="leftBarButtonItem" title="Menu" style="plain" id="suO-RR-Fqp">
+                        <barButtonItem key="leftBarButtonItem" image="icon_menu.png" style="plain" id="suO-RR-Fqp">
                             <connections>
                                 <segue destination="Ra2-2M-kZO" kind="show" id="Bk3-Cz-2FX"/>
                             </connections>
@@ -2797,48 +2862,27 @@
             </objects>
             <point key="canvasLocation" x="2277" y="1277"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="8eb-YR-V9Y">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q5n-92-lgF" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ZfX-zM-5wo">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="R35-PO-2Ux" kind="relationship" relationship="rootViewController" id="8e2-HM-xc4"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BPb-aB-fat" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5454" y="-3185"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Login_bg.jpg" width="1242" height="1381"/>
         <image name="Right_arrow.png" width="70" height="75"/>
+        <image name="icon_menu.png" width="22" height="15"/>
         <image name="left_arrow_black.png" width="72" height="77"/>
         <image name="linkPatientIcon.png" width="1114" height="348"/>
         <image name="notesIcon.png" width="1082" height="303"/>
         <image name="taskIcon.png" width="1082" height="303"/>
+        <image name="thumbsup.png" width="630" height="783"/>
         <image name="trackPatientsIcon.png" width="1114" height="348"/>
         <image name="walkthrough_1.png" width="1242" height="1727"/>
         <image name="walkthrough_2.png" width="1242" height="1727"/>
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uuJ-1C-EVG"/>
-        <segue reference="4DK-A5-twq"/>
-        <segue reference="34d-2c-rq9"/>
-        <segue reference="5N9-ac-3L7"/>
         <segue reference="Bk3-Cz-2FX"/>
-        <segue reference="5N9-ac-3L7"/>
-        <segue reference="1yx-kE-avD"/>
-        <segue reference="ZB5-BO-800"/>
-        <segue reference="uuJ-1C-EVG"/>
-        <segue reference="Ji0-xB-zGn"/>
+        <segue reference="biy-go-W20"/>
+        <segue reference="ghw-Hs-OU8"/>
+        <segue reference="4DK-A5-twq"/>
+        <segue reference="W1O-gl-mbN"/>
         <segue reference="mYT-E5-xby"/>
     </inferredMetricsTieBreakers>
 </document>
