@@ -32,7 +32,7 @@
     
     self.editFirstNameTextField.text = [Settings instance].first_name;
     self.editLastNameTextField.text = [Settings instance].last_name;
-    
+    self.profileEditImage.image = [Settings instance].profileImage;
     // Do any additional setup after loading the view.
 }
 

@@ -22,6 +22,8 @@
 //    self.stRewardPoints = self.rewardsPointsLabel.text;
     [self assignRewardBadge];
     self.intRewardPoints = [Settings instance].rewardPoints;
+//    self.intRewardPoints = 10;
+    [Settings instance].rewardPoints = 10;
     self.rewardsPointsLabel.text = [NSString stringWithFormat:@"TOTAL POINTS %d", self.intRewardPoints];
     
     // Do any additional setup after loading the view.
@@ -30,7 +32,7 @@
 -(void)assignRewardBadge{
     if([Settings instance].rewardPoints == 10){
         self.rewardsImage.image = [UIImage imageNamed:@"thumbsup.png"];
-    } else if([Settings instance].rewardPoints == 0){
+    } else if([Settings instance].rewardPoints == 50){
         self.rewardsImage.image = [UIImage imageNamed:@"goldstar.png"];
     } else if([Settings instance].rewardPoints == 100){
         self.rewardsImage.image = [UIImage imageNamed:@"honorbadge.png"];

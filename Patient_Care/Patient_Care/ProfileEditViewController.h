@@ -20,6 +20,7 @@
     IBOutlet UITextField *editFirstNameTextField;
 }
 
+@property (strong, nonatomic) IBOutlet UIImageView *profileEditImage;
 
 @property(nonatomic, assign) id <ProfileEditViewControllerDelegate> delegate;
 @property (strong, nonatomic) IBOutlet UITextField *editLastNameTextField;

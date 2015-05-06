@@ -127,6 +127,8 @@
                             @"points": [NSString stringWithFormat:@"%d", totalPoints]};
             }
             
+            NSLog(@"points json - %@", mapData);
+            
             
         } else {
             mapData = [[NSDictionary alloc] init ];

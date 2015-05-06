@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 JoseAlvarado. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
 @interface Settings : NSObject
@@ -31,6 +32,8 @@
 @property (nonatomic) NSString *first_name;
 @property (nonatomic) NSString *last_name;
 @property (nonatomic) NSString *phone_number;
+
+@property (nonatomic) UIImage *profileImage;
 
 
 @property (strong, nonatomic) NSMutableArray *notes;

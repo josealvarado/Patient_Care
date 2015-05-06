@@ -12,6 +12,7 @@
 
 @interface ProfileViewController : UIViewController <ProfileEditViewControllerDelegate>{
     
+    IBOutlet UIImageView *profileImage;
     IBOutlet UILabel *lastNameLabel;
     IBOutlet UILabel *firstNameLabel;
 }
@@ -19,6 +20,7 @@
 
 @property (strong, nonatomic) IBOutlet UILabel *lastNameLabel;
 @property (strong, nonatomic) IBOutlet UILabel *firstNameLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *profileImage;
 
 
 @end

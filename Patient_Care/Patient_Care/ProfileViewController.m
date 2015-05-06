@@ -35,6 +35,7 @@
     
     self.firstNameLabel.text = firstName;
     self.lastNameLabel.text = lastName;
+    
 }
 
 
@@ -43,7 +44,9 @@
     
     self.firstNameLabel.text = [Settings instance].first_name;
     self.lastNameLabel.text = [Settings instance].last_name;
-
+    
+    self.profileImage.image = [UIImage imageNamed:@"profileimage"];
+    [Settings instance].profileImage = self.profileImage.image;
     // Do any additional setup after loading the view.
 }
 
