@@ -30,7 +30,7 @@
 -(void)assignRewardBadge{
     if([Settings instance].rewardPoints == 10){
         self.rewardsImage.image = [UIImage imageNamed:@"thumbsup.png"];
-    } else if([Settings instance].rewardPoints == 50){
+    } else if([Settings instance].rewardPoints == 0){
         self.rewardsImage.image = [UIImage imageNamed:@"goldstar.png"];
     } else if([Settings instance].rewardPoints == 100){
         self.rewardsImage.image = [UIImage imageNamed:@"honorbadge.png"];

@@ -34,6 +34,7 @@
                                        
                                        @"http://52.11.100.150:19000", @"notes", nil];
     
+    [Settings instance].rewardPoints = 0;
     
     // Do any additional setup after loading the view, typically from a nib.
     

@@ -108,7 +108,7 @@
             
             [Settings instance].rewardPoints = [Settings instance].rewardPoints + tempPoints;
             
-            totalPoints = [Settings instance].rewardPoints;
+            totalPoints = 10;
             
             
             

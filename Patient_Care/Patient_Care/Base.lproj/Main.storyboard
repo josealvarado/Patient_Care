@@ -518,6 +518,9 @@
                     <navigationItem key="navigationItem" title="Settings" id="EGE-WN-HEf">
                         <barButtonItem key="backBarButtonItem" title="Settings" id="Xjn-bA-xqQ"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="rewardsViewCell" destination="TOK-Yg-rtZ" id="0vr-gX-05N"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfe-4C-tb6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

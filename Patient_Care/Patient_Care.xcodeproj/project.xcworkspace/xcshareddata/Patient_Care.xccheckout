@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>38ECEB9E-73D5-43A7-A824-37FFDF39C4B8</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>Patient_Care</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>721E80E8A0747478D198AF5285F31B4C7DCB1F62</key>
 		<string>https://github.com/josealvarado/Patient_Care.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>Patient_Care/Patient_Care.xcodeproj/project.xcworkspace</string>
+	<string>Patient_Care/Patient_Care.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>721E80E8A0747478D198AF5285F31B4C7DCB1F62</key>
