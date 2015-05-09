@@ -213,7 +213,8 @@
         mapData = @{@"patient_id": patientID,
                     @"caretaker_id": [Settings instance].caretaker_id,
                     @"task": [Settings instance].task_name,
-                    @"date": date, @"time": time};
+                    @"date": date, @"time": time,
+                    @"recurrent": @"0"};
     } else {
         mapData = @{@"patient_id": patientID,
                     @"caretaker_id": [Settings instance].caretaker_id,
@@ -221,6 +222,8 @@
                     @"date": date, @"time": time,
                     @"recurrent": @"1"};
     }
+    
+    NSLog(@"ADDING A TASK %@", mapData);
     
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
@@ -342,6 +345,11 @@
     }];
     
     [postDataTask resume];
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
+{
+    return 80;
 }
 
 @end

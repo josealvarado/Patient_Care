@@ -222,6 +222,8 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Select a patient" message:@"Select a patient" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                         
         [alert show];
+        
+        return;
     } else {
         [self.navigationController popViewControllerAnimated:YES];
     }
