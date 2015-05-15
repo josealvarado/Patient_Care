@@ -1356,6 +1356,29 @@
                                             <segue destination="7I9-yM-yhA" kind="show" id="lme-TQ-4Mc"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="oVw-6Y-jo4">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVw-6Y-jo4" id="JSN-uu-r6D">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="trackPatientsIcon.png" translatesAutoresizingMaskIntoConstraints="NO" id="DM8-wH-ewr">
+                                                    <rect key="frame" x="22" y="0.0" width="556" height="173"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="DM8-wH-ewr" secondAttribute="height" multiplier="556:173" id="WI2-d4-Yqv"/>
+                                                    </constraints>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="DM8-wH-ewr" secondAttribute="centerX" id="NQ7-yE-Qhu"/>
+                                                <constraint firstAttribute="trailing" secondItem="DM8-wH-ewr" secondAttribute="trailing" constant="22" id="UF6-Rk-OdG"/>
+                                                <constraint firstItem="DM8-wH-ewr" firstAttribute="leading" secondItem="JSN-uu-r6D" secondAttribute="leading" constant="22" id="kdP-Y2-VMg"/>
+                                                <constraint firstItem="DM8-wH-ewr" firstAttribute="top" secondItem="JSN-uu-r6D" secondAttribute="top" id="lti-qB-pII"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="iJ3-eC-pSM" kind="show" id="HRi-xN-uJi"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -1375,6 +1398,33 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wc9-N1-QI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4355" y="545"/>
+        </scene>
+        <!--Patient List-->
+        <scene sceneID="cnD-8L-Ymu">
+            <objects>
+                <tableViewController id="iJ3-eC-pSM" customClass="ListPatientsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="eQZ-5k-Ol8">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPatientCell" id="oPp-YP-zPw">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oPp-YP-zPw" id="916-uR-Xfu">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="iJ3-eC-pSM" id="Edz-19-JHk"/>
+                            <outlet property="delegate" destination="iJ3-eC-pSM" id="dDt-S6-mkM"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Patient List" id="jQc-za-Gfq"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqd-nV-PTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4049" y="1282"/>
         </scene>
         <!--Track Patients-->
         <scene sceneID="11f-zQ-8Ca">

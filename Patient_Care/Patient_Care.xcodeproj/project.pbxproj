@@ -15,6 +15,8 @@
 		66B4C53B1AFA915700A4FE05 /* profileimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 66B4C53A1AFA915700A4FE05 /* profileimage.png */; };
 		66B4C5431AFA988400A4FE05 /* AboutTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */; };
 		66CDFDD11AF3248000114185 /* RewardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66CDFDD01AF3248000114185 /* RewardsViewController.m */; };
+		66F57C751B05D86C00E53296 /* ListPatientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F57C741B05D86C00E53296 /* ListPatientsTableViewController.m */; };
+		66F57C781B05D95A00E53296 /* ListPatientTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 66F57C771B05D95A00E53296 /* ListPatientTableViewCell.m */; };
 		CB399D7F1AA3C1380012DB43 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D7E1AA3C1380012DB43 /* main.m */; };
 		CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CB399D811AA3C1380012DB43 /* AppDelegate.m */; };
 		CB399D851AA3C1380012DB43 /* Patient_Care.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB399D831AA3C1380012DB43 /* Patient_Care.xcdatamodeld */; };
@@ -125,6 +127,10 @@
 		66B4C5421AFA988400A4FE05 /* AboutTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutTableViewController.m; sourceTree = "<group>"; };
 		66CDFDCF1AF3248000114185 /* RewardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RewardsViewController.h; sourceTree = "<group>"; };
 		66CDFDD01AF3248000114185 /* RewardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RewardsViewController.m; sourceTree = "<group>"; };
+		66F57C731B05D86C00E53296 /* ListPatientsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListPatientsTableViewController.h; sourceTree = "<group>"; };
+		66F57C741B05D86C00E53296 /* ListPatientsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListPatientsTableViewController.m; sourceTree = "<group>"; };
+		66F57C761B05D95A00E53296 /* ListPatientTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListPatientTableViewCell.h; sourceTree = "<group>"; };
+		66F57C771B05D95A00E53296 /* ListPatientTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListPatientTableViewCell.m; sourceTree = "<group>"; };
 		CB399D791AA3C1380012DB43 /* Patient_Care.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Patient_Care.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB399D7D1AA3C1380012DB43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CB399D7E1AA3C1380012DB43 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -308,6 +314,17 @@
 			name = Rewards;
 			sourceTree = "<group>";
 		};
+		66F57C721B05D83F00E53296 /* PatientList */ = {
+			isa = PBXGroup;
+			children = (
+				66F57C731B05D86C00E53296 /* ListPatientsTableViewController.h */,
+				66F57C741B05D86C00E53296 /* ListPatientsTableViewController.m */,
+				66F57C761B05D95A00E53296 /* ListPatientTableViewCell.h */,
+				66F57C771B05D95A00E53296 /* ListPatientTableViewCell.m */,
+			);
+			name = PatientList;
+			sourceTree = "<group>";
+		};
 		CB399D701AA3C1380012DB43 = {
 			isa = PBXGroup;
 			children = (
@@ -344,6 +361,7 @@
 		CB399D7B1AA3C1380012DB43 /* Patient_Care */ = {
 			isa = PBXGroup;
 			children = (
+				66F57C721B05D83F00E53296 /* PatientList */,
 				66B4C53D1AFA982700A4FE05 /* About */,
 				66CDFDCB1AF320FE00114185 /* Rewards */,
 				CB399D801AA3C1380012DB43 /* AppDelegate.h */,
@@ -738,9 +756,11 @@
 				CB6431D71AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m in Sources */,
 				66A6AAF31AF72E9400CBA2A1 /* ProfileEditViewController.m in Sources */,
 				66A6AAF01AF72E7F00CBA2A1 /* ProfileViewController.m in Sources */,
+				66F57C781B05D95A00E53296 /* ListPatientTableViewCell.m in Sources */,
 				CBC62D5F1AE5B82E00572C4B /* Settings.m in Sources */,
 				CB399D821AA3C1380012DB43 /* AppDelegate.m in Sources */,
 				66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */,
+				66F57C751B05D86C00E53296 /* ListPatientsTableViewController.m in Sources */,
 				CBC76BBE1AD31199004F609F /* AddPatientViewController.m in Sources */,
 				66B4C5431AFA988400A4FE05 /* AboutTableViewController.m in Sources */,
 				CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */,
