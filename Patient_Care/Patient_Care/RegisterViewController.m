@@ -139,7 +139,7 @@
 //                        // etc.
 //                        };
     
-    
+    NSLog(@"REGISTRATION JSON %@", mapData);
     
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     [request setHTTPBody:postData];

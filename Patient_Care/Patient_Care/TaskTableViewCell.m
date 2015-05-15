@@ -71,10 +71,6 @@
         //    NSString* date = [foo objectAtIndex: 0];
         //    NSString* time = [foo objectAtIndex: 1];
         
-        int thumbsup = 10;
-        int goldStar = 50;
-        int honorBadge = 100;
-        
         
         int completedPoints = (int)[Settings instance].completedTasksCount;
         int totalPoints = (int)[Settings instance].assignedTasksCount;
@@ -102,6 +98,8 @@
         
         int tempPoints = 0;
         
+        NSString *careTakerId = [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"];
+        
         if (completedPoints + 1 == totalPoints) {
             
             tempPoints = 10;
@@ -114,16 +112,20 @@
             
             mapData = [[NSDictionary alloc] init ];
             
+            
+            
             if ((int)[_taskInfo objectForKey:@"recurrent"] == 1){
                 mapData = @{@"id": [_taskInfo objectForKey:@"id"],
                             @"status": @"complete",
                             @"patient_id": [Settings instance].patient_id,
+                            @"caretaker_id": careTakerId,
                             @"status": resultString,
                             @"points": [NSString stringWithFormat:@"%d", totalPoints]};
             } else {
                 mapData = @{@"id": [_taskInfo objectForKey:@"id"],
                             @"status": @"complete",
                             @"patient_id": [Settings instance].patient_id,
+                            @"caretaker_id": careTakerId,
                             @"points": [NSString stringWithFormat:@"%d", totalPoints]};
             }
             
@@ -136,10 +138,12 @@
             if ((int)[_taskInfo objectForKey:@"recurrent"] == 1){
                 mapData = @{@"id": [_taskInfo objectForKey:@"id"],
                             @"patient_id": [Settings instance].patient_id,
+                            @"caretaker_id": careTakerId,
                             @"status": resultString};
             } else {
                 mapData = @{@"id": [_taskInfo objectForKey:@"id"],
                             @"patient_id": [Settings instance].patient_id,
+                            @"caretaker_id": careTakerId,
                             @"status": @"complete"};
             }
             

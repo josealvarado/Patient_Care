@@ -32,9 +32,9 @@
     
     
     
-    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:0.00
-                                                            longitude:0.00
-                                                                 zoom:13
+    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.774929
+                                                            longitude:-122.419416
+                                                                 zoom:12
                                                               bearing:0
                                                          viewingAngle:0];
     
