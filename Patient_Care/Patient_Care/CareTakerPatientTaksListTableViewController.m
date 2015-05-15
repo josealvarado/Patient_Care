@@ -1,46 +1,72 @@
 //
-//  ListPatientsTableViewController.m
+//  CareTakerPatientTaksListTableViewController.m
 //  Patient_Care
 //
 //  Created by Paresh on 15/05/15.
 //  Copyright (c) 2015 JoseAlvarado. All rights reserved.
 //
 
-#import "ListPatientsTableViewController.h"
+#import "CareTakerPatientTaksListTableViewController.h"
 #import "Settings.h"
-#import "ListPatientTableViewCell.h"
 
-@interface ListPatientsTableViewController ()
+@interface CareTakerPatientTaksListTableViewController ()
 
 @end
 
-@implementation ListPatientsTableViewController
+@implementation CareTakerPatientTaksListTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[ListPatientTableViewCell class] forCellReuseIdentifier:@"GetListPatientCell"];
+    
+    
+    tasks = [[NSMutableArray alloc] init];
+
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
 }
 
-- (void)viewWillAppear:(BOOL)animated{
-    // Todo
+- (void) viewWillAppear:(BOOL)animated  {
+    [super viewWillAppear:animated];
     
+    [self getLatestTasks];
     
-    NSError *error;
+}
+
+- (void)getLatestTasks {
+    
+    NSDictionary *selectedPatient = [Settings instance].selectedPatient;
+    NSString *patientID = [selectedPatient objectForKey:@"id"];
+    
+//    NSMutableArray *patientList = [Settings instance].patient_list;
+//    
+//    NSDictionary *patient = [patientList objectAtIndex:4];
+//        
+//    NSString *pID = [patient objectForKey:@"id"];
+    
+//    NSMutableArray *caretakerList = [Settings instance].caretaker_list;
+//    
+//    NSDictionary *caretaker = [caretakerList objectAtIndex:4];
+//    
+//    NSString *cID = [caretaker objectForKey:@"id"];
+//    
+    
+    NSString *caretakerID = [[Settings instance].caretaker objectForKey:@"id"];
+    
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listmyusers?q=%@&r=%@",[Settings instance].serverPorts[@"linkpatients"], [Settings instance].caretaker_id, [Settings instance].role];
+    NSLog(@"patientID %@, caretakerID %@", patientID, caretakerID);
+    
+    NSString *params = [NSString stringWithFormat:@"%@/listtasks?c=%@&p=%@", [Settings instance].serverPorts[@"tasks"], caretakerID, patientID];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -55,13 +81,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    //
-    //        NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //        mapData = @{@"emailaddress" : _seachTextField.text};
-    
-    //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    
-    //        [request setHTTPBody:postData];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -88,7 +107,6 @@
                                                                  options:kNilOptions
                                   
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
             NSLog(@"json: %@", json);
             
@@ -100,43 +118,36 @@
             
             if (status_code == 202) {
                 
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
                 
+                tasks = [json objectForKey:@"tasks"];
                 
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
+                for (int i = 0; i < tasks.count; i++) {
+                    
+                    NSDictionary *task = [tasks objectAtIndex: i];
+                    
+                    
+                }
                 
-                NSArray *ppp = [json objectForKey:@"users"];
+                int count = (int)[tasks count];
                 
-                
+                [Settings instance].assignedTasksCount = count;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    patients = [ppp mutableCopy];
+                    NSLog(@"in here with %lu", (unsigned long)[tasks count]);
                     
-                    [Settings instance].patient_list = patients;
-                    
-                    //                    [patients removeAllObjects];
-                    //                    [patients addObject:json];
-                    
-                    
-                    //                    // Assuming you've added the table view as a subview to the current view controller
-                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
                     
                     [self.tableView reloadData];
                     
                 });
                 
-                
-                
-                
-                
             } else {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
                                           
-                                                                    message:@"Something did not work"
+                                                                    message:@"Failed to get tasks"
                                           
                                                                    delegate:nil
                                           
@@ -146,12 +157,12 @@
                     
                     [alert show];
                     
+                    
                 });
                 
-                
-                
             }
-        } else {
+        }
+    else {
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
@@ -167,18 +178,15 @@
                 
                 [alert show];
                 
+                
             });
-            
-            NSLog(@"what?");
-            
             
         }
         
     }];
     
     [postDataTask resume];
-    
-    
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -196,97 +204,43 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [patients count];
+    return [tasks count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    static NSString *CellIdentifier = @"GotoDetailsView";
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"ListPatientTaskTableViewCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    NSDictionary *profile = [[patients objectAtIndex:indexPath.row] objectForKey:@"profile"];
+    cell.textLabel.text = [[tasks objectAtIndex:indexPath.row] objectForKey:@"task"];
     
-    NSString *firstName =[profile objectForKey:@"firstname"];
+    NSDictionary *receivedTask = [tasks objectAtIndex:indexPath.row];
     
-    NSLog(@"%@", firstName);
+    NSString *time = [NSString stringWithFormat:@"%@ %@", [receivedTask objectForKey:@"date"], [receivedTask objectForKey:@"time"]];
     
-    cell.textLabel.text = firstName;
+    cell.detailTextLabel.text = time;
     
-    NSString *relationship = [[patients objectAtIndex:indexPath.row] objectForKey:@"relationship"];
-    
-    
-    cell.detailTextLabel.text = relationship;
-    
-    UIImage *btnImage = [UIImage imageNamed:@"image.png"];
-    //    [cell.selectButton setImage:btnImage forState:UIControlStateNormal];
-    //
-    //    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"firstname"];
-    //    cell.patientEmail.text = _seachTextField.text;
     
     cell.accessoryType = UITableViewCellAccessoryNone;
-    
     
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
-    NSDictionary *selectedPatient = [patients objectAtIndex:indexPath.row];
-    
-    [Settings instance].selectedPatient = selectedPatient;
-    
-    NSLog(@"%@", selectedPatient);
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 80.0;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+// Called before the user changes the selection. Return a new indexPath, or nil, to change the proposed selection.
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell* cell = [tableView cellForRowAtIndexPath:indexPath];
+    if(cell.selectionStyle == UITableViewCellSelectionStyleNone){
+        return nil;
+    }
+    return indexPath;
 }
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

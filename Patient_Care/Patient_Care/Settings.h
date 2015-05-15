@@ -51,6 +51,8 @@
 
 @property (strong, nonatomic) NSMutableDictionary *notifications;
 
+@property (nonatomic) NSDictionary *selectedPatient;
+
 + (Settings *)instance;
 
 @end

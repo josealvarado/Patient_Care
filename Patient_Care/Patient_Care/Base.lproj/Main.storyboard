@@ -1399,6 +1399,62 @@
             </objects>
             <point key="canvasLocation" x="4355" y="545"/>
         </scene>
+        <!--Details Support View Controller-->
+        <scene sceneID="Qzq-1l-ICj">
+            <objects>
+                <viewController id="Rz1-6S-RmP" customClass="DetailsSupportViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Hyy-aD-CUl"/>
+                        <viewControllerLayoutGuide type="bottom" id="xnG-ej-TFH"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2fd-S9-P3z">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Trv-PG-2iy">
+                                <rect key="frame" x="195" y="319" width="211" height="104"/>
+                                <color key="backgroundColor" red="0.1450980392" green="0.70588235290000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.1450980392" green="0.70588235290000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="View Notes">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="o0V-iG-45o" kind="show" id="Ywc-Uv-2Iy"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-3s-uKB">
+                                <rect key="frame" x="195" y="143" width="211" height="104"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.1058823529" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="104" id="8AQ-dW-tfO"/>
+                                    <constraint firstAttribute="width" constant="211" id="rX4-v7-Kw3"/>
+                                </constraints>
+                                <state key="normal" title="View Tasks">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="tPn-bN-Jff" kind="show" id="z1f-ua-udY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Eh4-3s-uKB" firstAttribute="top" secondItem="Hyy-aD-CUl" secondAttribute="bottom" constant="79" id="4hM-uQ-ABn"/>
+                            <constraint firstAttribute="centerX" secondItem="Eh4-3s-uKB" secondAttribute="centerX" id="LGJ-xp-BWC"/>
+                            <constraint firstItem="xnG-ej-TFH" firstAttribute="top" secondItem="Trv-PG-2iy" secondAttribute="bottom" constant="177" id="OQw-R3-0aG"/>
+                            <constraint firstItem="Eh4-3s-uKB" firstAttribute="width" secondItem="Trv-PG-2iy" secondAttribute="width" id="P82-x2-DRg"/>
+                            <constraint firstItem="Eh4-3s-uKB" firstAttribute="height" secondItem="Trv-PG-2iy" secondAttribute="height" id="UfB-q4-ZZS"/>
+                            <constraint firstAttribute="centerX" secondItem="Trv-PG-2iy" secondAttribute="centerX" id="kc3-NQ-3WG"/>
+                            <constraint firstItem="Trv-PG-2iy" firstAttribute="top" secondItem="Eh4-3s-uKB" secondAttribute="bottom" constant="72" id="oNX-0t-Qdy"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3l4-cJ-Qvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3315" y="1283"/>
+        </scene>
         <!--Patient List-->
         <scene sceneID="cnD-8L-Ymu">
             <objects>
@@ -1408,11 +1464,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPatientCell" id="oPp-YP-zPw">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GotoDetailsView" textLabel="2nc-VM-bBr" detailTextLabel="GAk-Iw-TPQ" style="IBUITableViewCellStyleSubtitle" id="oPp-YP-zPw">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oPp-YP-zPw" id="916-uR-Xfu">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="2nc-VM-bBr">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="GAk-Iw-TPQ">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="Rz1-6S-RmP" kind="show" id="4kh-rP-u0Y"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1425,6 +1498,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oqd-nV-PTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4049" y="1282"/>
+        </scene>
+        <!--Patients Tasks-->
+        <scene sceneID="YTm-Kg-VnL">
+            <objects>
+                <tableViewController id="tPn-bN-Jff" customClass="CareTakerPatientTaksListTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z8g-Bg-qDA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPatientTaskTableViewCell" id="JB2-4f-vqK">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JB2-4f-vqK" id="1wC-0Y-7Bw">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="tPn-bN-Jff" id="ube-pW-okr"/>
+                            <outlet property="delegate" destination="tPn-bN-Jff" id="mMN-GY-rzD"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Patients Tasks" id="s6i-dR-FDP"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4dI-7U-CNE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2587" y="2107"/>
+        </scene>
+        <!--Patient Notes-->
+        <scene sceneID="ryW-Dg-BcP">
+            <objects>
+                <tableViewController id="o0V-iG-45o" customClass="ListPatientNotesTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V74-2q-vFl">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotesCell" id="DUE-iR-zH0">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DUE-iR-zH0" id="vFf-0L-ufl">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="o0V-iG-45o" id="srJ-PX-5PM"/>
+                            <outlet property="delegate" destination="o0V-iG-45o" id="1In-mb-vvl"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Patient Notes" id="jgi-OW-7tE"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hWr-wz-S3H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3417" y="2109"/>
         </scene>
         <!--Track Patients-->
         <scene sceneID="11f-zQ-8Ca">
@@ -1854,13 +1981,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PwR-Za-9IW">
+                                <rect key="frame" x="232" y="562" width="136" height="30"/>
+                                <state key="normal" title="Link Note to Patient">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="T4a-LO-E9Q" kind="show" id="6KB-9U-goK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="PwR-Za-9IW" firstAttribute="centerX" secondItem="dPu-Mi-Axl" secondAttribute="centerX" id="8xC-NC-otx"/>
                             <constraint firstItem="dPu-Mi-Axl" firstAttribute="leading" secondItem="sYT-DY-pyq" secondAttribute="leading" id="FYc-2e-iz2"/>
                             <constraint firstItem="dPu-Mi-Axl" firstAttribute="top" secondItem="bFI-Xw-CAb" secondAttribute="bottom" constant="8" id="VNl-Ib-gif"/>
                             <constraint firstAttribute="trailing" secondItem="dPu-Mi-Axl" secondAttribute="trailing" id="Y4e-cJ-Ckf"/>
                             <constraint firstItem="dPu-Mi-Axl" firstAttribute="leading" secondItem="sYT-DY-pyq" secondAttribute="leading" id="Zvb-k5-nYX"/>
+                            <constraint firstItem="tx7-q1-sGN" firstAttribute="top" secondItem="PwR-Za-9IW" secondAttribute="bottom" constant="8" symbolic="YES" id="d1q-5O-NjF"/>
                             <constraint firstAttribute="trailing" secondItem="dPu-Mi-Axl" secondAttribute="trailing" id="o96-ym-XOH"/>
                         </constraints>
                         <variation key="default">
@@ -1884,6 +2022,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW3-4r-KDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5949" y="1301"/>
+        </scene>
+        <!--Choose a Patient-->
+        <scene sceneID="zrn-xb-U3C">
+            <objects>
+                <tableViewController id="T4a-LO-E9Q" customClass="ListPatientsTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="udO-dq-bnj">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="GotoDetailsView" id="J2Q-dU-Zvk">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="J2Q-dU-Zvk" id="5tc-Tu-SGh">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="T4a-LO-E9Q" id="YjV-cW-z37"/>
+                            <outlet property="delegate" destination="T4a-LO-E9Q" id="wup-oG-v0j"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Choose a Patient" id="k78-Bn-QNM">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="cbv-Mh-p6d"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tFx-nk-rXW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="6802" y="1301"/>
         </scene>
         <!--Add Patients-->
         <scene sceneID="bVn-Kb-YdP">
@@ -2951,11 +3118,11 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Bk3-Cz-2FX"/>
         <segue reference="biy-go-W20"/>
         <segue reference="ghw-Hs-OU8"/>
-        <segue reference="4DK-A5-twq"/>
+        <segue reference="Bk3-Cz-2FX"/>
         <segue reference="W1O-gl-mbN"/>
+        <segue reference="4DK-A5-twq"/>
         <segue reference="mYT-E5-xby"/>
     </inferredMetricsTieBreakers>
 </document>

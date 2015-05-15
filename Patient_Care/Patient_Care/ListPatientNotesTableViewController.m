@@ -1,37 +1,71 @@
 //
-//  ListPatientsTableViewController.m
+//  ListPatientNotesTableViewController.m
 //  Patient_Care
 //
 //  Created by Paresh on 15/05/15.
 //  Copyright (c) 2015 JoseAlvarado. All rights reserved.
 //
 
-#import "ListPatientsTableViewController.h"
+#import "ListPatientNotesTableViewController.h"
 #import "Settings.h"
-#import "ListPatientTableViewCell.h"
 
-@interface ListPatientsTableViewController ()
+@interface ListPatientNotesTableViewController ()
 
 @end
 
-@implementation ListPatientsTableViewController
+@implementation ListPatientNotesTableViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.tableView registerClass:[ListPatientTableViewCell class] forCellReuseIdentifier:@"GetListPatientCell"];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+#pragma mark - Table view data source
+
+-(void)viewDidLayoutSubviews
+{
+    if ([self.tableView respondsToSelector:@selector(setSeparatorInset:)]) {
+        [self.tableView setSeparatorInset:UIEdgeInsetsZero];
+    }
     
-    [self.tableView setDelegate:self];
-    [self.tableView setDataSource:self];
+    if ([self.tableView respondsToSelector:@selector(setLayoutMargins:)]) {
+        [self.tableView setLayoutMargins:UIEdgeInsetsZero];
+    }
+}
+
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([cell respondsToSelector:@selector(setSeparatorInset:)]) {
+        [cell setSeparatorInset:UIEdgeInsetsZero];
+    }
+    
+    if ([cell respondsToSelector:@selector(setLayoutMargins:)]) {
+        [cell setLayoutMargins:UIEdgeInsetsZero];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated{
-    // Todo
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        
+        
+        notes = [Settings instance].notes;
+        
+        //        NSLog(@"lenght %lu", (unsigned long)[notes count]);
+        
+        // Assuming you've added the table view as a subview to the current view controller
+        UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
+        
+        [tableView reloadData];
+        
+    });
     
     
     NSError *error;
@@ -40,7 +74,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listmyusers?q=%@&r=%@",[Settings instance].serverPorts[@"linkpatients"], [Settings instance].caretaker_id, [Settings instance].role];
+    NSString *params = [NSString stringWithFormat:@"%@/listnotes?c=%@",[Settings instance].serverPorts[@"notes"] ,[Settings instance].caretaker_id];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -111,18 +145,20 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    patients = [ppp mutableCopy];
+                    //                    patients = [ppp mutableCopy];
                     
-                    [Settings instance].patient_list = patients;
+                    //                    [Settings instance].patient_list = patients;
                     
                     //                    [patients removeAllObjects];
                     //                    [patients addObject:json];
                     
                     
-                    //                    // Assuming you've added the table view as a subview to the current view controller
-                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
+                    // Assuming you've added the table view as a subview to the current view controller
+                    //                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
                     
-                    [self.tableView reloadData];
+                    //                    [tableView reloadData];
+                    
+                    
                     
                 });
                 
@@ -169,17 +205,13 @@
                 
             });
             
-            NSLog(@"what?");
-            
-            
         }
         
     }];
     
     [postDataTask resume];
-    
-    
 }
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -188,63 +220,25 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return [patients count];
+    return [notes count];
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"NotesCell" forIndexPath:indexPath];
     
+    // Configure the cell...
     
-    static NSString *CellIdentifier = @"GotoDetailsView";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
-    }
-    
-    NSDictionary *profile = [[patients objectAtIndex:indexPath.row] objectForKey:@"profile"];
-    
-    NSString *firstName =[profile objectForKey:@"firstname"];
-    
-    NSLog(@"%@", firstName);
-    
-    cell.textLabel.text = firstName;
-    
-    NSString *relationship = [[patients objectAtIndex:indexPath.row] objectForKey:@"relationship"];
-    
-    
-    cell.detailTextLabel.text = relationship;
-    
-    UIImage *btnImage = [UIImage imageNamed:@"image.png"];
-    //    [cell.selectButton setImage:btnImage forState:UIControlStateNormal];
-    //
-    //    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"firstname"];
-    //    cell.patientEmail.text = _seachTextField.text;
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    
+    cell.textLabel.text = [notes objectAtIndex:indexPath.row];
     
     return cell;
 }
-
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
-    
-    NSDictionary *selectedPatient = [patients objectAtIndex:indexPath.row];
-    
-    [Settings instance].selectedPatient = selectedPatient;
-    
-    NSLog(@"%@", selectedPatient);
-}
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
