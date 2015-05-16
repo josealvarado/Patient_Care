@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface CareTakerAddTaskTableViewController : UITableViewController<NSURLSessionDataDelegate>{
+@interface CareTakerAddTaskTableViewController : UITableViewController<NSURLSessionDataDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>{
     
     NSArray *patients;
     
@@ -21,4 +22,5 @@
 
 - (IBAction)saveButtonPressed:(id)sender;
 
+- (void) checkTypeOfEmail:(NSString *)title titleOfAlert:(NSString *)msg someMessage:(NSString *)cancelMsg;
 @end

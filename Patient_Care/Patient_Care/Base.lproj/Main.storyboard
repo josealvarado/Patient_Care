@@ -3130,23 +3130,13 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="uuJ-1C-EVG"/>
-        <segue reference="4DK-A5-twq"/>
-        <segue reference="34d-2c-rq9"/>
-        <segue reference="5N9-ac-3L7"/>
-        <segue reference="Ji0-xB-zGn"/>
         <segue reference="yOX-aB-a0U"/>
-        <segue reference="biy-go-W20"/>
-        <segue reference="ghw-Hs-OU8"/>
-        <segue reference="Bk3-Cz-2FX"/>
-        <segue reference="W1O-gl-mbN"/>
-        <segue reference="4DK-A5-twq"/>
-        <segue reference="5N9-ac-3L7"/>
-        <segue reference="4DK-A5-twq"/>
-        <segue reference="34d-2c-rq9"/>
-        <segue reference="uuJ-1C-EVG"/>
-        <segue reference="Ji0-xB-zGn"/>
         <segue reference="mYT-E5-xby"/>
         <segue reference="9Rv-dR-s0i"/>
+        <segue reference="uuJ-1C-EVG"/>
+        <segue reference="4DK-A5-twq"/>
+        <segue reference="34d-2c-rq9"/>
+        <segue reference="5N9-ac-3L7"/>
+        <segue reference="Ji0-xB-zGn"/>
     </inferredMetricsTieBreakers>
 </document>
