@@ -289,4 +289,138 @@
 }
 */
 
+- (IBAction)doneButtonPressed:(id)sender {
+    NSDictionary *selectedPatient = [Settings instance].selectedPatient;
+    
+    NSLog(@"%@", selectedPatient);
+    
+    
+    NSDate *currentTime = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+    NSString *resultString = [dateFormatter stringFromDate: currentTime];
+    
+    NSArray* foo = [resultString componentsSeparatedByString: @" "];
+    NSString* date = [foo objectAtIndex: 0];
+    NSString* time = [foo objectAtIndex: 1];
+    
+    if (selectedPatient){
+        NSError *error;
+        
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+        
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+        
+        //        NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
+        NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
+                                        
+                                                               cachePolicy:NSURLRequestUseProtocolCachePolicy
+                                        
+                                                           timeoutInterval:60.0];
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+        
+        [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
+        
+        [request setHTTPMethod:@"POST"];
+        
+        NSDictionary *mapData = [[NSDictionary alloc] init ];
+        mapData = @{
+                    @"note" : [Settings instance].selectedNote2,
+                    @"caretaker_id" : [Settings instance].caretaker_id,
+                    @"patient_id" : [[Settings instance].selectedPatient objectForKey:@"id"],
+                    @"date" : date,
+                    @"time" : time};
+        
+        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
+        
+        [request setHTTPBody:postData];
+        
+        NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
+            
+            NSLog(@"data %@", data);
+            
+            NSLog(@"response %@", response);
+            
+            NSLog(@"erorr %@", error);
+            
+            if (!error) {
+                
+                NSLog(@"COrrect");
+                
+                NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                
+                long status_code = (long)[httpResponse statusCode];
+                
+                NSLog(@"response status code: %ld", status_code);
+                
+                NSError* error;
+                
+                NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
+                                      
+                                                                     options:kNilOptions
+                                      
+                                                                       error:&error];
+                //            NSArray* latestLoans = [json objectForKey:@"loans"];
+                
+                NSLog(@"json: %@", json);
+                
+                NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
+                NSLog(@"str %@", newStr);
+                
+                
+                // 304 couldn't be found
+                // 405 unsupported
+                
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                    long status_code = (long)[httpResponse statusCode];
+                    NSLog(@"response status code: %ld", status_code);
+                    if (status_code == 202) {
+                        
+                                        [self performSegueWithIdentifier:@"ListPatientController" sender:sender];
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                    } else {
+                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
+                                              
+                                                                        message:@"Something did not work"
+                                              
+                                                                       delegate:nil
+                                              
+                                                              cancelButtonTitle:@"OK"
+                                              
+                                                              otherButtonTitles:nil];
+                        
+                        [alert show];
+                        
+                    }
+                });
+                
+                
+            } else {
+                
+                NSLog(@"what?");
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                      
+                                                                message:@"You must be connected to the internet to use this app."
+                                      
+                                                               delegate:nil
+                                      
+                                                      cancelButtonTitle:@"OK"
+                                      
+                                                      otherButtonTitles:nil];
+                
+                [alert show];
+                
+            }
+            
+        }];
+        
+        [postDataTask resume];
+    }
+}
 @end

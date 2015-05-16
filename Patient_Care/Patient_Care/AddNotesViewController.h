@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSDictionary *data;
 
 
+- (IBAction)linkPatientPressed:(id)sender;
 
 - (IBAction)saveButtonPressed:(id)sender;
 @end

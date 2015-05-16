@@ -50,6 +50,8 @@
     NSLog(@"date %@", strDate);
     
     [Settings instance].task_date = strDate;
+    [Settings instance].reccurentTask =  0;
+
 }
 
 - (IBAction)addRecurrentTaskButtonPressed:(id)sender {

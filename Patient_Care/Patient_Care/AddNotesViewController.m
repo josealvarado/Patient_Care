@@ -45,6 +45,12 @@
 }
 */
 
+- (IBAction)linkPatientPressed:(id)sender {
+    
+    [Settings instance].selectedNote2 = _noteTextField.text;
+    
+}
+
 - (IBAction)saveButtonPressed:(id)sender {
     
     NSDate *currentTime = [NSDate date];

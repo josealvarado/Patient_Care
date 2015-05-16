@@ -11,6 +11,7 @@
 @interface ListPatientsTableViewController : UITableViewController<NSURLSessionDataDelegate>{
     NSMutableArray *patients;
 }
+- (IBAction)doneButtonPressed:(id)sender;
 
 
 @end

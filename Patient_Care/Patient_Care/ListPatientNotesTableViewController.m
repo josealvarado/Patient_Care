@@ -74,7 +74,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listnotes?c=%@",[Settings instance].serverPorts[@"notes"] ,[Settings instance].caretaker_id];
+    NSString *params = [NSString stringWithFormat:@"%@/listnotes?c=%@&p=%@",[Settings instance].serverPorts[@"notes"] ,[Settings instance].caretaker_id, [[Settings instance].selectedPatient objectForKey:@"id"]];
     
     NSURL *url = [NSURL URLWithString:params];
     
