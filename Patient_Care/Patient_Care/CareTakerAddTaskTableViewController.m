@@ -12,6 +12,10 @@
 
 @interface CareTakerAddTaskTableViewController ()
 
+
+
+- (void) checkTypeOfEmail:(NSString *)title titleOfAlert:(NSString *)msg someMessage:(NSString *)cancelMsg;
+
 @end
 
 @implementation CareTakerAddTaskTableViewController
@@ -169,6 +173,9 @@
 
 - (IBAction)saveButtonPressed:(id)sender {
     
+    
+    
+    
     NSString *patientID = [selectedPatient objectForKey:@"id"];
     
     NSLog(@"%@", patientID );
@@ -258,7 +265,6 @@
                                                                    error:&error];
             //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
-            NSLog(@"json: %@", json);
             
             NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
@@ -283,11 +289,14 @@
                                           
                                                                     message:@"Task has been added"
                                           
-                                                                   delegate:nil
+                                                                   delegate:self
                                           
                                                           cancelButtonTitle:@"OK"
                                           
-                                                          otherButtonTitles:nil];
+                                                          otherButtonTitles:@"Email Task", nil];
+                    
+//                    //adding new code by Paresh
+//                    [alert addButtonWithTitle:@"Email Task"];
                     
                     [alert show];
                    
@@ -347,9 +356,143 @@
     [postDataTask resume];
 }
 
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    NSString *title = [alertView buttonTitleAtIndex:buttonIndex];
+    
+    if([title isEqualToString:@"Email Task"])
+    {
+        NSLog(@"Email will be selected.");
+        [self showEmail];
+    }
+}
+
+
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
     return 80;
 }
 
+- (void)showEmail {
+    
+    NSDictionary *patientProfile = [selectedPatient valueForKey:@"profile"];
+    
+    NSLog(@"patient profile - %@", patientProfile);
+    
+    NSString *patientEmail = [patientProfile objectForKey:@"email"];
+    
+    // Email Subject
+    NSString *emailTitle = @"Task Assigned";
+    
+    // Email Content
+    NSString *messageBody = [Settings instance].task_name;
+    
+    // To address
+    NSArray *toRecipents = [NSArray arrayWithObject: patientEmail];
+    
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    
+    mc.mailComposeDelegate = self;
+    
+    if ([MFMailComposeViewController canSendMail]){
+        
+        [mc setSubject:emailTitle];
+        
+        [mc setMessageBody:messageBody isHTML:YES];
+        
+        [mc setToRecipients:toRecipents];
+        
+        
+        
+        [self presentViewController:mc animated:YES completion:nil];
+    }
+    else{
+        UIAlertView *anAlert = [[UIAlertView alloc]
+                                
+                                initWithTitle:@"error"
+                                
+                                message:@"No mail account setup on device"
+                                
+                                delegate:self
+                                
+                                cancelButtonTitle:nil
+                                
+                                otherButtonTitles:nil];
+        
+        [anAlert addButtonWithTitle:@"Cancel"];
+        
+        [anAlert show];
+    }
+    
+    
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    if(error){
+        
+        switch (result)
+        {
+            case MFMailComposeResultCancelled:
+                
+                
+                [self checkTypeOfEmail:@"Cancelled" titleOfAlert:@"Your email has been cancelled" someMessage:@"Click to Cancel"];
+                
+                break;
+                
+            case MFMailComposeResultSaved:
+                
+                [self checkTypeOfEmail:@"Saving" titleOfAlert:@"Your email has been saved" someMessage:@"Click to Cancel"];
+                
+                break;
+                
+            case MFMailComposeResultSent:
+                
+                [self checkTypeOfEmail:@"Mail Sent" titleOfAlert:@"Your email has been sent" someMessage:@"Click to dismiss"];
+                
+                break;
+                
+            case MFMailComposeResultFailed:
+                
+                [self checkTypeOfEmail:@"Failure" titleOfAlert:@"Sorry your could not be sent at the moment. Try Again" someMessage:@"Click to Cancel"];
+                
+                // do it this way cool.
+                [self checkTypeOfEmail:@"a" titleOfAlert:@"b" someMessage:@"c"];
+                
+                break;
+                
+            default:
+                
+                break;
+        }
+        
+        
+        [self dismissViewControllerAnimated:YES completion:NULL];
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+
+- (void) checkTypeOfEmail:(NSString *)title titleOfAlert:(NSString *)msg someMessage:(NSString *)cancelMsg{
+    
+    UIAlertView *anAlert = [[UIAlertView alloc]
+                            
+                            initWithTitle:title
+                            
+                            message:msg
+                            
+                            delegate:self
+                            
+                            cancelButtonTitle:cancelMsg
+                            
+                            otherButtonTitles:nil];
+    
+    
+    [anAlert show];
+    
+    
+}
 @end

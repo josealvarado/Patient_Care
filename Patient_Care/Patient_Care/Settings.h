@@ -19,6 +19,10 @@
 @property (nonatomic) int selectedNote;
 @property (nonatomic) int newNote;
 
+@property (nonatomic) NSString *selectedNote2;
+
+@property (nonatomic) NSString *selectedNote_details;
+
 @property (nonatomic) NSDictionary *caretaker;
 @property (nonatomic) NSDictionary *patient;
 
@@ -50,6 +54,8 @@
 @property (nonatomic) int reccurentTask;
 
 @property (strong, nonatomic) NSMutableDictionary *notifications;
+
+@property (nonatomic) NSDictionary *selectedPatient;
 
 + (Settings *)instance;
 
