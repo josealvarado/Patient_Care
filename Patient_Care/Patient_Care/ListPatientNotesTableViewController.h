@@ -10,7 +10,12 @@
 
 @interface ListPatientNotesTableViewController : UITableViewController<NSURLSessionDataDelegate>{
     
+    NSDictionary *note_details;
+    
+        NSDictionary *note_details_1;
+    
     NSMutableArray *notes;
+    NSMutableArray *notes_patient;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

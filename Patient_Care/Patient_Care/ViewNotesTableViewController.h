@@ -10,7 +10,14 @@
 
 @interface ViewNotesTableViewController : UITableViewController<NSURLSessionDataDelegate>{
     
+    NSDictionary *note_details;
+    
+    NSDictionary *generalNotes;
+    
+        NSDictionary *note_details_1;
+    
     NSMutableArray *notes;
+    NSMutableArray *notes2;
 }
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;

@@ -21,6 +21,8 @@
 
 @property (nonatomic) NSString *selectedNote2;
 
+@property (nonatomic) NSString *selectedNote_details;
+
 @property (nonatomic) NSDictionary *caretaker;
 @property (nonatomic) NSDictionary *patient;
 

@@ -114,6 +114,8 @@
                     @"date" : date,
                     @"time" : time};
         
+        
+        [Settings instance].selectedNote_details = _noteTextField.text;
         NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
         
         [request setHTTPBody:postData];

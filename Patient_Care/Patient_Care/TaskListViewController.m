@@ -10,9 +10,13 @@
 #import "Settings.h"
 #import "TaskTableViewCell.h"
 
+
 @interface TaskListViewController ()
 
 @end
+
+
+int addeventGranted;
 
 @implementation TaskListViewController
 
@@ -21,6 +25,9 @@
     // Do any additional setup after loading the view.
     
     tasks = [[NSMutableArray alloc] init];
+    
+    eventList = [[NSMutableArray alloc] initWithCapacity:0];
+    
     
     // Initialize the refresh control.
     //    self.refreshControl = [[UIRefreshControl alloc] init];
@@ -116,7 +123,7 @@
                                                                    error:&error];
             //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
-            NSLog(@"json: %@", json);
+            NSLog(@"tasks - json: %@", json);
             
             NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
@@ -611,4 +618,101 @@
     }
     return indexPath;
 }
+
+//Code to Add event to Calendar - Added by Paresh
+
+- (IBAction)addEventToCalendar {
+    
+    [self addEvent];
+    [self performSelector:@selector(Alert) withObject:nil afterDelay:0.3];
+   
+    
+}
+
+-(void)addEvent{
+    EKEventStore *eventStore = [[EKEventStore alloc] init];
+    if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]){
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+                addeventGranted = 1;
+                EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+                
+                for (int i = 0; i < tasks.count; i++) {
+
+                    NSString *getTask = [[tasks objectAtIndex:i] objectForKey:@"task"];
+                    
+                    NSDictionary *receivedTask = [tasks objectAtIndex:i];
+                    
+                    NSString *getDate = [NSString stringWithFormat:@"%@",[receivedTask objectForKey:@"date"]];
+                    
+                    NSLog(@"date from json %@", getDate);
+                    
+                    NSString *getTime = [NSString stringWithFormat:@"%@",[receivedTask objectForKey:@"time"]];
+                    
+                    
+                    NSString *concatDate = [NSString stringWithFormat:@"%@ %@", getDate, getTime];
+                    
+                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+                    NSDate *dateFromString = [[NSDate alloc] init];
+                    dateFromString = [dateFormatter dateFromString:concatDate];
+                    
+                    
+                    NSLog(@"this is your date %@", dateFromString);
+                    
+//                    NSString *gettime = [NSString stringWithFormat:@"%@", [receivedTask objectForKey:@"time"]];
+                    
+                    
+                    [event setTitle: getTask];
+                    
+                    
+                    EKEventStore *store = [[EKEventStore alloc] init];
+                    [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+                        if (!granted) {
+                            return;
+                        }
+                        
+                        
+                        EKEvent *event = [EKEvent eventWithEventStore:store];
+                        event.title = getTask;
+//                        NSDate *today = [NSDate date];
+//                        NSLog(@"%@", today);
+                        event.startDate = dateFromString;
+                        
+                        event.endDate = [event.startDate dateByAddingTimeInterval:60*60];
+                        [event setCalendar:[store defaultCalendarForNewEvents]];
+                        NSError *err = nil;
+                        [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+                        NSString *savedEventId = event.eventIdentifier;
+                        
+                        //this is so you can access this event later
+                    
+                    }];
+                    
+
+                }
+                
+                
+                
+                
+                
+            }
+        }];
+    }
+}
+
+
+
+-(void)Alert {
+    if (addeventGranted == 1) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"success"
+                                                        message:@"Event successfully added"
+                                                       delegate:self cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        
+        [alert show];
+    }
+}
+
+
 @end

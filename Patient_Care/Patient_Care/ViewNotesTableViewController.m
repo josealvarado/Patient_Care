@@ -25,6 +25,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    
 }
 
 -(void)viewDidLayoutSubviews
@@ -138,11 +140,43 @@
                 
                 //                    [json setValue:_seachTextField.text forKey:@"email"];
                 
-                NSArray *ppp = [json objectForKey:@"users"];
+//                NSArray *ppp = [json objectForKey:@"users"];
+                
+
+                notes = [json objectForKey:@"notes"];
+                
+                notes2 = [[NSMutableArray alloc] init];
+                
+                for (int i = 0; i < notes.count; i++) {
+                    
+                    note_details = [notes objectAtIndex: i];
+                    
+                    NSString *patientID = [note_details objectForKey:@"patient_id"];
+                    
+                    NSLog(@"Patient ID %@", patientID);
+                    
+                    if(patientID == (id)[NSNull null]){
+//                        generalNotes = [note_details objectForKey:@"note"];
+                        
+//                        note_details_1 = [notes objectAtIndex: i];
+                        
+//                        NSLog(@"General Notes %@",generalNotes);
+                        
+                        [notes2 addObject:note_details];
+                        
+                        NSLog(@"notes 2 = %@", notes2);
+                    }
+                }
                 
                 
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.tableView reloadData];
+                    
+                    
+                    
+
                     
 //                    patients = [ppp mutableCopy];
                     
@@ -155,7 +189,7 @@
                     // Assuming you've added the table view as a subview to the current view controller
 //                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
                     
-//                    [tableView reloadData];
+                    
 
                     
                     
@@ -225,7 +259,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [notes count];
+    return [notes2 count];
 }
 
 
@@ -234,7 +268,8 @@
     
     // Configure the cell...
     
-    cell.textLabel.text = [notes objectAtIndex:indexPath.row];
+        cell.textLabel.text = [[notes2 objectAtIndex:indexPath.row] objectForKey:@"note"];
+//    cell.textLabel.text = [notes objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -284,48 +319,53 @@
 }
 */
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
-    NSLog(@"2");
-    
-    AddNotesViewController *controller = (AddNotesViewController *)segue.destinationViewController;
-
-    
-    if([segue.identifier isEqualToString:@"showDetailSegue"]){
-        
-        //        controller.note2 = note
-        
-        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
-        
-        NSString *te = [notes objectAtIndex:selectedIndexPath.row];
-        
-        controller.note = te;
-        
-        controller.newNote = false;
-        
-        NSInteger a = selectedIndexPath.row;
-        
-        controller.noteNumber = &(a);
-        
-        [controller.data setValue:[NSString stringWithFormat:@"%ld", (long)a] forKey:@"pos"];
-        [controller.data setValue:@"0" forKey:@"new"];
-        
-        [Settings instance].selectedNote = (int)a;
-        [Settings instance].newNote = (int)1;
-    } else {
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+//    
+//    
+//    AddNotesViewController *controller = (AddNotesViewController *)segue.destinationViewController;
+//
+//    
+//    if([segue.identifier isEqualToString:@"showDetailSegue"]){
+//        
+//        //        controller.note2 = note
+//        
+//        NSLog(@"going to detail segue");
+//        
+//        NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+//        
+//        
+//
+//        NSString *te = [notes2 objectAtIndex:selectedIndexPath.row];
+//        
+//        NSLog(@"te %@", te);
+//        
+//        controller.note = te;
+//        
+//        controller.newNote = false;
+//        
+//        NSInteger a = selectedIndexPath.row;
+//        
+//        controller.noteNumber = &(a);
+//        
+//        [controller.data setValue:[NSString stringWithFormat:@"%ld", (long)a] forKey:@"pos"];
+//        [controller.data setValue:@"0" forKey:@"new"];
+//        
+//        [Settings instance].selectedNote = (int)a;
+//        [Settings instance].newNote = (int)1;
+//    } else {
 //        controller.newNote = true;
 //        controller.newNote = YES;
-        
-        NSInteger a = -1;
-        
-        controller.noteNumber = &(a);
-        
-        [controller.data setValue:@"-1" forKey:@"pos"];
-        [controller.data setValue:@"1" forKey:@"new"];
-
-        [Settings instance].selectedNote = (int)-1;
-        [Settings instance].newNote = (int)0;
-    }
-}
+//        
+//        NSInteger a = -1;
+//        
+//        controller.noteNumber = &(a);
+//        
+//        [controller.data setValue:@"-1" forKey:@"pos"];
+//        [controller.data setValue:@"1" forKey:@"new"];
+//
+//        [Settings instance].selectedNote = (int)-1;
+//        [Settings instance].newNote = (int)0;
+//    }
+//}
 
 @end

@@ -7,14 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <EventKit/EventKit.h>
+
 
 @interface TaskListViewController : UIViewController<NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate>{
     
     NSMutableArray *tasks;
     
     UIRefreshControl *refreshControl;
+    
+    NSMutableArray *eventList;
 }
 
+- (IBAction)addEventToCalendar;
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
+
 
 @end

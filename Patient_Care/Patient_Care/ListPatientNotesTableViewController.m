@@ -74,7 +74,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listnotes?c=%@&p=%@",[Settings instance].serverPorts[@"notes"] ,[Settings instance].caretaker_id, [[Settings instance].selectedPatient objectForKey:@"id"]];
+    NSString *params = [NSString stringWithFormat:@"%@/listnotes?c=%@",[Settings instance].serverPorts[@"notes"] ,[Settings instance].caretaker_id];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -141,9 +141,33 @@
                 
                 NSArray *ppp = [json objectForKey:@"users"];
                 
+                notes = [json objectForKey:@"notes"];
                 
+                NSDictionary *selectedPatient = [Settings instance].selectedPatient;
+                NSString *patientID = [selectedPatient objectForKey:@"id"];
+                
+                
+                
+                notes_patient = [[NSMutableArray alloc]init];
+                
+                for (int i = 0; i < notes.count; i++) {
+                    note_details = [notes objectAtIndex:i];
+                    
+                    NSString *patientID_notes = [note_details objectForKey:@"patient_id"];
+                    
+                   
+                    
+                    if([patientID_notes isEqual:patientID]){
+                        
+                        [notes_patient addObject:note_details];
+                        
+                        
+                    }
+                }
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
+                    
+                    [self.tableView reloadData];
                     
                     //                    patients = [ppp mutableCopy];
                     
@@ -226,7 +250,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return [notes count];
+    return [notes_patient count];
 }
 
 
@@ -235,7 +259,7 @@
     
     // Configure the cell...
     
-    cell.textLabel.text = [notes objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[notes_patient objectAtIndex:indexPath.row] objectForKey:@"note"];
     
     return cell;
 }

@@ -300,7 +300,20 @@
                             <constraint firstAttribute="trailing" secondItem="xeW-RA-AxC" secondAttribute="trailing" id="ou9-TD-gxo"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tasks" id="ehX-vo-N89"/>
+                    <navigationItem key="navigationItem" title="Tasks" id="ehX-vo-N89">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="4Qb-LB-fOH">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Yzn-W5-VM7">
+                                <rect key="frame" x="-23" y="-15" width="133" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Add to Calendar">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="addEventToCalendar" destination="0C1-js-OdV" eventType="touchUpInside" id="CQx-VZ-4eX"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="taskTableView" destination="xeW-RA-AxC" id="taW-Zx-eaL"/>
@@ -1605,7 +1618,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vrn-Nw-FgF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4719" y="2046"/>
+            <point key="canvasLocation" x="4440" y="2042"/>
         </scene>
         <!--Tasks-->
         <scene sceneID="OYN-ja-sVl">
@@ -1936,7 +1949,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="R2z-QG-ilz" kind="show" identifier="showDetailSegue" id="mYT-E5-xby"/>
+                                    <segue destination="23O-0u-KeW" kind="show" id="y1k-Va-2b2"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -2023,6 +2036,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eW3-4r-KDk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="5949" y="1301"/>
+        </scene>
+        <!--Notes Details View Controller-->
+        <scene sceneID="Lxc-dM-u68">
+            <objects>
+                <viewController id="23O-0u-KeW" customClass="NotesDetailsViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uVj-RD-dwy"/>
+                        <viewControllerLayoutGuide type="bottom" id="hy9-qb-pKF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CIn-CI-Bml">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes Details" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg2-tG-PTV">
+                                <rect key="frame" x="40" y="111" width="103" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62352941179999999" green="0.6588235294" blue="0.85490196080000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="pg2-tG-PTV" firstAttribute="top" secondItem="uVj-RD-dwy" secondAttribute="bottom" constant="91" id="clo-oW-eVz"/>
+                            <constraint firstItem="pg2-tG-PTV" firstAttribute="leading" secondItem="CIn-CI-Bml" secondAttribute="leadingMargin" constant="24" id="fbZ-MK-QUq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="notesDetailLabel" destination="pg2-tG-PTV" id="JTs-6y-9mf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Dq-c2-zgn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5441" y="2042"/>
         </scene>
         <!--Choose a Patient-->
         <scene sceneID="zrn-xb-U3C">
@@ -2265,7 +2311,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zqu-hY-YQC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5685" y="2120"/>
+            <point key="canvasLocation" x="6601" y="2134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="miD-OL-VNb">
@@ -3114,6 +3160,23 @@
             </objects>
             <point key="canvasLocation" x="2277" y="1277"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="Wvl-eP-MGr">
+            <objects>
+                <viewController id="uw7-mD-2tZ" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="o5F-Uv-cHW"/>
+                        <viewControllerLayoutGuide type="bottom" id="1cg-te-BTD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lKM-oi-NSH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jXu-tr-lxT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="Login_bg.jpg" width="1242" height="1381"/>
@@ -3130,13 +3193,12 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yOX-aB-a0U"/>
-        <segue reference="mYT-E5-xby"/>
         <segue reference="9Rv-dR-s0i"/>
-        <segue reference="uuJ-1C-EVG"/>
+        <segue reference="yOX-aB-a0U"/>
+        <segue reference="5N9-ac-3L7"/>
         <segue reference="4DK-A5-twq"/>
         <segue reference="34d-2c-rq9"/>
-        <segue reference="5N9-ac-3L7"/>
+        <segue reference="uuJ-1C-EVG"/>
         <segue reference="Ji0-xB-zGn"/>
     </inferredMetricsTieBreakers>
 </document>
