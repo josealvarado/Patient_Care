@@ -133,26 +133,39 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zWj-zh-Csc">
-                                <rect key="frame" x="46" y="87" width="508" height="212"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zWj-zh-Csc">
+                                <rect key="frame" x="16" y="0.0" width="568" height="212"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="212" id="PGs-V2-C8f"/>
+                                </constraints>
                                 <string key="text">The information saved here will remain private and will only be saved locally to your phone. Once you delete the app, the informaiton saved here will also be deleted. This information will NEVER be saved on our servers. It's private information that we beleive will be beneficial for you to have available.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hvf-ir-ass">
-                                <rect key="frame" x="252" y="326" width="231" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Hvf-ir-ass">
+                                <rect key="frame" x="186" y="236" width="398" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="miz-i2-D7o"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Emergency Contact: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01O-i9-526">
-                                <rect key="frame" x="46" y="329" width="162" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Emergency Contact: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="01O-i9-526">
+                                <rect key="frame" x="16" y="240" width="162" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="162" id="FBz-NU-BCw"/>
+                                    <constraint firstAttribute="height" constant="21" id="ysD-Cu-L88"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfm-8t-aDo">
-                                <rect key="frame" x="46" y="358" width="554" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wfm-8t-aDo">
+                                <rect key="frame" x="16" y="269" width="568" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="lQK-UJ-SID"/>
+                                </constraints>
                                 <string key="text">* This number will be automatically dialed if we detect that the phone has been dropped. This could potentially mean that you have fallen, and may be injured.  </string>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -160,6 +173,19 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="zWj-zh-Csc" secondAttribute="trailing" constant="16" id="5JC-eQ-l9F"/>
+                            <constraint firstAttribute="trailing" secondItem="Hvf-ir-ass" secondAttribute="trailing" constant="16" id="L05-04-i6y"/>
+                            <constraint firstItem="zWj-zh-Csc" firstAttribute="top" secondItem="wYB-VK-4rW" secondAttribute="bottom" constant="-64" id="R1X-nh-XCZ"/>
+                            <constraint firstItem="zWj-zh-Csc" firstAttribute="leading" secondItem="lWQ-2X-TA0" secondAttribute="leading" constant="16" id="Vay-bt-qNw"/>
+                            <constraint firstItem="01O-i9-526" firstAttribute="leading" secondItem="lWQ-2X-TA0" secondAttribute="leading" constant="16" id="ZJ7-f0-a57"/>
+                            <constraint firstItem="Wfm-8t-aDo" firstAttribute="leading" secondItem="lWQ-2X-TA0" secondAttribute="leading" constant="16" id="aIR-Jv-7wX"/>
+                            <constraint firstItem="01O-i9-526" firstAttribute="top" secondItem="zWj-zh-Csc" secondAttribute="bottom" constant="28" id="gJn-aH-siC"/>
+                            <constraint firstItem="Hvf-ir-ass" firstAttribute="leading" secondItem="01O-i9-526" secondAttribute="trailing" constant="8" id="idy-Ai-ixQ"/>
+                            <constraint firstItem="Hvf-ir-ass" firstAttribute="top" secondItem="zWj-zh-Csc" secondAttribute="bottom" constant="24" id="nZi-cq-Tq9"/>
+                            <constraint firstItem="Wfm-8t-aDo" firstAttribute="top" secondItem="Hvf-ir-ass" secondAttribute="bottom" constant="3" id="tB8-OH-kET"/>
+                            <constraint firstAttribute="trailing" secondItem="Wfm-8t-aDo" secondAttribute="trailing" constant="16" id="tlN-Tl-NtR"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Private Info" id="GYb-2w-kIV">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="MyQ-6D-cyY">
