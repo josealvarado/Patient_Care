@@ -8,6 +8,15 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CoreMotion/CoreMotion.h>
+
+
+double currentMaxAccelX;
+double currentMaxAccelY;
+double currentMaxAccelZ;
+double currentMaxRotX;
+double currentMaxRotY;
+double currentMaxRotZ;
 
 @interface PatientHomeTableViewController : UITableViewController<CLLocationManagerDelegate, NSURLSessionDelegate>
 {
@@ -17,5 +26,6 @@
 
 //@property(nonatomic,retain) CLLocationManager *locationManager;
 
+@property (strong, nonatomic) CMMotionManager *motionManager;
 
 @end

@@ -42,6 +42,103 @@
     }
     
     [locationManager startUpdatingLocation];
+    
+    
+    // CoreMotion setup
+    
+    currentMaxAccelX = 0;
+    currentMaxAccelY = 0;
+    currentMaxAccelZ = 0;
+    
+    currentMaxRotX = 0;
+    currentMaxRotY = 0;
+    currentMaxRotZ = 0;
+    
+    self.motionManager = [[CMMotionManager alloc] init];
+    self.motionManager.accelerometerUpdateInterval = .2;
+    self.motionManager.gyroUpdateInterval = .2;
+    
+    [self.motionManager startAccelerometerUpdatesToQueue:[NSOperationQueue currentQueue]
+                                             withHandler:^(CMAccelerometerData  *accelerometerData, NSError *error) {
+                                                 [self outputAccelertionData:accelerometerData.acceleration];
+                                                 if(error){
+                                                     
+                                                     NSLog(@"%@", error);
+                                                 }
+                                             }];
+    
+    [self.motionManager startGyroUpdatesToQueue:[NSOperationQueue currentQueue]
+                                    withHandler:^(CMGyroData *gyroData, NSError *error) {
+                                        [self outputRotationData:gyroData.rotationRate];
+                                    }];
+}
+
+-(void)outputAccelertionData:(CMAcceleration)acceleration
+{
+    NSString *accelX = [NSString stringWithFormat:@" %.2fg",acceleration.x];
+    if(fabs(acceleration.x) > fabs(currentMaxAccelX))
+    {
+        currentMaxAccelX = acceleration.x;
+    }
+    NSString *accelY = [NSString stringWithFormat:@" %.2fg",acceleration.y];
+    if(fabs(acceleration.y) > fabs(currentMaxAccelY))
+    {
+        currentMaxAccelY = acceleration.y;
+    }
+    NSString *accelZ = [NSString stringWithFormat:@" %.2fg",acceleration.z];
+    if(fabs(acceleration.z) > fabs(currentMaxAccelZ))
+    {
+        currentMaxAccelZ = acceleration.z;
+    }
+    
+//    self.maxAccX.text = [NSString stringWithFormat:@" %.2f",currentMaxAccelX];
+//    self.maxAccY.text = [NSString stringWithFormat:@" %.2f",currentMaxAccelY];
+//    self.maxAccZ.text = [NSString stringWithFormat:@" %.2f",currentMaxAccelZ];
+    
+//    NSLog(@"accel X %@", accelX);
+//    NSLog(@"accel Y %@", accelY);
+//    NSLog(@"accel Z %@", accelZ);
+//    
+//    NSLog(@"maxAccel X %f", currentMaxAccelX);
+//    NSLog(@"maxAccel Y %f", currentMaxAccelY);
+//    NSLog(@"maxAccel Z %f", currentMaxAccelZ);
+    
+    if (acceleration.z < -2.0) {
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:@"14158024173"];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
+    }
+}
+
+-(void)outputRotationData:(CMRotationRate)rotation
+{
+    
+    NSString *accelX = [NSString stringWithFormat:@" %.2fr/s",rotation.x];
+    if(fabs(rotation.x) > fabs(currentMaxRotX))
+    {
+        currentMaxRotX = rotation.x;
+    }
+    NSString *accelY = [NSString stringWithFormat:@" %.2fr/s",rotation.y];
+    if(fabs(rotation.y) > fabs(currentMaxRotY))
+    {
+        currentMaxRotY = rotation.y;
+    }
+    NSString *accelZ = [NSString stringWithFormat:@" %.2fr/s",rotation.z];
+    if(fabs(rotation.z) > fabs(currentMaxRotZ))
+    {
+        currentMaxRotZ = rotation.z;
+    }
+    
+//    self.maxRotX.text = [NSString stringWithFormat:@" %.2f",currentMaxRotX];
+//    self.maxRotY.text = [NSString stringWithFormat:@" %.2f",currentMaxRotY];
+//    self.maxRotZ.text = [NSString stringWithFormat:@" %.2f",currentMaxRotZ];
+    
+//    NSLog(@"accel X %@", accelX);
+//    NSLog(@"accel Y %@", accelY);
+//    NSLog(@"accel Z %@", accelZ);
+//    
+//    NSLog(@"maxAccel X %f", currentMaxRotX);
+//    NSLog(@"maxAccel Y %f", currentMaxRotY);
+//    NSLog(@"maxAccel Z %f", currentMaxRotZ);
 }
 
 - (void)requestAlwaysAuthorization
