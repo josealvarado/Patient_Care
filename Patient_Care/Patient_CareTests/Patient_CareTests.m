@@ -44,15 +44,17 @@
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"..."];
     
-    
     NSError *error;
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString: [Settings instance].serverPorts[@"login"] ];
+//    NSURL *url = [NSURL URLWithString: [Settings instance].serverPorts[@"login"] ];
     
+    NSURL *url = [NSURL URLWithString: @"http://52.11.100.150:15000/login"];
+    
+
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -74,7 +76,6 @@
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
     
     [request setHTTPBody:postData];
-    
     
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
@@ -114,9 +115,6 @@
     
     [postDataTask resume];
     
-    //    XCTAssertNotNil(@"ee", @"Should have found a card");
-    //    XCTAssertNotNil(error, @"Should have found a card");
-    
     [self waitForExpectationsWithTimeout:postDataTask.originalRequest.timeoutInterval handler:^(NSError *error) {
         [postDataTask cancel];
     }];
@@ -131,7 +129,9 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"registration"]];
+    NSURL *url = [NSURL URLWithString: @"http://52.11.100.150:14000/registration"];
+    
+
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -234,7 +234,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"registration"]];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:14000/registration"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -248,11 +248,6 @@
     NSDictionary *mapData = [[NSDictionary alloc] init ];
     
     NSLog(@"device token - %@", [Settings instance].deviceToken);
-    
-    
-    
-    
-    
     
     mapData = @{ @"role"     : @"01",
                  @"username" : @"hello",
@@ -325,7 +320,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listuser?q=%@",[Settings instance].serverPorts[@"linkpatients"], @"aaa@gmail.com"];
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listuser?q=%@", @"aaa@gmail.com"];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -404,7 +399,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listmyusers?q=%@&r=%@",[Settings instance].serverPorts[@"linkpatients"], @"10", @"01"];
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listmyusers?q=%@&r=%@",@"10", @"01"];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -502,7 +497,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/addtask", [Settings instance].serverPorts[@"tasks"]];
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/addtask"];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -678,7 +673,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    NSString *params = [NSString stringWithFormat:@"%@/listnotes?c=%@",[Settings instance].serverPorts[@"notes"] ,@"10"];
+    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:19000/listnotes?c=%@",@"10"];
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -790,7 +785,7 @@
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
 
-    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
 
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                     
