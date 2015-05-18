@@ -51,18 +51,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)viewDidAppear:(BOOL)animated{
-    NSString *username = [_keychain objectForKey:(__bridge id)(kSecAttrAccount)];
-    NSString *password = [_keychain objectForKey:(__bridge id)(kSecValueData)];
-    
-    NSLog(@"%@, %@", username, password);
-    
-    if (!(username == (id)[NSNull null] || username.length == 0 || password == (id)[NSNull null] || password.length == 0)){
-        _textFIeldEmailAddress.text = username;
-        _textFieldPassword.text = password;
-    }
-}
-
 -(void)dismissKeyboard {
     NSLog(@"here");
     
@@ -70,64 +58,44 @@
     [_textFIeldEmailAddress resignFirstResponder];
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    NSString *username = [_keychain objectForKey:(__bridge id)(kSecAttrAccount)];
+    NSString *password = [_keychain objectForKey:(__bridge id)(kSecValueData)];
+    
+    if (!(username == (id)[NSNull null] || username.length == 0 || password == (id)[NSNull null] || password.length == 0)){
+        _textFIeldEmailAddress.text = username;
+        _textFieldPassword.text = password;
+    }
+}
+
 - (IBAction)buttonLoginPressed:(id)sender {
     
     NSError *error;
     
-    
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    
-//    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:15000"];
 
-//    NSLog(@"login ports - %@",[[Settings instance].serverPorts objectForKey: @"login"]);
-//    NSLog(@"printing ports dictionary %@", [Settings instance].serverPorts);
     NSURL *url = [NSURL URLWithString: [Settings instance].serverPorts[@"login"] ];
 
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                    
-                                                           cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                    
-                                                       timeoutInterval:60.0];
-    
-    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:60.0];
     
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
-    
     [request setHTTPMethod:@"POST"];
 
     NSDictionary *mapData = [[NSDictionary alloc] init ];
-    mapData = @{
-//                @"password" : @"password",
-                
-                @"password" : [NSString stringWithFormat:@"%@",_textFieldPassword.text ],
-                
-//                @"emailaddress" : @"jose@gmail.com"};
-    
-    @"emailaddress" : [NSString stringWithFormat:@"%@",_textFIeldEmailAddress.text ]};
-
+    mapData = @{ @"password" : [NSString stringWithFormat:@"%@",_textFieldPassword.text ], @"emailaddress" : [NSString stringWithFormat:@"%@",_textFIeldEmailAddress.text ]};
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    
     [request setHTTPBody:postData];
 
-    
-    
-    
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     
         NSLog(@"data %@", data);
-        
         NSLog(@"response %@", response);
-        
         NSLog(@"erorr %@", error);
 
         if (!error) {
-            
-            NSLog(@"COrrect");
 
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             
@@ -146,24 +114,8 @@
             
             NSLog(@"json: %@", json);
             
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"str %@", newStr);
-
             if (status_code == 202) {
-                
-//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-//                                      
-//                                                                message:@"You logged in!"
-//                                      
-//                                                               delegate:nil
-//                                      
-//                                                      cancelButtonTitle:@"OK"
-//                                      
-//                                                      otherButtonTitles:nil];
-//                
-//                [alert show];
-                
+
                 NSString *role = [json objectForKey:@"role"];
                 
                 [Settings instance].role = role;
@@ -186,47 +138,24 @@
                         [self performSegueWithIdentifier:@"PatientHome" sender:sender];
                     });
                 }
-            
             } else {
-                
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                          
-                                                                    message:@"Something did not work"
-                                          
-                                                                   delegate:nil
-                                          
-                                                          cancelButtonTitle:@"OK"
-                                          
-                                                          otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed" message:@"Something did not work" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     
                     [alert show];
                     
                 });
                 
-                
-                
             }
         } else {
-            
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                      
-                                                                message:@"You must be connected to the internet to use this app."
-                                      
-                                                               delegate:nil
-                                      
-                                                      cancelButtonTitle:@"OK"
-                                      
-                                                      otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection" message:@"You must be connected to the internet to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 
                 [alert show];
                 
             });
-            
         }
 
     }];

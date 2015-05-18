@@ -362,8 +362,6 @@ int addeventGranted;
         
         if (!error) {
             
-            NSLog(@"COrrect");
-            
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             
             long status_code = (long)[httpResponse statusCode];
@@ -372,30 +370,11 @@ int addeventGranted;
             
             NSError* error;
             
-            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                  
-                                                                 options:kNilOptions
-                                  
-                                                                   error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
+            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:&error];
             
             NSLog(@"json: %@", json);
             
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"str %@", newStr);
-            
-            
-            
             if (status_code == 202) {
-                
-                
-                
-                
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
                 
                 tasks = [json objectForKey:@"tasks"];
                 
@@ -408,9 +387,6 @@ int addeventGranted;
                     NSDictionary *task = [tasks objectAtIndex: i];
                     
                     NSString *taskID = [[Settings instance].notifications objectForKey:[task objectForKey:@"id"]];
-                    
-                    
-                    NSLog(@"%d - %@", i, taskID);
                     
                     if (!taskID){
                         

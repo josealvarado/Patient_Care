@@ -70,9 +70,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    
-    NSLog(@"%lu", (unsigned long)[patients count]);
-    
     return [patients count];
 }
 
@@ -87,20 +84,13 @@
     NSDictionary *profile = [[patients objectAtIndex:indexPath.row] objectForKey:@"profile"];
     
     NSString *firstName =[profile objectForKey:@"firstname"];
-    
-    NSLog(@"%@", firstName);
-    
     cell.patientName.text = firstName;
     
     NSString *relationship = [[patients objectAtIndex:indexPath.row] objectForKey:@"relationship"];
-    
     cell.patientEmail.text = relationship;
     
     UIImage *btnImage = [UIImage imageNamed:@"image.png"];
     [cell.selectButton setImage:btnImage forState:UIControlStateNormal];
-    
-    //    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"firstname"];
-    //    cell.patientEmail.text = _seachTextField.text;
     
     cell.accessoryType = UITableViewCellAccessoryNone;
     
@@ -117,14 +107,7 @@
     
     selectedPatient = [patients objectAtIndex:indexPath.row];
 
-    
-//    if (selected == -1){
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-//        selected = 1;
-//    } else {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//        selected = -1;
-//    }
+    cell.accessoryType = UITableViewCellAccessoryCheckmark;
 }
 
 /*
