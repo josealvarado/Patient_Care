@@ -2261,7 +2261,6 @@
             </objects>
             <point key="canvasLocation" x="6226" y="557"/>
         </scene>
-<<<<<<< Updated upstream
         <!--Filter-->
         <scene sceneID="NJr-Vt-BSc">
             <objects>
@@ -2314,8 +2313,6 @@
             </objects>
             <point key="canvasLocation" x="6601" y="2134"/>
         </scene>
-=======
->>>>>>> Stashed changes
         <!--Navigation Controller-->
         <scene sceneID="miD-OL-VNb">
             <objects>
@@ -3196,7 +3193,6 @@
         <image name="walkthrough_3.png" width="1242" height="1727"/>
     </resources>
     <inferredMetricsTieBreakers>
-<<<<<<< Updated upstream
         <segue reference="9Rv-dR-s0i"/>
         <segue reference="yOX-aB-a0U"/>
         <segue reference="5N9-ac-3L7"/>
@@ -3204,7 +3200,6 @@
         <segue reference="34d-2c-rq9"/>
         <segue reference="uuJ-1C-EVG"/>
         <segue reference="Ji0-xB-zGn"/>
-=======
         <segue reference="Ji0-xB-zGn"/>
         <segue reference="W1O-gl-mbN"/>
         <segue reference="34d-2c-rq9"/>
@@ -3212,6 +3207,5 @@
         <segue reference="biy-go-W20"/>
         <segue reference="mYT-E5-xby"/>
         <segue reference="9Rv-dR-s0i"/>
->>>>>>> Stashed changes
     </inferredMetricsTieBreakers>
 </document>
