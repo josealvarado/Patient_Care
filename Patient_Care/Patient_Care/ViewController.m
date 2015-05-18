@@ -52,7 +52,6 @@
 }
 
 -(void)dismissKeyboard {
-    NSLog(@"here");
     
     [_textFieldPassword resignFirstResponder];
     [_textFIeldEmailAddress resignFirstResponder];
