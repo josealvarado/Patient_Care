@@ -44,19 +44,18 @@
     NSDictionary *selectedPatient = [Settings instance].selectedPatient;
     NSString *patientID = [selectedPatient objectForKey:@"id"];
     
-//    NSMutableArray *patientList = [Settings instance].patient_list;
-//    
-//    NSDictionary *patient = [patientList objectAtIndex:4];
-//        
-//    NSString *pID = [patient objectForKey:@"id"];
+    NSMutableArray *patientList = [Settings instance].patient_list;
     
-//    NSMutableArray *caretakerList = [Settings instance].caretaker_list;
-//    
-//    NSDictionary *caretaker = [caretakerList objectAtIndex:4];
-//    
-//    NSString *cID = [caretaker objectForKey:@"id"];
-//    
+    NSDictionary *patient = [patientList objectAtIndex:4];
+        
+    NSString *pID = [patient objectForKey:@"id"];
     
+    NSMutableArray *caretakerList = [Settings instance].caretaker_list;
+    
+    NSDictionary *caretaker = [caretakerList objectAtIndex:4];
+    
+    NSString *cID = [caretaker objectForKey:@"id"];
+
     NSString *caretakerID = [[Settings instance].caretaker objectForKey:@"id"];
     
     

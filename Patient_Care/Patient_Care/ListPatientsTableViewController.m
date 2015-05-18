@@ -55,13 +55,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    //
-    //        NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //        mapData = @{@"emailaddress" : _seachTextField.text};
-    
-    //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    
-    //        [request setHTTPBody:postData];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -88,26 +81,10 @@
                                                                  options:kNilOptions
                                   
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
-            
-            NSLog(@"json: %@", json);
-            
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"str %@", newStr);
-            
-            
             
             if (status_code == 202) {
                 
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
-                
                 NSArray *ppp = [json objectForKey:@"users"];
-                
-                
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
@@ -115,11 +92,7 @@
                     
                     [Settings instance].patient_list = patients;
                     
-                    //                    [patients removeAllObjects];
-                    //                    [patients addObject:json];
-                    
-                    
-                    //                    // Assuming you've added the table view as a subview to the current view controller
+              
                     UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
                     
                     [self.tableView reloadData];
@@ -223,19 +196,13 @@
     cell.detailTextLabel.text = relationship;
     
     UIImage *btnImage = [UIImage imageNamed:@"image.png"];
-    //    [cell.selectButton setImage:btnImage forState:UIControlStateNormal];
-    //
-    //    cell.patientName.text = [[patients objectAtIndex:indexPath.row] objectForKey:@"firstname"];
-    //    cell.patientEmail.text = _seachTextField.text;
     
     cell.accessoryType = UITableViewCellAccessoryNone;
-    
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     
     
     NSDictionary *selectedPatient = [patients objectAtIndex:indexPath.row];
@@ -310,8 +277,7 @@
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-        
-        //        NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
+     
         NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                         
@@ -362,7 +328,6 @@
                                                                      options:kNilOptions
                                       
                                                                        error:&error];
-                //            NSArray* latestLoans = [json objectForKey:@"loans"];
                 
                 NSLog(@"json: %@", json);
                 
@@ -371,13 +336,14 @@
                 NSLog(@"str %@", newStr);
                 
                 
-                // 304 couldn't be found
-                // 405 unsupported
-                
                 dispatch_sync(dispatch_get_main_queue(), ^{
+                    
                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                    
                     long status_code = (long)[httpResponse statusCode];
+                    
                     NSLog(@"response status code: %ld", status_code);
+                    
                     if (status_code == 202) {
                         
                                         [self performSegueWithIdentifier:@"ListPatientController" sender:sender];

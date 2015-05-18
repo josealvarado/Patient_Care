@@ -54,12 +54,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        
-        
         notes = [Settings instance].notes;
-        
-        //        NSLog(@"lenght %lu", (unsigned long)[notes count]);
-        
+      
         // Assuming you've added the table view as a subview to the current view controller
         UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
         
@@ -89,13 +85,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    //
-    //        NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //        mapData = @{@"emailaddress" : _seachTextField.text};
-    
-    //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    
-    //        [request setHTTPBody:postData];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -122,7 +111,6 @@
                                                                  options:kNilOptions
                                   
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
             NSLog(@"json: %@", json);
             
@@ -131,13 +119,8 @@
             NSLog(@"str %@", newStr);
             
             
-            
             if (status_code == 202) {
                 
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
                 
                 NSArray *ppp = [json objectForKey:@"users"];
                 
@@ -168,20 +151,6 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     [self.tableView reloadData];
-                    
-                    //                    patients = [ppp mutableCopy];
-                    
-                    //                    [Settings instance].patient_list = patients;
-                    
-                    //                    [patients removeAllObjects];
-                    //                    [patients addObject:json];
-                    
-                    
-                    // Assuming you've added the table view as a subview to the current view controller
-                    //                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
-                    
-                    //                    [tableView reloadData];
-                    
                     
                     
                 });
