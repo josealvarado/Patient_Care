@@ -58,6 +58,8 @@
 
 @property (nonatomic) NSDictionary *selectedPatient;
 
+@property (nonatomic) NSString *emergencyContactNumber;
+
 + (Settings *)instance;
 
 @end
