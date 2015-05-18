@@ -75,17 +75,17 @@
 
 -(void)outputAccelertionData:(CMAcceleration)acceleration
 {
-    NSString *accelX = [NSString stringWithFormat:@" %.2fg",acceleration.x];
+//    NSString *accelX = [NSString stringWithFormat:@" %.2fg",acceleration.x];
     if(fabs(acceleration.x) > fabs(currentMaxAccelX))
     {
         currentMaxAccelX = acceleration.x;
     }
-    NSString *accelY = [NSString stringWithFormat:@" %.2fg",acceleration.y];
+//    NSString *accelY = [NSString stringWithFormat:@" %.2fg",acceleration.y];
     if(fabs(acceleration.y) > fabs(currentMaxAccelY))
     {
         currentMaxAccelY = acceleration.y;
     }
-    NSString *accelZ = [NSString stringWithFormat:@" %.2fg",acceleration.z];
+//    NSString *accelZ = [NSString stringWithFormat:@" %.2fg",acceleration.z];
     if(fabs(acceleration.z) > fabs(currentMaxAccelZ))
     {
         currentMaxAccelZ = acceleration.z;
@@ -103,8 +103,12 @@
 //    NSLog(@"maxAccel Y %f", currentMaxAccelY);
 //    NSLog(@"maxAccel Z %f", currentMaxAccelZ);
     
-    if (acceleration.z < -2.0) {
-        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:@"14158024173"];
+    NSString *emergencyNumber = [Settings instance].emergencyContactNumber;
+    
+    if (acceleration.z < -2.0 && emergencyNumber.length > 0) {
+        
+        
+        NSString *phoneNumber = [@"telprompt://" stringByAppendingString:emergencyNumber];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:phoneNumber]];
     }
 }
@@ -112,17 +116,17 @@
 -(void)outputRotationData:(CMRotationRate)rotation
 {
     
-    NSString *accelX = [NSString stringWithFormat:@" %.2fr/s",rotation.x];
+//    NSString *accelX = [NSString stringWithFormat:@" %.2fr/s",rotation.x];
     if(fabs(rotation.x) > fabs(currentMaxRotX))
     {
         currentMaxRotX = rotation.x;
     }
-    NSString *accelY = [NSString stringWithFormat:@" %.2fr/s",rotation.y];
+//    NSString *accelY = [NSString stringWithFormat:@" %.2fr/s",rotation.y];
     if(fabs(rotation.y) > fabs(currentMaxRotY))
     {
         currentMaxRotY = rotation.y;
     }
-    NSString *accelZ = [NSString stringWithFormat:@" %.2fr/s",rotation.z];
+//    NSString *accelZ = [NSString stringWithFormat:@" %.2fr/s",rotation.z];
     if(fabs(rotation.z) > fabs(currentMaxRotZ))
     {
         currentMaxRotZ = rotation.z;

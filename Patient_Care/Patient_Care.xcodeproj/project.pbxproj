@@ -15,7 +15,6 @@
 		6613AEAB1B0A295700A074B2 /* trackPatinentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA61B0A295700A074B2 /* trackPatinentIcon.png */; };
 		6613AEAC1B0A295700A074B2 /* viewCaretakerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA71B0A295700A074B2 /* viewCaretakerIcon.png */; };
 		6613AEAE1B0A2AD900A074B2 /* viewPatientProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEAD1B0A2AD900A074B2 /* viewPatientProfile.png */; };
-		6613AEB01B0A2B7E00A074B2 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEAF1B0A2B7E00A074B2 /* logo.png */; };
 		664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E8C521AF9CCAD0008C7D8 /* icon_menu.png */; };
 		668D87E71B09101100342FF8 /* NotesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668D87E61B09101100342FF8 /* NotesDetailsViewController.m */; };
 		66A6AAF01AF72E7F00CBA2A1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */; };
@@ -86,6 +85,8 @@
 		CB6431E01AE8206D00B9EFFC /* ViewNotesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6431DF1AE8206D00B9EFFC /* ViewNotesTableViewController.m */; };
 		CB6432111AEC048A00B9EFFC /* TaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6432101AEC048A00B9EFFC /* TaskTableViewCell.m */; };
 		CB6432171AEC0C7C00B9EFFC /* PatientHomeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6432161AEC0C7C00B9EFFC /* PatientHomeTableViewController.m */; };
+		CB6884B71B0A582B00DBA1AE /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = CB6884B61B0A582B00DBA1AE /* logo.png */; };
+		CB6884BA1B0A58B200DBA1AE /* PrivateInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB6884B91B0A58B200DBA1AE /* PrivateInfoViewController.m */; };
 		CB9AB0DC1AED5EBF006EEEBC /* newHeart.png in Resources */ = {isa = PBXBuildFile; fileRef = CB9AB0DB1AED5EBF006EEEBC /* newHeart.png */; };
 		CB9AB0DE1AED5EC4006EEEBC /* newCamera.png in Resources */ = {isa = PBXBuildFile; fileRef = CB9AB0DD1AED5EC4006EEEBC /* newCamera.png */; };
 		CB9AB0E01AED5EC7006EEEBC /* newGrid.png in Resources */ = {isa = PBXBuildFile; fileRef = CB9AB0DF1AED5EC7006EEEBC /* newGrid.png */; };
@@ -135,7 +136,6 @@
 		6613AEA61B0A295700A074B2 /* trackPatinentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackPatinentIcon.png; sourceTree = "<group>"; };
 		6613AEA71B0A295700A074B2 /* viewCaretakerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewCaretakerIcon.png; sourceTree = "<group>"; };
 		6613AEAD1B0A2AD900A074B2 /* viewPatientProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewPatientProfile.png; sourceTree = "<group>"; };
-		6613AEAF1B0A2B7E00A074B2 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		664E8C521AF9CCAD0008C7D8 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
 		668D87E51B09101100342FF8 /* NotesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailsViewController.h; sourceTree = "<group>"; };
 		668D87E61B09101100342FF8 /* NotesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailsViewController.m; sourceTree = "<group>"; };
@@ -260,6 +260,9 @@
 		CB6432101AEC048A00B9EFFC /* TaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskTableViewCell.m; sourceTree = "<group>"; };
 		CB6432151AEC0C7C00B9EFFC /* PatientHomeTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PatientHomeTableViewController.h; sourceTree = "<group>"; };
 		CB6432161AEC0C7C00B9EFFC /* PatientHomeTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PatientHomeTableViewController.m; sourceTree = "<group>"; };
+		CB6884B61B0A582B00DBA1AE /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		CB6884B81B0A58B200DBA1AE /* PrivateInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrivateInfoViewController.h; sourceTree = "<group>"; };
+		CB6884B91B0A58B200DBA1AE /* PrivateInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrivateInfoViewController.m; sourceTree = "<group>"; };
 		CB9AB0DB1AED5EBF006EEEBC /* newHeart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newHeart.png; sourceTree = "<group>"; };
 		CB9AB0DD1AED5EC4006EEEBC /* newCamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newCamera.png; sourceTree = "<group>"; };
 		CB9AB0DF1AED5EC7006EEEBC /* newGrid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = newGrid.png; sourceTree = "<group>"; };
@@ -416,6 +419,7 @@
 				CB6431D61AE731FB00B9EFFC /* PatientViewCareTakersTableViewController.m */,
 				CB6432151AEC0C7C00B9EFFC /* PatientHomeTableViewController.h */,
 				CB6432161AEC0C7C00B9EFFC /* PatientHomeTableViewController.m */,
+				CB6884BB1B0A58B700DBA1AE /* Private Info */,
 				CB6431E11AE8266A00B9EFFC /* Notes */,
 				CBC76BB51AD30AFE004F609F /* Tracking */,
 				CBC76BB11AD30797004F609F /* Link Patients */,
@@ -490,7 +494,7 @@
 		CB399DCA1AA3D4200012DB43 /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6613AEAF1B0A2B7E00A074B2 /* logo.png */,
+				CB6884B61B0A582B00DBA1AE /* logo.png */,
 				6613AEAD1B0A2AD900A074B2 /* viewPatientProfile.png */,
 				6613AEA31B0A295700A074B2 /* linkPatientIcon.png */,
 				6613AEA41B0A295700A074B2 /* notesIcon.png */,
@@ -613,6 +617,15 @@
 			name = Notes;
 			sourceTree = "<group>";
 		};
+		CB6884BB1B0A58B700DBA1AE /* Private Info */ = {
+			isa = PBXGroup;
+			children = (
+				CB6884B91B0A58B200DBA1AE /* PrivateInfoViewController.m */,
+				CB6884B81B0A58B200DBA1AE /* PrivateInfoViewController.h */,
+			);
+			name = "Private Info";
+			sourceTree = "<group>";
+		};
 		CBC76BB11AD30797004F609F /* Link Patients */ = {
 			isa = PBXGroup;
 			children = (
@@ -733,7 +746,7 @@
 				CB399DC31AA3D35A0012DB43 /* Roboto-ThinItalic.ttf in Resources */,
 				CB9AB0DE1AED5EC4006EEEBC /* newCamera.png in Resources */,
 				CB399DC21AA3D35A0012DB43 /* Roboto-Thin.ttf in Resources */,
-				6613AEB01B0A2B7E00A074B2 /* logo.png in Resources */,
+				CB6884B71B0A582B00DBA1AE /* logo.png in Resources */,
 				CB399E001AA3DFCA0012DB43 /* HexColorPicker in Resources */,
 				CB399DC81AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				CB399E041AA3DFCA0012DB43 /* cog-tiger.tiff in Resources */,
@@ -828,6 +841,7 @@
 				CB399D7F1AA3C1380012DB43 /* main.m in Sources */,
 				668D87E71B09101100342FF8 /* NotesDetailsViewController.m in Sources */,
 				66CDFDD11AF3248000114185 /* RewardsViewController.m in Sources */,
+				CB6884BA1B0A58B200DBA1AE /* PrivateInfoViewController.m in Sources */,
 				CB6431E01AE8206D00B9EFFC /* ViewNotesTableViewController.m in Sources */,
 				CB6432111AEC048A00B9EFFC /* TaskTableViewCell.m in Sources */,
 				66F57C7B1B05DB1800E53296 /* DetailsSupportViewController.m in Sources */,
