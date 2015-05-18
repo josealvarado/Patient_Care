@@ -630,11 +630,17 @@ int addeventGranted;
 }
 
 -(void)addEvent{
+    
     EKEventStore *eventStore = [[EKEventStore alloc] init];
+    
     if([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]){
+    
         [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+        
             if (granted) {
+            
                 addeventGranted = 1;
+                
                 EKEvent *event = [EKEvent eventWithEventStore:eventStore];
                 
                 for (int i = 0; i < tasks.count; i++) {
@@ -653,21 +659,23 @@ int addeventGranted;
                     NSString *concatDate = [NSString stringWithFormat:@"%@ %@", getDate, getTime];
                     
                     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                    
                     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
+                    
                     NSDate *dateFromString = [[NSDate alloc] init];
+                    
                     dateFromString = [dateFormatter dateFromString:concatDate];
                     
                     
                     NSLog(@"this is your date %@", dateFromString);
                     
-//                    NSString *gettime = [NSString stringWithFormat:@"%@", [receivedTask objectForKey:@"time"]];
-                    
-                    
                     [event setTitle: getTask];
                     
                     
                     EKEventStore *store = [[EKEventStore alloc] init];
+                    
                     [store requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+ 
                         if (!granted) {
                             return;
                         }
@@ -675,18 +683,19 @@ int addeventGranted;
                         
                         EKEvent *event = [EKEvent eventWithEventStore:store];
                         event.title = getTask;
-//                        NSDate *today = [NSDate date];
-//                        NSLog(@"%@", today);
+                      
                         event.startDate = dateFromString;
                         
                         event.endDate = [event.startDate dateByAddingTimeInterval:60*60];
+                        
                         [event setCalendar:[store defaultCalendarForNewEvents]];
+                        
                         NSError *err = nil;
+                        
                         [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
+                        
                         NSString *savedEventId = event.eventIdentifier;
                         
-                        //this is so you can access this event later
-                    
                     }];
                     
 
