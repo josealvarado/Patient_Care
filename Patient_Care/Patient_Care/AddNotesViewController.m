@@ -20,6 +20,15 @@
     // Do any additional setup after loading the view.
     
     _data = [[NSDictionary alloc] init];
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:tap];
+}
+
+-(void)dismissKeyboard {
+    
+    [_noteTextField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,6 +59,13 @@
     [Settings instance].selectedNote2 = _noteTextField.text;
     
 }
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 
 - (IBAction)saveButtonPressed:(id)sender {
     
@@ -94,7 +110,7 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
         
 //        NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
-    NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
+    NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:19000"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                         
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -204,15 +220,6 @@
         }];
         
         [postDataTask resume];
-        
-        
-        
-        
-        
-        
-
-        
-        
         
         
     } else {
