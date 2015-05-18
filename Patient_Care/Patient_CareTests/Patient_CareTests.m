@@ -442,8 +442,6 @@
             
             NSArray *patientDetails = [json objectForKey:@"users"];
             
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-           
             NSString *patientID_One = [[patientDetails objectAtIndex:0] objectForKey:@"id"];
             NSString *patientID_Two = [[patientDetails objectAtIndex:1] objectForKey:@"id"];
             NSString *patientID_Three = [[patientDetails objectAtIndex:2] objectForKey:@"id"];
@@ -547,14 +545,6 @@
             
             NSLog(@"response status code: %ld", status_code);
             
-            NSError* error;
-            
-            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                  
-                                                                 options:kNilOptions
-                                  
-                                                                   error:&error];
-            
             
             if (status_code == 202) {
                 
@@ -609,8 +599,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    
-    NSDictionary *mapData = [[NSDictionary alloc] init ];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -723,7 +711,6 @@
                                                                  options:kNilOptions
                                   
                                                                    error:&error];
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             if (status_code == 202) {
                 
@@ -836,13 +823,7 @@
             
             long status_code = (long)[httpResponse statusCode];
             
-            NSError* error;
-            
-            NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                  
-                                                                 options:kNilOptions
-                                  
-                                                                   error:&error];
+          
             NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             
             NSLog(@"str %@", newStr);
