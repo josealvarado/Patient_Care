@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="lHn-08-aHN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="g0R-Gx-2s5">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
@@ -1367,6 +1367,21 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-3s-uKB">
+                                <rect key="frame" x="195" y="143" width="211" height="104"/>
+                                <color key="backgroundColor" red="0.91764705879999997" green="0.1058823529" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="211" id="EkT-79-hjZ"/>
+                                    <constraint firstAttribute="height" constant="104" id="q6R-7J-OPN"/>
+                                </constraints>
+                                <state key="normal" title="View Tasks">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="tPn-bN-Jff" kind="show" id="z1f-ua-udY"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Trv-PG-2iy">
                                 <rect key="frame" x="195" y="319" width="211" height="104"/>
                                 <color key="backgroundColor" red="0.1450980392" green="0.70588235290000001" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -1383,33 +1398,22 @@
                                     <segue destination="o0V-iG-45o" kind="show" id="Ywc-Uv-2Iy"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eh4-3s-uKB">
-                                <rect key="frame" x="195" y="143" width="211" height="104"/>
-                                <color key="backgroundColor" red="0.91764705879999997" green="0.1058823529" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="211" id="EkT-79-hjZ"/>
-                                    <constraint firstAttribute="height" constant="104" id="q6R-7J-OPN"/>
-                                </constraints>
-                                <state key="normal" title="View Tasks">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="tPn-bN-Jff" kind="show" id="z1f-ua-udY"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Eh4-3s-uKB" secondAttribute="centerX" id="3UU-kI-sL8"/>
                             <constraint firstItem="Eh4-3s-uKB" firstAttribute="top" secondItem="Hyy-aD-CUl" secondAttribute="bottom" constant="79" id="TD4-uJ-O7S"/>
                             <constraint firstAttribute="trailing" secondItem="Eh4-3s-uKB" secondAttribute="trailing" constant="194" id="bRx-RY-ucb"/>
-                            <constraint firstItem="Trv-PG-2iy" firstAttribute="leading" secondItem="2fd-S9-P3z" secondAttribute="leading" constant="195" id="hWh-oM-s1m"/>
                             <constraint firstAttribute="trailing" secondItem="Trv-PG-2iy" secondAttribute="trailing" constant="194" id="hhI-8l-nLE"/>
                             <constraint firstAttribute="centerX" secondItem="Trv-PG-2iy" secondAttribute="centerX" id="hhQ-to-JEs"/>
-                            <constraint firstItem="Eh4-3s-uKB" firstAttribute="leading" secondItem="2fd-S9-P3z" secondAttribute="leading" constant="195" id="uSf-7j-BPq"/>
                             <constraint firstItem="Trv-PG-2iy" firstAttribute="top" secondItem="Eh4-3s-uKB" secondAttribute="bottom" constant="72" id="vQF-xZ-joP"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="bRx-RY-ucb"/>
+                                <exclude reference="hhI-8l-nLE"/>
+                            </mask>
+                        </variation>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3l4-cJ-Qvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1464,16 +1468,78 @@
         <scene sceneID="YTm-Kg-VnL">
             <objects>
                 <tableViewController id="tPn-bN-Jff" customClass="CareTakerPatientTaksListTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="z8g-Bg-qDA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" id="z8g-Bg-qDA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPatientTaskTableViewCell" id="JB2-4f-vqK">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ListPatientTaskTableViewCell1" editingAccessoryType="detailDisclosureButton" id="JB2-4f-vqK" customClass="CareTakerPatientTaskCellTableViewCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JB2-4f-vqK" id="1wC-0Y-7Bw">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="99v-iP-nXt">
+                                            <rect key="frame" x="17" y="16" width="335" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="335" id="JSt-NO-p5x"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oC7-mC-H0d">
+                                            <rect key="frame" x="17" y="39" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcK-SC-hwB">
+                                            <rect key="frame" x="537" y="16" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uEM-Cf-bq0">
+                                            <rect key="frame" x="503" y="35" width="78" height="30"/>
+                                            <state key="normal" title="Send Email">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="taskEmailButtonPressed:" destination="JB2-4f-vqK" eventType="touchUpInside" id="8o3-Il-QbH"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="oC7-mC-H0d" firstAttribute="top" secondItem="99v-iP-nXt" secondAttribute="bottom" constant="2" id="0Y4-m6-062"/>
+                                        <constraint firstItem="uEM-Cf-bq0" firstAttribute="top" secondItem="IcK-SC-hwB" secondAttribute="bottom" constant="-2" id="4gi-IW-9tg"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oC7-mC-H0d" secondAttribute="bottom" constant="1" id="4uu-bT-RPR"/>
+                                        <constraint firstItem="IcK-SC-hwB" firstAttribute="top" secondItem="1wC-0Y-7Bw" secondAttribute="topMargin" constant="8" id="8h9-Jp-MwP"/>
+                                        <constraint firstItem="oC7-mC-H0d" firstAttribute="leading" secondItem="1wC-0Y-7Bw" secondAttribute="leadingMargin" constant="9" id="8ia-lC-JHq"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="IcK-SC-hwB" secondAttribute="trailing" constant="13" id="KCY-Ms-dJ5"/>
+                                        <constraint firstItem="99v-iP-nXt" firstAttribute="leading" secondItem="1wC-0Y-7Bw" secondAttribute="leadingMargin" constant="9" id="Pn4-rC-59s"/>
+                                        <constraint firstItem="99v-iP-nXt" firstAttribute="leading" secondItem="1wC-0Y-7Bw" secondAttribute="leadingMargin" constant="9" id="VxB-U5-acC"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="oC7-mC-H0d" secondAttribute="bottom" constant="1" id="idN-4E-b5Z"/>
+                                        <constraint firstItem="oC7-mC-H0d" firstAttribute="leading" secondItem="1wC-0Y-7Bw" secondAttribute="leadingMargin" constant="9" id="maU-aM-XHM"/>
+                                        <constraint firstItem="99v-iP-nXt" firstAttribute="top" secondItem="1wC-0Y-7Bw" secondAttribute="topMargin" id="qeL-jW-bFN"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="uEM-Cf-bq0" secondAttribute="trailing" constant="11" id="wmA-Z0-h3s"/>
+                                        <constraint firstItem="99v-iP-nXt" firstAttribute="top" secondItem="1wC-0Y-7Bw" secondAttribute="topMargin" constant="8" id="z7Y-TN-vRD"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="constraints">
+                                            <exclude reference="Pn4-rC-59s"/>
+                                            <exclude reference="qeL-jW-bFN"/>
+                                            <exclude reference="4uu-bT-RPR"/>
+                                            <exclude reference="8ia-lC-JHq"/>
+                                            <exclude reference="idN-4E-b5Z"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="taskDetails" destination="oC7-mC-H0d" id="kot-A7-vvy"/>
+                                    <outlet property="taskEmailButton" destination="uEM-Cf-bq0" id="zFI-ip-jbR"/>
+                                    <outlet property="taskName" destination="99v-iP-nXt" id="A5b-4y-crS"/>
+                                    <outlet property="taskStatus" destination="IcK-SC-hwB" id="S8U-Wn-ZQh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -3189,9 +3255,9 @@
         <segue reference="vGF-26-6PU"/>
         <segue reference="biy-go-W20"/>
         <segue reference="B6U-wJ-I7L"/>
-        <segue reference="9Bv-Mv-vxM"/>
-        <segue reference="Kn3-yg-BeQ"/>
         <segue reference="W1O-gl-mbN"/>
+        <segue reference="9lK-cl-XAg"/>
+        <segue reference="4DK-A5-twq"/>
         <segue reference="Bk3-Cz-2FX"/>
     </inferredMetricsTieBreakers>
 </document>
