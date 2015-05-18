@@ -54,12 +54,8 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        
-        
         notes = [Settings instance].notes;
-        
-        //        NSLog(@"lenght %lu", (unsigned long)[notes count]);
-        
+      
         // Assuming you've added the table view as a subview to the current view controller
         UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
         
@@ -109,7 +105,9 @@
             
             NSLog(@"str %@", newStr);
             
+
             if (status_code == 202) {
+
                 notes = [json objectForKey:@"notes"];
                 
                 NSDictionary *selectedPatient = [Settings instance].selectedPatient;

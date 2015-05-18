@@ -74,8 +74,10 @@
                                                                  options:kNilOptions
                                                                    error:&error];
             
+
             NSLog(@"json: %@", json);
             
+
             if (status_code == 202) {
                 
                 NSArray *ppp = [json objectForKey:@"users"];
@@ -166,13 +168,16 @@
     
     cell.detailTextLabel.text = relationship;
     
+
+    UIImage *btnImage = [UIImage imageNamed:@"image.png"];
+
     cell.accessoryType = UITableViewCellAccessoryNone;
-    
     
     return cell;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
     NSDictionary *selectedPatient = [patients objectAtIndex:indexPath.row];
     
     [Settings instance].selectedPatient = selectedPatient;
@@ -242,7 +247,7 @@
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-        
+
         NSURL *url = [NSURL URLWithString:[Settings instance].serverPorts[@"notes"]];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
@@ -291,17 +296,16 @@
                                                                      options:kNilOptions
                                       
                                                                        error:&error];
-                //            NSArray* latestLoans = [json objectForKey:@"loans"];
                 
-                NSLog(@"json: %@", json);
-                
-                // 304 couldn't be found
-                // 405 unsupported
                 
                 dispatch_sync(dispatch_get_main_queue(), ^{
+                    
                     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
+                    
                     long status_code = (long)[httpResponse statusCode];
+                    
                     NSLog(@"response status code: %ld", status_code);
+                    
                     if (status_code == 202) {
                         [self performSegueWithIdentifier:@"ListPatientController" sender:sender];
                         [self.navigationController popViewControllerAnimated:YES];

@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		66067A0C1AF0D8BE00EC4E4F /* PCMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */; };
 		66067A0F1AF0E6AE00EC4E4F /* CoreLocationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */; };
+		6613AEA81B0A295700A074B2 /* linkPatientIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA31B0A295700A074B2 /* linkPatientIcon.png */; };
+		6613AEA91B0A295700A074B2 /* notesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA41B0A295700A074B2 /* notesIcon.png */; };
+		6613AEAA1B0A295700A074B2 /* taskIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA51B0A295700A074B2 /* taskIcon.png */; };
+		6613AEAB1B0A295700A074B2 /* trackPatinentIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA61B0A295700A074B2 /* trackPatinentIcon.png */; };
+		6613AEAC1B0A295700A074B2 /* viewCaretakerIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEA71B0A295700A074B2 /* viewCaretakerIcon.png */; };
+		6613AEAE1B0A2AD900A074B2 /* viewPatientProfile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEAD1B0A2AD900A074B2 /* viewPatientProfile.png */; };
+		6613AEB01B0A2B7E00A074B2 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6613AEAF1B0A2B7E00A074B2 /* logo.png */; };
 		664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 664E8C521AF9CCAD0008C7D8 /* icon_menu.png */; };
 		668D87E71B09101100342FF8 /* NotesDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 668D87E61B09101100342FF8 /* NotesDetailsViewController.m */; };
 		66A6AAF01AF72E7F00CBA2A1 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 66A6AAEF1AF72E7F00CBA2A1 /* ProfileViewController.m */; };
@@ -69,8 +76,6 @@
 		CB529B0E1AACF99600C02E9F /* walkthrough_1.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0D1AACF99600C02E9F /* walkthrough_1.png */; };
 		CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */; };
 		CB529B151AAD083900C02E9F /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B141AAD083900C02E9F /* HomeViewController.m */; };
-		CB529B171AAE3B6200C02E9F /* taskIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B161AAE3B6200C02E9F /* taskIcon.png */; };
-		CB529B191AAE3B6700C02E9F /* notesIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CB529B181AAE3B6700C02E9F /* notesIcon.png */; };
 		CB529B1F1AAE431C00C02E9F /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */; };
 		CB529B231AAE699E00C02E9F /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B221AAE699E00C02E9F /* SettingsTableViewController.m */; };
 		CB529B2B1AB0D73300C02E9F /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = CB529B2A1AB0D73300C02E9F /* KeychainItemWrapper.m */; };
@@ -101,8 +106,6 @@
 		CBA386841AD5C4C9000557E3 /* GoogleMaps.framework in Resources */ = {isa = PBXBuildFile; fileRef = CBA3866A1AD5BF76000557E3 /* GoogleMaps.framework */; };
 		CBA386861AD5C68D000557E3 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CBA386851AD5C68D000557E3 /* GoogleMaps.bundle */; };
 		CBC62D5F1AE5B82E00572C4B /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC62D5E1AE5B82E00572C4B /* Settings.m */; };
-		CBC62D611AE60FE500572C4B /* linkPatientIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC62D601AE60FE500572C4B /* linkPatientIcon.png */; };
-		CBC62D631AE60FEF00572C4B /* trackPatientsIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = CBC62D621AE60FEF00572C4B /* trackPatientsIcon.png */; };
 		CBC62D661AE615DA00572C4B /* CareTakerAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC62D651AE615DA00572C4B /* CareTakerAddTaskViewController.m */; };
 		CBC76BB01AD30764004F609F /* LinkPatientsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BAF1AD30764004F609F /* LinkPatientsTableViewController.m */; };
 		CBC76BB41AD30AFA004F609F /* TrackingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CBC76BB31AD30AFA004F609F /* TrackingViewController.m */; };
@@ -125,6 +128,13 @@
 		66067A0B1AF0D8BE00EC4E4F /* PCMarker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCMarker.m; sourceTree = "<group>"; };
 		66067A0D1AF0E6AE00EC4E4F /* CoreLocationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreLocationController.h; sourceTree = "<group>"; };
 		66067A0E1AF0E6AE00EC4E4F /* CoreLocationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreLocationController.m; sourceTree = "<group>"; };
+		6613AEA31B0A295700A074B2 /* linkPatientIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkPatientIcon.png; sourceTree = "<group>"; };
+		6613AEA41B0A295700A074B2 /* notesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notesIcon.png; sourceTree = "<group>"; };
+		6613AEA51B0A295700A074B2 /* taskIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskIcon.png; sourceTree = "<group>"; };
+		6613AEA61B0A295700A074B2 /* trackPatinentIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackPatinentIcon.png; sourceTree = "<group>"; };
+		6613AEA71B0A295700A074B2 /* viewCaretakerIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewCaretakerIcon.png; sourceTree = "<group>"; };
+		6613AEAD1B0A2AD900A074B2 /* viewPatientProfile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = viewPatientProfile.png; sourceTree = "<group>"; };
+		6613AEAF1B0A2B7E00A074B2 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		664E8C521AF9CCAD0008C7D8 /* icon_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_menu.png; sourceTree = "<group>"; };
 		668D87E51B09101100342FF8 /* NotesDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotesDetailsViewController.h; sourceTree = "<group>"; };
 		668D87E61B09101100342FF8 /* NotesDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotesDetailsViewController.m; sourceTree = "<group>"; };
@@ -230,8 +240,6 @@
 		CB529B0F1AACFFFE00C02E9F /* left_arrow_black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = left_arrow_black.png; sourceTree = "<group>"; };
 		CB529B131AAD083900C02E9F /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		CB529B141AAD083900C02E9F /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		CB529B161AAE3B6200C02E9F /* taskIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = taskIcon.png; sourceTree = "<group>"; };
-		CB529B181AAE3B6700C02E9F /* notesIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = notesIcon.png; sourceTree = "<group>"; };
 		CB529B1D1AAE431C00C02E9F /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListViewController.h; sourceTree = "<group>"; };
 		CB529B1E1AAE431C00C02E9F /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListViewController.m; sourceTree = "<group>"; };
 		CB529B211AAE699E00C02E9F /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
@@ -271,8 +279,6 @@
 		CBA386851AD5C68D000557E3 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		CBC62D5D1AE5B82E00572C4B /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
 		CBC62D5E1AE5B82E00572C4B /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
-		CBC62D601AE60FE500572C4B /* linkPatientIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = linkPatientIcon.png; sourceTree = "<group>"; };
-		CBC62D621AE60FEF00572C4B /* trackPatientsIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trackPatientsIcon.png; sourceTree = "<group>"; };
 		CBC62D641AE615DA00572C4B /* CareTakerAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CareTakerAddTaskViewController.h; sourceTree = "<group>"; };
 		CBC62D651AE615DA00572C4B /* CareTakerAddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CareTakerAddTaskViewController.m; sourceTree = "<group>"; };
 		CBC76BAE1AD30764004F609F /* LinkPatientsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinkPatientsTableViewController.h; path = ../LinkPatientsTableViewController.h; sourceTree = "<group>"; };
@@ -480,22 +486,25 @@
 		CB399DCA1AA3D4200012DB43 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				6613AEAF1B0A2B7E00A074B2 /* logo.png */,
+				6613AEAD1B0A2AD900A074B2 /* viewPatientProfile.png */,
+				6613AEA31B0A295700A074B2 /* linkPatientIcon.png */,
+				6613AEA41B0A295700A074B2 /* notesIcon.png */,
+				6613AEA51B0A295700A074B2 /* taskIcon.png */,
+				6613AEA61B0A295700A074B2 /* trackPatinentIcon.png */,
+				6613AEA71B0A295700A074B2 /* viewCaretakerIcon.png */,
 				CB060CD51AFABDFB00810D04 /* thumbsup.png */,
 				CB060CD61AFABDFB00810D04 /* goldstar.png */,
 				CB060CD71AFABDFB00810D04 /* honorbadge.png */,
 				CB399E0D1AA3E8960012DB43 /* Register_bg.jpg */,
 				CB399E0B1AA3E88B0012DB43 /* Login_bg.jpg */,
-				CBC62D621AE60FEF00572C4B /* trackPatientsIcon.png */,
-				CB529B181AAE3B6700C02E9F /* notesIcon.png */,
 				CB9AB0DD1AED5EC4006EEEBC /* newCamera.png */,
 				CB9AB0EF1AED5FC5006EEEBC /* newProfile.png */,
 				664E8C521AF9CCAD0008C7D8 /* icon_menu.png */,
 				66B4C53A1AFA915700A4FE05 /* profileimage.png */,
 				CB9AB0DF1AED5EC7006EEEBC /* newGrid.png */,
 				CB9AB0DB1AED5EBF006EEEBC /* newHeart.png */,
-				CB529B161AAE3B6200C02E9F /* taskIcon.png */,
 				CB9AB0E11AED5ECC006EEEBC /* newHome.png */,
-				CBC62D601AE60FE500572C4B /* linkPatientIcon.png */,
 				CB529B0B1AACF99100C02E9F /* walkthrough_2.png */,
 				CB529B0D1AACF99600C02E9F /* walkthrough_1.png */,
 				CB399E071AA3E0C60012DB43 /* image_bg.png */,
@@ -720,6 +729,7 @@
 				CB399DC31AA3D35A0012DB43 /* Roboto-ThinItalic.ttf in Resources */,
 				CB9AB0DE1AED5EC4006EEEBC /* newCamera.png in Resources */,
 				CB399DC21AA3D35A0012DB43 /* Roboto-Thin.ttf in Resources */,
+				6613AEB01B0A2B7E00A074B2 /* logo.png in Resources */,
 				CB399E001AA3DFCA0012DB43 /* HexColorPicker in Resources */,
 				CB399DC81AA3D35A0012DB43 /* RobotoCondensed-LightItalic.ttf in Resources */,
 				CB399E041AA3DFCA0012DB43 /* cog-tiger.tiff in Resources */,
@@ -727,10 +737,13 @@
 				66B4C53B1AFA915700A4FE05 /* profileimage.png in Resources */,
 				CB399D901AA3C1380012DB43 /* LaunchScreen.xib in Resources */,
 				CB399DC51AA3D35A0012DB43 /* RobotoCondensed-BoldItalic.ttf in Resources */,
+				6613AEAA1B0A295700A074B2 /* taskIcon.png in Resources */,
+				6613AEAC1B0A295700A074B2 /* viewCaretakerIcon.png in Resources */,
 				CB399DC61AA3D35A0012DB43 /* RobotoCondensed-Italic.ttf in Resources */,
 				CB399DBE1AA3D35A0012DB43 /* Roboto-LightItalic.ttf in Resources */,
 				664E8C531AF9CCAD0008C7D8 /* icon_menu.png in Resources */,
 				CB399E0C1AA3E88B0012DB43 /* Login_bg.jpg in Resources */,
+				6613AEA91B0A295700A074B2 /* notesIcon.png in Resources */,
 				CB399DBA1AA3D35A0012DB43 /* Roboto-Bold.ttf in Resources */,
 				CB399DC91AA3D35A0012DB43 /* RobotoCondensed-Regular.ttf in Resources */,
 				CB399DC71AA3D35A0012DB43 /* RobotoCondensed-Light.ttf in Resources */,
@@ -743,8 +756,6 @@
 				CB399E031AA3DFCA0012DB43 /* Localizable.strings in Resources */,
 				CB529B0A1AACF98A00C02E9F /* walkthrough_3.png in Resources */,
 				CB399E0A1AA3E3E80012DB43 /* Right_arrow.png in Resources */,
-				CBC62D611AE60FE500572C4B /* linkPatientIcon.png in Resources */,
-				CB529B191AAE3B6700C02E9F /* notesIcon.png in Resources */,
 				CB529B0C1AACF99100C02E9F /* walkthrough_2.png in Resources */,
 				CB399E051AA3DFCA0012DB43 /* cog.tiff in Resources */,
 				CBA386861AD5C68D000557E3 /* GoogleMaps.bundle in Resources */,
@@ -752,12 +763,13 @@
 				CB399D8D1AA3C1380012DB43 /* Images.xcassets in Resources */,
 				CB399DBC1AA3D35A0012DB43 /* Roboto-Italic.ttf in Resources */,
 				CB529B101AACFFFE00C02E9F /* left_arrow_black.png in Resources */,
-				CB529B171AAE3B6200C02E9F /* taskIcon.png in Resources */,
+				6613AEA81B0A295700A074B2 /* linkPatientIcon.png in Resources */,
 				CB399E021AA3DFCA0012DB43 /* InfoPlist.strings in Resources */,
-				CBC62D631AE60FEF00572C4B /* trackPatientsIcon.png in Resources */,
 				CB9AB0E01AED5EC7006EEEBC /* newGrid.png in Resources */,
 				CB399DC41AA3D35A0012DB43 /* RobotoCondensed-Bold.ttf in Resources */,
+				6613AEAB1B0A295700A074B2 /* trackPatinentIcon.png in Resources */,
 				CB399DFF1AA3DFCA0012DB43 /* Info.plist in Resources */,
+				6613AEAE1B0A2AD900A074B2 /* viewPatientProfile.png in Resources */,
 				CB399DBB1AA3D35A0012DB43 /* Roboto-BoldItalic.ttf in Resources */,
 				CB399DBF1AA3D35A0012DB43 /* Roboto-Medium.ttf in Resources */,
 				CB9AB0E21AED5ECC006EEEBC /* newHome.png in Resources */,
