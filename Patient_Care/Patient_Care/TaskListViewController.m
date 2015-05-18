@@ -28,15 +28,6 @@ int addeventGranted;
     
     eventList = [[NSMutableArray alloc] initWithCapacity:0];
     
-    
-    // Initialize the refresh control.
-    //    self.refreshControl = [[UIRefreshControl alloc] init];
-    
-    //    [self.refreshControl addTarget:self
-    //                            action:@selector(getLatestLoans)
-    //                  forControlEvents:UIControlEventValueChanged];
-    //
-    
     refreshControl = [[UIRefreshControl alloc] init];
     refreshControl.backgroundColor = [UIColor purpleColor];
     refreshControl.tintColor = [UIColor whiteColor];
@@ -46,17 +37,10 @@ int addeventGranted;
 }
 
 - (void)getLatestTasks {
-    
-    
-    //    NSError *error;
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    //    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=7"];
-    
-//    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=%@&p=%@", [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
     NSString *params = [NSString stringWithFormat:@"%@/listtasks?c=%@&p=%@", [Settings instance].serverPorts[@"tasks"], [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
     
     NSURL *url = [NSURL URLWithString:params];
@@ -72,29 +56,6 @@ int addeventGranted;
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    
-    //    {"patient_id": "1", "caretaker_id": "2", "task": "Go for a walk", "date": "April 8 2015", "time": "10:00"}
-    
-    //    NSLog(@"task %@", [Settings instance].task_name);
-    //    NSLog(@"time %@", [Settings instance].task_date);
-    //
-    //    NSArray* foo = [[Settings instance].task_date componentsSeparatedByString: @" "];
-    //
-    //    NSString* date = [foo objectAtIndex: 0];
-    //    NSString* time = [foo objectAtIndex: 1];
-    
-    
-    //
-    //    NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //    mapData = @{@"patient_id": patientID,
-    //                @"caretaker_id": [Settings instance].caretaker_id,
-    //                @"task": [Settings instance].task_name,
-    //                @"date": date, @"time": time};
-    //
-    //    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    //
-    //    [request setHTTPBody:postData];
-    
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -121,7 +82,6 @@ int addeventGranted;
                                                                  options:kNilOptions
                                   
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
             NSLog(@"tasks - json: %@", json);
             
@@ -132,11 +92,6 @@ int addeventGranted;
             
             
             if (status_code == 202) {
-                
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
                 
                 tasks = [json objectForKey:@"tasks"];
                 
@@ -168,32 +123,6 @@ int addeventGranted;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    
-                    
-                    //                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                    //
-                    //                                                                    message:@"Task has been added"
-                    //
-                    //                                                                   delegate:nil
-                    //
-                    //                                                          cancelButtonTitle:@"OK"
-                    //
-                    //                                                          otherButtonTitles:nil];
-                    //
-                    //                    [alert show];
-                    
-                    
-                    //                    tasks = ppp;
-                    
-                    NSLog(@"in here with %lu", (unsigned long)[tasks count]);
-                    
-                    //                    [_taskTableView reloadData];
-                    
-                    
-                    //                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
-                    //
-                    //                    [tableView reloadData];
-                    
                     [self reloadData];
                     
                 });
@@ -202,15 +131,7 @@ int addeventGranted;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                          
-                                                                    message:@"Failed to get tasks"
-                                          
-                                                                   delegate:nil
-                                          
-                                                          cancelButtonTitle:@"OK"
-                                          
-                                                          otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to get tasks" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     
                     [alert show];
                     
@@ -235,15 +156,7 @@ int addeventGranted;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                      
-                                                                message:@"You must be connected to the internet to use this app."
-                                      
-                                                               delegate:nil
-                                      
-                                                      cancelButtonTitle:@"OK"
-                                      
-                                                      otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection" message:@"You must be connected to the internet to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 
                 [alert show];
                 
@@ -262,9 +175,6 @@ int addeventGranted;
                 }
                 
             });
-            
-            NSLog(@"what?");
-            
             
         }
         
@@ -304,16 +214,11 @@ int addeventGranted;
 
 - (void)viewWillAppear:(BOOL)animated{
     
-    //    NSError *error;
-    
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
     NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
     
-    //    NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=8&p=7"];
-    
     NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:17000/listtasks?c=%@&p=%@", [[[Settings instance].caretaker_list objectAtIndex:0] objectForKey:@"id"], [Settings instance].patient_id];
-    
     
     NSURL *url = [NSURL URLWithString:params];
     
@@ -328,29 +233,6 @@ int addeventGranted;
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    
-    //    {"patient_id": "1", "caretaker_id": "2", "task": "Go for a walk", "date": "April 8 2015", "time": "10:00"}
-    
-    //    NSLog(@"task %@", [Settings instance].task_name);
-    //    NSLog(@"time %@", [Settings instance].task_date);
-    //
-    //    NSArray* foo = [[Settings instance].task_date componentsSeparatedByString: @" "];
-    //
-    //    NSString* date = [foo objectAtIndex: 0];
-    //    NSString* time = [foo objectAtIndex: 1];
-    
-    
-    //
-    //    NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //    mapData = @{@"patient_id": patientID,
-    //                @"caretaker_id": [Settings instance].caretaker_id,
-    //                @"task": [Settings instance].task_name,
-    //                @"date": date, @"time": time};
-    //
-    //    NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    //
-    //    [request setHTTPBody:postData];
-    
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -411,33 +293,9 @@ int addeventGranted;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    
-                    
-                    //                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                    //
-                    //                                                                    message:@"Task has been added"
-                    //
-                    //                                                                   delegate:nil
-                    //
-                    //                                                          cancelButtonTitle:@"OK"
-                    //
-                    //                                                          otherButtonTitles:nil];
-                    //
-                    //                    [alert show];
-                    
-                    
-                    //                    tasks = ppp;
-                    
-                    NSLog(@"in here with %lu", (unsigned long)[tasks count]);
-                    
-                    //                    [_taskTableView reloadData];
-                    
-                    
                     UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
                     
                     [tableView reloadData];
-                    
-                    
                     
                 });
                 
@@ -445,15 +303,7 @@ int addeventGranted;
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                          
-                                                                    message:@"Failed to get tasks"
-                                          
-                                                                   delegate:nil
-                                          
-                                                          cancelButtonTitle:@"OK"
-                                          
-                                                          otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to get tasks" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     
                     [alert show];
                     
@@ -464,22 +314,11 @@ int addeventGranted;
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                      
-                                                                message:@"You must be connected to the internet to use this app."
-                                      
-                                                               delegate:nil
-                                      
-                                                      cancelButtonTitle:@"OK"
-                                      
-                                                      otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"  message:@"You must be connected to the internet to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 
                 [alert show];
                 
             });
-            
-            NSLog(@"what?");
-            
             
         }
         
@@ -572,16 +411,12 @@ int addeventGranted;
     
     cell.taskInfo = receivedTask;
     
-    
-    //    [cell.completedButton setImage:btnImage forState:UIControlStateNormal];
-    
     cell.accessoryType = UITableViewCellAccessoryNone;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     
     return 80.0;
 }
@@ -601,7 +436,6 @@ int addeventGranted;
     
     [self addEvent];
     [self performSelector:@selector(Alert) withObject:nil afterDelay:0.3];
-   
     
 }
 
@@ -621,8 +455,6 @@ int addeventGranted;
                     
                     NSString *getDate = [NSString stringWithFormat:@"%@",[receivedTask objectForKey:@"date"]];
                     
-                    NSLog(@"date from json %@", getDate);
-                    
                     NSString *getTime = [NSString stringWithFormat:@"%@",[receivedTask objectForKey:@"time"]];
                     
                     
@@ -632,12 +464,6 @@ int addeventGranted;
                     [dateFormatter setDateFormat:@"dd-MM-yyyy HH:mm"];
                     NSDate *dateFromString = [[NSDate alloc] init];
                     dateFromString = [dateFormatter dateFromString:concatDate];
-                    
-                    
-                    NSLog(@"this is your date %@", dateFromString);
-                    
-//                    NSString *gettime = [NSString stringWithFormat:@"%@", [receivedTask objectForKey:@"time"]];
-                    
                     
                     [event setTitle: getTask];
                     
@@ -651,33 +477,22 @@ int addeventGranted;
                         
                         EKEvent *event = [EKEvent eventWithEventStore:store];
                         event.title = getTask;
-//                        NSDate *today = [NSDate date];
-//                        NSLog(@"%@", today);
                         event.startDate = dateFromString;
                         
                         event.endDate = [event.startDate dateByAddingTimeInterval:60*60];
                         [event setCalendar:[store defaultCalendarForNewEvents]];
                         NSError *err = nil;
                         [store saveEvent:event span:EKSpanThisEvent commit:YES error:&err];
-                        NSString *savedEventId = event.eventIdentifier;
                         
                         //this is so you can access this event later
                     
                     }];
-                    
 
                 }
-                
-                
-                
-                
-                
             }
         }];
     }
 }
-
-
 
 -(void)Alert {
     if (addeventGranted == 1) {

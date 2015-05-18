@@ -52,12 +52,9 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath*)indexPath
 {
-    NSLog(@"patient id - %@", [Settings instance].patient_id);
-    NSLog(@"index section %d", indexPath.section);
     if (indexPath.section == 0) {
         
         if([Settings instance].patient_id == NULL){
-            NSLog(@"inside if ------ ");
             if (indexPath.row == 4) {
                 return 0;
             }

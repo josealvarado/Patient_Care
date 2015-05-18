@@ -73,24 +73,16 @@
 
 - (IBAction)searchButtonPressed:(id)sender {
     
-    
-        NSError *error;
-    
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
-    
-//        NSString *params = [NSString stringWithFormat:@"http://52.11.100.150:16000/listuser?q=%@",_seachTextField.text];
-//
     
     NSString *params = [NSString stringWithFormat:@"%@/listuser?q=%@",[Settings instance].serverPorts[@"linkpatients"],_seachTextField.text];
 
         NSURL *url = [NSURL URLWithString:params];
     
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-    
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-    
                                                            timeoutInterval:60.0];
     
         [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -98,13 +90,6 @@
         [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
         [request setHTTPMethod:@"GET"];
-//    
-//        NSDictionary *mapData = [[NSDictionary alloc] init ];
-//        mapData = @{@"emailaddress" : _seachTextField.text};
-    
-//        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    
-//        [request setHTTPBody:postData];
     
         NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
     
@@ -134,19 +119,8 @@
                 //            NSArray* latestLoans = [json objectForKey:@"loans"];
     
                 NSLog(@"json: %@", json);
-    
-                NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-    
-                NSLog(@"str %@", newStr);
-                
                 
                 if (status_code == 202) {
-    
-    //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                    
-                    
-//                    [json setValue:_seachTextField.text forKey:@"email"];
-                    
                     
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
@@ -155,7 +129,6 @@
                         [patients removeAllObjects];
                         [patients addObject:json];
                         
-                        
                         // Assuming you've added the table view as a subview to the current view controller
                         UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
                         
@@ -163,36 +136,23 @@
                         
                     });
                     
-                    
-                    
-    
-    
                 } else {
     
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-    
                                                                     message:@"Something did not work"
-    
                                                                    delegate:nil
-    
                                                           cancelButtonTitle:@"OK"
-    
-                                                          otherButtonTitles:nil];
+                                                              otherButtonTitles:nil];
     
                     [alert show];
     
                 }
             } else {
     
-                NSLog(@"what?");
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-    
                                                                 message:@"You must be connected to the internet to use this app."
-    
                                                                delegate:nil
-                                      
                                                       cancelButtonTitle:@"OK"
-                                      
                                                       otherButtonTitles:nil];
                 
                 [alert show];
@@ -203,12 +163,6 @@
         
         [postDataTask resume];
     
-    
-//    NSDictionary *patient = @{@"name": @"jose", @"email": @"testing@gmail.com"};
-////    [patients removeAllObjects];
-//    [patients addObject:patient];
-    
-    
     // Assuming you've added the table view as a subview to the current view controller
     UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
     
@@ -216,10 +170,12 @@
 }
 
 - (IBAction)addPatientButtonPressed:(id)sender {
-    
-    
     if (selected == -1) {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Select a patient" message:@"Select a patient" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Select a patient"
+                                                        message:@"Select a patient"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
                         
         [alert show];
         
@@ -232,14 +188,14 @@
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
-    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
+    NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration
+                                                          delegate:self
+                                                     delegateQueue:nil];
     
     NSURL *url = [NSURL URLWithString:@"http://52.11.100.150:16000"];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                    
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                    
                                                        timeoutInterval:60.0];
     
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -253,7 +209,6 @@
     mapData = @{
                 @"patient_id" : [returnedPatient objectForKey:@"id"],
                 @"caretaker_id" : [Settings instance].caretaker_id,
-//    @"relationshiptopatient" : @"relationship01"};
                 @"relationshiptopatient" : relationInput};
 
     NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
@@ -281,55 +236,30 @@
             NSError* error;
             
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                  
                                                                  options:kNilOptions
-                                  
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
             NSLog(@"json: %@", json);
             
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"str %@", newStr);
-            
-            
-            // 304 couldn't be found
-            // 405 unsupported
-            
             if (status_code == 202) {
-                
-//                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
                 
             } else {
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                      
                                                                 message:@"Something did not work"
-                                      
                                                                delegate:nil
-                                      
                                                       cancelButtonTitle:@"OK"
-                                      
                                                       otherButtonTitles:nil];
-                
                 [alert show];
                 
             }
         } else {
             
-            NSLog(@"what?");
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                  
                                                             message:@"You must be connected to the internet to use this app."
-                                  
                                                            delegate:nil
-                                  
                                                   cancelButtonTitle:@"OK"
-                                  
                                                   otherButtonTitles:nil];
-            
             [alert show];
             
         }
@@ -378,7 +308,6 @@
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         selected = 1;
     } else {
-        NSLog(@"ssssssssssss");
         cell.accessoryType = UITableViewCellAccessoryNone;
         selected = -1;
     }

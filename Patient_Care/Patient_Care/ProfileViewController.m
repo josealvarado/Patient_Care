@@ -19,6 +19,7 @@
 
 @synthesize lastNameLabel;
 @synthesize firstNameLabel;
+@synthesize profileImage;
 
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

@@ -18,8 +18,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
     tasks = [[NSMutableArray alloc] init];
 
     
@@ -43,19 +41,6 @@
     
     NSDictionary *selectedPatient = [Settings instance].selectedPatient;
     NSString *patientID = [selectedPatient objectForKey:@"id"];
-    
-//    NSMutableArray *patientList = [Settings instance].patient_list;
-//    
-//    NSDictionary *patient = [patientList objectAtIndex:4];
-//        
-//    NSString *pID = [patient objectForKey:@"id"];
-    
-//    NSMutableArray *caretakerList = [Settings instance].caretaker_list;
-//    
-//    NSDictionary *caretaker = [caretakerList objectAtIndex:4];
-//    
-//    NSString *cID = [caretaker objectForKey:@"id"];
-//    
     
     NSString *caretakerID = [[Settings instance].caretaker objectForKey:@"id"];
     
@@ -118,15 +103,7 @@
             
             if (status_code == 202) {
                 
-                
                 tasks = [json objectForKey:@"tasks"];
-                
-                for (int i = 0; i < tasks.count; i++) {
-                    
-                    NSDictionary *task = [tasks objectAtIndex: i];
-                    
-                    
-                }
                 
                 int count = (int)[tasks count];
                 
@@ -145,18 +122,9 @@
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                          
-                                                                    message:@"Failed to get tasks"
-                                          
-                                                                   delegate:nil
-                                          
-                                                          cancelButtonTitle:@"OK"
-                                          
-                                                          otherButtonTitles:nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:@"Failed to get tasks" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                     
                     [alert show];
-                    
                     
                 });
                 
@@ -166,23 +134,12 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                      
-                                                                message:@"You must be connected to the internet to use this app."
-                                      
-                                                               delegate:nil
-                                      
-                                                      cancelButtonTitle:@"OK"
-                                      
-                                                      otherButtonTitles:nil];
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection" message:@"You must be connected to the internet to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 
                 [alert show];
                 
-                
             });
-            
         }
-        
     }];
     
     [postDataTask resume];
@@ -196,13 +153,11 @@
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
     return [tasks count];
 }

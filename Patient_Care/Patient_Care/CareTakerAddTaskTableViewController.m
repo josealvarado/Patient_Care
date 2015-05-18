@@ -242,73 +242,36 @@
             NSError* error;
             
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                  
                                                                  options:kNilOptions
-                                  
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
             
-            
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"str %@", newStr);
-            
-            
+            NSLog(@"json %@", json);
             
             if (status_code == 202) {
-                
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
-                
-//                NSArray *ppp = [json objectForKey:@"users"];
-                
-                
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Success"
-                                          
                                                                     message:@"Task has been added"
-                                          
                                                                    delegate:self
-                                          
                                                           cancelButtonTitle:@"OK"
-                                          
                                                           otherButtonTitles:@"Email Task", nil];
-                    
-//                    //adding new code by Paresh
-//                    [alert addButtonWithTitle:@"Email Task"];
-                    
                     [alert show];
-                   
                     
                 });
-                
-                
-                
-                
                 
             } else {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                          
                                                                     message:@"Something did not work"
-                                          
                                                                    delegate:nil
-                                          
                                                           cancelButtonTitle:@"OK"
-                                          
                                                           otherButtonTitles:nil];
-                    
                     [alert show];
                     
                 });
-                
-                
                 
             }
         } else {
@@ -316,22 +279,13 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                      
                                                                 message:@"You must be connected to the internet to use this app."
-                                      
                                                                delegate:nil
-                                      
                                                       cancelButtonTitle:@"OK"
-                                      
                                                       otherButtonTitles:nil];
-                
                 [alert show];
                 
             });
-            
-            NSLog(@"what?");
-            
-            
         }
         
     }];
@@ -346,7 +300,6 @@
     
     if([title isEqualToString:@"Email Task"])
     {
-        NSLog(@"Email will be selected.");
         [self showEmail];
     }
 }
@@ -360,8 +313,6 @@
 - (void)showEmail {
     
     NSDictionary *patientProfile = [selectedPatient valueForKey:@"profile"];
-    
-    NSLog(@"patient profile - %@", patientProfile);
     
     NSString *patientEmail = [patientProfile objectForKey:@"email"];
     
@@ -386,25 +337,15 @@
         
         [mc setToRecipients:toRecipents];
         
-        
-        
         [self presentViewController:mc animated:YES completion:nil];
     }
     else{
-        UIAlertView *anAlert = [[UIAlertView alloc]
-                                
-                                initWithTitle:@"error"
-                                
-                                message:@"No mail account setup on device"
-                                
-                                delegate:self
-                                
-                                cancelButtonTitle:nil
-                                
-                                otherButtonTitles:nil];
-        
+        UIAlertView *anAlert = [[UIAlertView alloc] initWithTitle:@"error"
+                                                          message:@"No mail account setup on device"
+                                                         delegate:self
+                                                cancelButtonTitle:nil
+                                                otherButtonTitles:nil];
         [anAlert addButtonWithTitle:@"Cancel"];
-        
         [anAlert show];
     }
     
@@ -461,21 +402,12 @@
 
 - (void) checkTypeOfEmail:(NSString *)title titleOfAlert:(NSString *)msg someMessage:(NSString *)cancelMsg{
     
-    UIAlertView *anAlert = [[UIAlertView alloc]
-                            
-                            initWithTitle:title
-                            
-                            message:msg
-                            
-                            delegate:self
-                            
-                            cancelButtonTitle:cancelMsg
-                            
-                            otherButtonTitles:nil];
-    
-    
+    UIAlertView *anAlert = [[UIAlertView alloc] initWithTitle:title
+                                                      message:msg
+                                                     delegate:self
+                                            cancelButtonTitle:cancelMsg
+                                            otherButtonTitles:nil];
     [anAlert show];
-    
     
 }
 @end

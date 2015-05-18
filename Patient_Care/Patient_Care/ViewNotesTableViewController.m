@@ -26,7 +26,6 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    
 }
 
 -(void)viewDidLayoutSubviews
@@ -55,11 +54,7 @@
     
     dispatch_async(dispatch_get_main_queue(), ^{
         
-        
-        
         notes = [Settings instance].notes;
-        
-//        NSLog(@"lenght %lu", (unsigned long)[notes count]);
         
         // Assuming you've added the table view as a subview to the current view controller
         UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
@@ -67,9 +62,6 @@
         [tableView reloadData];
         
     });
-    
-    
-    NSError *error;
     
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     
@@ -80,9 +72,7 @@
     NSURL *url = [NSURL URLWithString:params];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                    
                                                            cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                    
                                                        timeoutInterval:60.0];
     
     [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -90,13 +80,6 @@
     [request addValue:@"application/json" forHTTPHeaderField:@"Accept"];
     
     [request setHTTPMethod:@"GET"];
-    //
-    //        NSDictionary *mapData = [[NSDictionary alloc] init ];
-    //        mapData = @{@"emailaddress" : _seachTextField.text};
-    
-    //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-    
-    //        [request setHTTPBody:postData];
     
     NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         
@@ -108,8 +91,6 @@
         
         if (!error) {
             
-            NSLog(@"COrrect");
-            
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *) response;
             
             long status_code = (long)[httpResponse statusCode];
@@ -119,30 +100,12 @@
             NSError* error;
             
             NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                  
                                                                  options:kNilOptions
-                                  
                                                                    error:&error];
-            //            NSArray* latestLoans = [json objectForKey:@"loans"];
-            
             NSLog(@"json: %@", json);
-            
-            NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-            
-            NSLog(@"str %@", newStr);
-            
-            
             
             if (status_code == 202) {
                 
-                //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                
-                
-                //                    [json setValue:_seachTextField.text forKey:@"email"];
-                
-//                NSArray *ppp = [json objectForKey:@"users"];
-                
-
                 notes = [json objectForKey:@"notes"];
                 
                 notes2 = [[NSMutableArray alloc] init];
@@ -153,71 +116,31 @@
                     
                     NSString *patientID = [note_details objectForKey:@"patient_id"];
                     
-                    NSLog(@"Patient ID %@", patientID);
-                    
                     if(patientID == (id)[NSNull null]){
-//                        generalNotes = [note_details objectForKey:@"note"];
-                        
-//                        note_details_1 = [notes objectAtIndex: i];
-                        
-//                        NSLog(@"General Notes %@",generalNotes);
                         
                         [notes2 addObject:note_details];
                         
-                        NSLog(@"notes 2 = %@", notes2);
                     }
                 }
-                
-                
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     [self.tableView reloadData];
                     
-                    
-                    
-
-                    
-//                    patients = [ppp mutableCopy];
-                    
-//                    [Settings instance].patient_list = patients;
-                    
-                    //                    [patients removeAllObjects];
-                    //                    [patients addObject:json];
-                    
-                    
-                    // Assuming you've added the table view as a subview to the current view controller
-//                    UITableView *tableView = (UITableView *)[self.view viewWithTag:1];
-                    
-                    
-
-                    
-                    
                 });
-                
-                
-                
-                
                 
             } else {
                 
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed"
-                                          
-                                                                    message:@"Something did not work"
-                                          
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Error"
+                                                                    message:@"Sending incorrect json data"
                                                                    delegate:nil
-                                          
                                                           cancelButtonTitle:@"OK"
-                                          
                                                           otherButtonTitles:nil];
-                    
                     [alert show];
                     
                 });
-                
-                
                 
             }
         } else {
@@ -225,15 +148,10 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
-                                      
                                                                 message:@"You must be connected to the internet to use this app."
-                                      
                                                                delegate:nil
-                                      
                                                       cancelButtonTitle:@"OK"
-                                      
                                                       otherButtonTitles:nil];
-                
                 [alert show];
                 
             });
@@ -268,8 +186,7 @@
     
     // Configure the cell...
     
-        cell.textLabel.text = [[notes2 objectAtIndex:indexPath.row] objectForKey:@"note"];
-//    cell.textLabel.text = [notes objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[notes2 objectAtIndex:indexPath.row] objectForKey:@"note"];
     
     return cell;
 }

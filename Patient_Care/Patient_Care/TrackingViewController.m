@@ -17,10 +17,7 @@
 @property(strong, nonatomic) NSURLSession *markerSession;
 @property(strong, nonatomic) NSSet *markers;
 
-
 @end
-
-
 
 @implementation TrackingViewController
 
@@ -29,8 +26,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    
     
     GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:37.774929
                                                             longitude:-122.419416
@@ -51,27 +46,7 @@
     
     [self viewWillAppear:nil];
     
-    
-    NSLog(@"here");
 }
-
-
-
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    GMSCameraPosition *camera = [GMSCameraPosition cameraWithLatitude:-33.868
-//                                                            longitude:151.2086
-//                                                                 zoom:6];
-//    GMSMapView *mapView = [GMSMapView mapWithFrame:CGRectZero camera:camera];
-//
-//    GMSMarker *marker = [[GMSMarker alloc] init];
-//    marker.position = camera.target;
-//    marker.snippet = @"Hello World";
-//    marker.appearAnimation = kGMSMarkerAnimationPop;
-//    marker.map = mapView;
-//
-//    self.view = mapView;
-//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -86,11 +61,6 @@
     for (int i = 0; i < [patientList count]; i++) {
         NSDictionary *patient = [patientList objectAtIndex:i];
         
-        NSLog(@"%@", patient);
-        
-        
-        NSError *error;
-        
         NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
         
         self.markerSession = [NSURLSession sessionWithConfiguration:configuration];
@@ -98,19 +68,12 @@
         NSURLSession *session = [NSURLSession sessionWithConfiguration:configuration delegate:self delegateQueue:nil];
         
         NSString *d = [patient objectForKey:@"id"];
-        
-        NSLog(@"%@", d);
-        
-//        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://52.11.100.150:18000/listlocations?p=%@", d]];
-//        
 
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/listlocations?p=%@",[Settings instance].serverPorts[@"tracking"], d]];
         
         
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url
-                                        
                                                                cachePolicy:NSURLRequestUseProtocolCachePolicy
-                                        
                                                            timeoutInterval:60.0];
         
         [request addValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
@@ -119,36 +82,12 @@
         
         [request setHTTPMethod:@"GET"];
         
-        //    NSDate *currentTime = [NSDate date];
-        //    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-        //    [dateFormatter setDateFormat:@"hh-mm"];
-        //    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-        //    NSString *resultString = [dateFormatter stringFromDate: currentTime];
-        
-        //    NSArray* foo = [resultString componentsSeparatedByString: @" "];
-        
-        //    NSString* date = [foo objectAtIndex: 0];
-        //    NSString* time = [foo objectAtIndex: 1];
-        
-        
-        //        NSDictionary *mapData = [[NSDictionary alloc] init ];
-        //    mapData = @{
-        //                @"patient_id" : [Settings instance].patient_id,
-        //                @"lat" : [NSString stringWithFormat:@"%f", latitude],
-        //                @"long" : [NSString stringWithFormat:@"%f", latitude],
-        //                @"date" : date,
-        //                @"time" : time};
-        
-        //        NSData *postData = [NSJSONSerialization dataWithJSONObject:mapData options:0 error:&error];
-        
-        //        [request setHTTPBody:postData];
-        
         NSURLSessionDataTask *postDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
             
-            //            NSLog(@"data %@", data);
-            //
-            //            NSLog(@"response %@", response);
-            //
+            NSLog(@"data %@", data);
+            
+            NSLog(@"response %@", response);
+            
             NSLog(@"erorr %@", error);
             
             if (!error) {
@@ -165,9 +104,7 @@
                 //serializing the json response into a dictionary
                 
                 NSDictionary* json = [NSJSONSerialization JSONObjectWithData:data
-                                      
                                                                      options:kNilOptions
-                                      
                                                                        error:&error];
                 
                 NSLog(@"json: %@", json);
@@ -176,35 +113,20 @@
                 NSArray* latestLoans = [json objectForKey:@"locations"];
                 
                 [[NSOperationQueue mainQueue] addOperationWithBlock:^{
-                    NSLog(@"main thread");
                     [self createMarkerObjectWithJson:latestLoans];
                 }];
 
-                
-                NSString* newStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-                
-                //                NSLog(@"str %@", newStr);
-                
-                
-                // 304 couldn't be found
-                // 405 unsupported
-                
                 if (status_code == 202) {
                     
-                    //                [self performSegueWithIdentifier:@"PatientHome" sender:sender];
-                    
-                    NSLog(@"Got lat/long");
-                    
-                    
-                    
                 } else {
-                    
-                    
-                    
+    
                     dispatch_async(dispatch_get_main_queue(), ^{
                         
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed" message:@"Something did not work" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                        
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"App Error"
+                                                                        message:@"Sending incorrect json data"
+                                                                       delegate:nil
+                                                              cancelButtonTitle:@"OK"
+                                                              otherButtonTitles:nil];
                         [alert show];
                         
                     });
@@ -212,26 +134,23 @@
                 }
             } else {
                 
-                
                 dispatch_async(dispatch_get_main_queue(), ^{
                     
                     NSLog(@"what?");
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"message:@"You must be connected to the internet to use this app." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
-                    
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No network connection"
+                                                                    message:@"You must be connected to the internet to use this app."
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
                     [alert show];
                     
                 });
-                
-                
-                
             }
             
         }];
         
         [postDataTask resume];
     }
-    
-    
     
 }
 
@@ -241,31 +160,22 @@
     
     for (NSDictionary *markerData in markers){
         
-//        GMSMarker *newMarker = [[GMSMarker alloc]init];
-        
         PCMarker *newMarker = [[PCMarker alloc]init];
         newMarker.gpsId = [markerData[@"gps_id"] stringValue];
-//        NSLog(@"gpsid - %@", newMarker.gpsId);
-        
         newMarker.position = CLLocationCoordinate2DMake([markerData[@"lat"] doubleValue], [markerData[@"long"] doubleValue]);
-        
         newMarker.title = markerData[@"date"];
         newMarker.snippet = markerData[@"time"];
-        
         newMarker.map = nil;
         
         [mutableMarkers addObject:newMarker];
     }
     self.markers = [mutableMarkers copy];
     
-    NSLog(@"%@", mutableMarkers);
-    
     [self drawMarkers];
 }
 
 
 -(void)drawMarkers {
-    
     for(PCMarker *marker in self.markers){
         
         if(marker.map ==nil){

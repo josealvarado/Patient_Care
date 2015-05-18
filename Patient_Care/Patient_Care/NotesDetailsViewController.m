@@ -17,9 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog([Settings instance].selectedNote_details);
     self.notesDetailLabel.text = [Settings instance].selectedNote_details;
-    
 }
 
 - (void)didReceiveMemoryWarning {

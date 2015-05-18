@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     // Initialization code
-    UIImage *btnImage = [UIImage imageNamed:@"image.png"];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

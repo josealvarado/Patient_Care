@@ -17,6 +17,4 @@
 
 @property (weak, nonatomic) IBOutlet UIView *mapview;
 
-
-
 @end
