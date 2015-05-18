@@ -7,18 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CareTakerPatientTaskCellTableViewCell.h"
+#import <MessageUI/MessageUI.h>
 
-@interface CareTakerPatientTaksListTableViewController : UITableViewController<NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate>{
+@interface CareTakerPatientTaksListTableViewController : UITableViewController<NSURLSessionDataDelegate, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, UIAlertViewDelegate>{
     
     NSMutableArray *tasks;
     
     UIRefreshControl *refreshControl;
     
+        NSDictionary *selectedPatient;
     
 }
 
 @property (strong, nonatomic) NSDictionary* taskInfo;
-
 @property (weak, nonatomic) IBOutlet UITableView *taskTableView;
 
 @end

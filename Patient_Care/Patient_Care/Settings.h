@@ -32,6 +32,7 @@
 @property (nonatomic) NSString *task_date;
 @property (nonatomic) NSString *task_name;
 
+@property(nonatomic) NSString *emailButtonPressed;
 
 @property (nonatomic) NSString *first_name;
 @property (nonatomic) NSString *last_name;
