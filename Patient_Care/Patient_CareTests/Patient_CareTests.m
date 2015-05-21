@@ -225,6 +225,10 @@
     }];
 }
 
+- (void) testRegistration2{
+    
+}
+
 - (void) testCaretakerRegistration {
     
     XCTestExpectation *expectation = [self expectationWithDescription:@"..."];
